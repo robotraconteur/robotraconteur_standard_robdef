@@ -1,0 +1,5 @@
+service com.robotraconteur.uuid
+
+struct UUID
+    field uint8[16] uuid_bytes
+end

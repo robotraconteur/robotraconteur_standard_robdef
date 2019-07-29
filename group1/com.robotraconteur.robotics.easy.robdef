@@ -1,0 +1,137 @@
+service com.robotraconteur.robotics.easy
+
+import com.robotraconteur.geometry
+using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.Transform
+
+enum EasyJointType
+    rotary,
+	prismatic
+end
+
+enum EasyRobotMode
+    safety_error = -4,
+	hardware_error = -3,
+    software_error = -2,
+	softstop_error = -1
+	halt = 0,
+	jog,
+	trajectory,
+	position_command,
+	velocity_command
+end
+
+struct EasyToolInfo
+    field string tool_name	
+	field string manufacturer
+	field string model
+	field string type
+	field Transform tcp
+	field UUID description_resource_uuid
+end
+
+struct EasyJointLimits
+    field double lower
+	field double upper
+	field double velocity
+	field double acceleration
+end
+
+struct EasyRobotKinChainInfo
+    field Vector3[] H
+	field Vector3[] P
+	field SpatialInertia[] inertia
+	field uint32[] joint_numbers
+	field EasyToolInfo current_tool
+	field varvalue{string} extended
+end
+
+struct EasySignalInfo
+	field string name
+	field string type
+	field varvalue{string} extended
+end
+
+struct EasyRobotInfo
+    field string robot_name
+	field string manufacturer
+	field string model
+    field string{list} joint_names	
+	field EasyJointType{list} joint_type
+	field EasyJointLimits{list} limits
+    field EasyRobotKinChainInfo{string} chains
+    field EasySignalInfo{string} signals
+	field UUID description_resource_uuid
+    field varvalue{string} extended	
+end
+
+struct EasyRobotState
+    field uint64 seqno
+	field EasyRobotMode mode
+    field double[] joint_position
+	field double[] joint_velocity
+	field double[] joint_effort	
+	field double[] position_command
+	field double[] velocity_command
+	field bool trajectory_running
+end
+
+namedarray EasyTrajectoryWaypoint
+    field double[] joint_position
+	field double[] joint_velocity
+	field double[] position_tolerance
+	field double[] velocity_tolerance
+	field double time_from_start
+end
+
+struct EasyTrajectory
+    field EasyTrajectoryWaypoint[] waypoints
+	field varvalue{string} extended
+end
+
+enum EasyTrajectoryStatusCode
+    error = -2
+    failed = -1,
+    unknown = 0,
+	queued,
+	running,
+	complete	
+end
+
+struct EasyTrajectoryStatus
+    field uint64 seqno
+    field EasyTrajectoryStatusCode status
+	field uint32 current_waypoint
+	field uint32 
+end
+
+struct EasyRobotJointCommand
+    field uint64 seqno
+	field uint64 status_seqno
+    field double[] command	
+end
+
+object EasyRobot
+    property easy_robot_info [readonly,nolockread]
+    property EasyRobotMode easy_mode [nolockread]
+	function void halt()
+	function void safety_soft_stop() [urgent,nolock]
+	function void easy_jog(double[] joint_position)
+	function EasyTrajectoryStatus{generator} easy_execute_trajectory(EasyTrajectory trajectory)
+	wire EasyRobotState easy_robot_state [readonly,nolock]
+	property uint32 update_downsample [perclient]
+	property double update_rate [readonly]
+	wire EasyRobotJointCommand easy_position_command [writeonly]
+	wire EasyRobotJointCommand easy_velocity_command [writeonly]
+	function double easy_get_signal(string signal_name)
+	function void easy_set_signal(string signal_name, double value)
+	function void easy_attach_tool(string chain, EasyToolInfo tool)
+	function void easy_detach_tool(string chain)
+	property EasyRobotInfo easy_robot_info [readonly]
+	property string{list} easy_parameter_names [readonly]
+	function varvalue easy_get_param(string param_name)
+	function void easy_set_param(string param_name, varvalue value)
+end
+
+

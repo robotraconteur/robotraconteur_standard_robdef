@@ -1,0 +1,18 @@
+service com.robotraconeteur.bignum
+
+# Signed arbritary precisison number, little endian
+struct BigNum
+    field uint8[] data
+end
+
+# Unsigned arbritary precisison number, little endian
+struct UnsignedBigNum
+    field uint8[] data
+end
+
+# Arbitrary precision floating point number
+struct BigFloat
+    field BigNum num
+	field BigNum den
+	field BigNum radix
+end

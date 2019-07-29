@@ -1,0 +1,127 @@
+service com.robotraconteur.pointcloud
+
+import com.robotraconteur.geometry
+import com.robotraconteur.geometryf
+import com.robotraconteur.geometryi
+import com.robotraconteur.imaging
+
+using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometryf.Point as Pointf
+using com.robotraconteur.geometryi.Point as Pointi
+using com.robotraconteur.imaging.PixelRGBFloatPacked
+
+struct PointCloud
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+    field Point[] points   
+end
+
+struct PointCloudPart
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field Point[] points   
+end
+
+struct PointCloudf
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+    field Pointf[] points   
+end
+
+struct PointCloudPartf
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field Pointf[] points   
+end
+
+struct PointCloudi
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+    field Pointi[] points   
+end
+
+struct PointCloudParti
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field Pointi[] points   
+end
+
+namedarray PointCloud2Point
+	field Point point
+	field Vector3 normal
+	field PixelRGBFloatPacked rgb
+	field double[3] moment_invariants
+	field double channel
+end
+
+struct PointCloud2
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+    field PointCloud2Point[] points   
+end
+
+struct PointCloud2Part
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field PointCloud2Point[] points   
+end
+
+namedarray PointCloud2Pointf
+	field Pointf point
+	field Vector3f normal
+	field PixelRGBFloatPackedf rgb
+	field single[3] moment_invariants
+	field single channel
+end
+
+struct PointCloud2f
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+    field PointCloud2Pointf[] points   
+end
+
+struct PointCloud2Partf
+    field uint32 width
+    field uint32 height
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field PointCloud2Pointf[] points   
+end
+
+struct FreeformPointCloud
+    field uint32 width
+    field uint32 height
+    field string encoding
+    field bool is_dense
+    field varvalue points
+	field varvalue{string} extended 
+end
+
+struct FreeformPointCloudPart
+    field uint32 width
+    field uint32 height
+    field string encoding
+    field bool is_dense
+	field uint32 points_offset
+	field uint32 points_total_len
+    field varvalue points
+	field varvalue{string} extended   
+end

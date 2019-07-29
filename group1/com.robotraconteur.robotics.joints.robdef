@@ -1,0 +1,184 @@
+service com.robotraconteur.robotics.joints
+
+import com.robotraconteur.units
+using com.robotraconteur.units.SIUnit
+
+enum JointPositionUnits
+    implicit = 0,
+	meter,
+	radian,
+	degree,
+	# ticks_lin = m/(2^20)
+	ticks_lin,
+	# ticks_rot = nrad/(2^20)
+	ticks_rot,
+	# nanoticks_lin = nm/(2^20)
+	nanoticks_lin,
+	# nanoticks_rot = nrad/(2^20)
+	nanoticks_rot,
+end
+
+enum JointVelocityUnits
+    implicit = 0,
+	meter_second = 16,
+	radian_second,
+	degree_second,
+	ticks_lin_second,
+	ticks_rot_second,
+    nanoticks_lin_second,
+	nanoticks_rot_second,		
+end
+
+enum JointAccelerationUnits
+    implicit = 0,
+	meter_second2 = 32,
+	radian_second2,
+	degree_second2,
+	ticks_lin_second2,
+	ticks_rot_second2,
+    nanoticks_lin_second2,
+	nanoticks_rot_second2,		
+end
+
+enum JointJerkUnits
+    implicit = 0,
+	meter_second2 = 48,
+	radian_second2,
+	degree_second2,
+	ticks_lin_second2,
+	ticks_rot_second2,
+    nanoticks_lin_second2,
+	nanoticks_rot_second2,		
+end
+
+enum JointEffortUnits
+    implicit = 0,
+	newton = 64,
+	newton_meter,
+	ampere,
+	volt,
+	pascal,
+	coulomb,
+	tesla,
+	weber,
+	meter_second2
+	radian_second2
+	degree_second2
+end
+
+pod JointPosition
+    field double[8-] positions
+	field uint8[8-] units
+end
+
+namedarray DualArmJoints
+    field double[8-] left
+	field double[8-] right
+	field double[8-] torso
+end
+
+namedarray DualArmJointUnits
+    field uint8[8-] left
+	field uint8[8-] right
+	field uint8[8-] torso
+end
+
+pod DualArmJointPosition
+    field DualArmJoints positions
+	field DualArmJointUnits units
+end
+
+struct FreeformRobotPosition
+    field string{list} joint_names
+	field double[]{list} positions
+	field int64{list} units
+	field varvalue{string} extended
+end
+
+struct MultiRobotPosition
+    field JointPosition{string} robots
+	field DualArmJointPosition{string} dual_arm_robots
+	field FreeformRobotPosition{string} freeform_robots
+	field MultiRobotPosition{string} multi_robots
+end
+
+pod JointVelocity
+    field double[8-] velocity
+	field uint8[8-] units
+end
+
+pod DualArmJointVelocity
+    field DualArmJoints velocity
+	field DualArmJointUnits units
+end
+
+struct FreeformRobotJointVelocity
+    field string{list} joint_names
+	field double[]{list} velocity
+	field SIUnit{list} units
+end
+
+struct MultiRobotJointVelocity
+    field JointVelocity{string} robots
+	field DualArmJointVelocity{string} dual_arm_robots
+	field FreeformRobotVelocity{string} freeform_robots
+	field MultiRobotJointVelocity{string} multi_robots
+end
+
+pod JointEffort
+    field double[8-] effort
+	field uint8[8-] units
+end
+
+pod DualArmJointEffort
+    field DualArmJoints effort
+	field DualArmJointUnits units
+end
+
+struct FreeformRobotJointEffort
+    field string{list} joint_names
+	field double[]{list} effort
+	field string{list} units
+end
+
+struct MultiRobotJointEffort
+    field JointEffort{string} robots
+	field DualArmJointEffort{string} dual_arm_robots
+	field FreeformRobotEffort{string} freeform_robots
+	field MultiRobotJointEffort{string} multi_robots
+end
+
+pod JointState
+    field double[8-] position
+	field uint8[8-] position_units
+	field double[8-] velocity
+	# Velocity units implicit from position
+	field double[8-] effort
+	field uint8[8-] effort_units
+end
+
+pod DualArmJointState
+    field DualArmJoints position
+	field DualArmJointUnits position_units
+	field DualArmJoints velocity
+	# Velocity units implicit from position
+	field DualArmJoints effort
+	field DualArmJointUnits effort_units
+end
+
+struct FreeformRobotJointState
+    field string{list} joint_names
+	field double[]{list} position
+	field SIUnit{list} position_units
+	field double[]{list} velocity
+	# Velocity units implicit from position
+	field double[]{list} effort
+	field SIUnit{list} effort_units
+end
+
+struct MultiRobotJointState
+    field JointState{string} robots
+	field DualArmJointState{string} dual_arm_robots
+	field FreeformRobotState{string} freeform_robots
+	field MultiRobotJointState{string} multi_robots
+end
