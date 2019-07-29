@@ -1,24 +1,32 @@
 service com.robotraconteur.imaging.easy
 
 import com.robotraconteur.image
+import com.robotraconteur.imaging.camerainfo
+
 using com.robotraconteur.image.Image
+using com.robotraconteur.image.CompressedImage
+using com.robotraconteur.imaging.camerainfo.CameraInfo
 
 enum EasyTriggerMode
    unknown = 0,
-   single,
+   software,
    continuous,
-   external
+   external,
+   aux1,
+   aux2,
+   aux3,
+   aux4
 end
 
 enum EasyCapabilities
    unknown = 0,
    still = 0x1,
-   stream = 0x2
+   stream = 0x2,
    preview = 0x4,
    software_trigger = 0x10,
-   freerun_trigger = 0x20,
+   continuous_trigger = 0x20,
    external_trigger = 0x40,
-   software_trigger = 0x80
+   aux_trigger = 0x80
 end
 
 object EasyCamera

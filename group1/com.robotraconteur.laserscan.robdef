@@ -1,11 +1,13 @@
 service com.robotraconteur.laserscan
 
-import com.robotraconteur.imaging
+import com.robotraconteur.image
+import com.robotraconteur.datetime
 
-using com.robotraconteur.imaging.PixelRGB
+using com.robotraconteur.image.PixelRGB
+using com.robotraconteur.datetime.DateTimeUTC
 
 struct LaserScan2D
-    field DateTime ts
+    field DateTimeUTC ts
     field double angle_min
     field double angle_max
     field double angle_increment
@@ -19,7 +21,7 @@ struct LaserScan2D
 end
 
 struct LaserScan2Df
-    field DateTime ts
+    field DateTimeUTC ts
     field single angle_min
     field single angle_max
     field single angle_increment

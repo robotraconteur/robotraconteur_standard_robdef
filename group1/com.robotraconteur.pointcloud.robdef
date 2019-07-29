@@ -2,19 +2,20 @@ service com.robotraconteur.pointcloud
 
 import com.robotraconteur.geometry
 import com.robotraconteur.geometryf
-import com.robotraconteur.geometryi
-import com.robotraconteur.imaging
+import com.robotraconteur.image
 
 using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometryf.Point as Pointf
-using com.robotraconteur.geometryi.Point as Pointi
-using com.robotraconteur.imaging.PixelRGBFloatPacked
+using com.robotraconteur.geometryf.Vector3 as Vector3f
+using com.robotraconteur.image.PixelRGBFloatPacked
+using com.robotraconteur.image.PixelRGBFloatPackedf
 
 struct PointCloud
     field uint32 width
     field uint32 height
     field bool is_dense
-    field Point[] points   
+    field Point[] points
 end
 
 struct PointCloudPart
@@ -40,22 +41,6 @@ struct PointCloudPartf
     field uint32 points_offset
     field uint32 points_total_len
     field Pointf[] points   
-end
-
-struct PointCloudi
-    field uint32 width
-    field uint32 height
-    field bool is_dense
-    field Pointi[] points   
-end
-
-struct PointCloudParti
-    field uint32 width
-    field uint32 height
-    field bool is_dense
-    field uint32 points_offset
-    field uint32 points_total_len
-    field Pointi[] points   
 end
 
 namedarray PointCloud2Point

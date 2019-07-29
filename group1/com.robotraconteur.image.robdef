@@ -1,7 +1,7 @@
 service com.robotraconteur.image
 
 import com.robotraconteur.datetime
-using com.robotraconteur.datetime.DateTimeUtc
+using com.robotraconteur.datetime.DateTimeUTC
 
 enum ImageEncoding
     unknown = 0,

@@ -15,7 +15,7 @@ enum JointPositionUnits
     # nanoticks_lin = nm/(2^20)
     nanoticks_lin,
     # nanoticks_rot = nrad/(2^20)
-    nanoticks_rot,
+    nanoticks_rot
 end
 
 enum JointVelocityUnits
@@ -26,7 +26,7 @@ enum JointVelocityUnits
     ticks_lin_second,
     ticks_rot_second,
     nanoticks_lin_second,
-    nanoticks_rot_second,        
+    nanoticks_rot_second
 end
 
 enum JointAccelerationUnits
@@ -37,7 +37,7 @@ enum JointAccelerationUnits
     ticks_lin_second2,
     ticks_rot_second2,
     nanoticks_lin_second2,
-    nanoticks_rot_second2,        
+    nanoticks_rot_second2       
 end
 
 enum JointJerkUnits
@@ -48,7 +48,7 @@ enum JointJerkUnits
     ticks_lin_second2,
     ticks_rot_second2,
     nanoticks_lin_second2,
-    nanoticks_rot_second2,        
+    nanoticks_rot_second2 
 end
 
 enum JointEffortUnits
@@ -61,8 +61,8 @@ enum JointEffortUnits
     coulomb,
     tesla,
     weber,
-    meter_second2
-    radian_second2
+    meter_second2,
+    radian_second2,
     degree_second2
 end
 
@@ -71,13 +71,13 @@ pod JointPosition
     field uint8[8-] units
 end
 
-namedarray DualArmJoints
+pod DualArmJoints
     field double[8-] left
     field double[8-] right
     field double[8-] torso
 end
 
-namedarray DualArmJointUnits
+pod DualArmJointUnits
     field uint8[8-] left
     field uint8[8-] right
     field uint8[8-] torso
@@ -121,7 +121,7 @@ end
 struct MultiRobotJointVelocity
     field JointVelocity{string} robots
     field DualArmJointVelocity{string} dual_arm_robots
-    field FreeformRobotVelocity{string} freeform_robots
+    field FreeformRobotJointVelocity{string} freeform_robots
     field MultiRobotJointVelocity{string} multi_robots
 end
 
@@ -144,7 +144,7 @@ end
 struct MultiRobotJointEffort
     field JointEffort{string} robots
     field DualArmJointEffort{string} dual_arm_robots
-    field FreeformRobotEffort{string} freeform_robots
+    field FreeformRobotJointEffort{string} freeform_robots
     field MultiRobotJointEffort{string} multi_robots
 end
 
@@ -179,6 +179,6 @@ end
 struct MultiRobotJointState
     field JointState{string} robots
     field DualArmJointState{string} dual_arm_robots
-    field FreeformRobotState{string} freeform_robots
+    field FreeformRobotJointState{string} freeform_robots
     field MultiRobotJointState{string} multi_robots
 end

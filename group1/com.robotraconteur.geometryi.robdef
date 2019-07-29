@@ -1,4 +1,4 @@
-service com.robotraconteur.geometry
+service com.robotraconteur.geometryi
 
 namedarray Vector2
     field int32 x
@@ -52,7 +52,7 @@ end
 
 namedarray Transform
     field Quaternion rotation
-    field Point translation    
+    field Vector3 translation    
 end
 
 struct NamedTransform
@@ -88,7 +88,7 @@ namedarray SpatialVelocity
     field Vector3 linear
 end
 
-namedarray NamedSpatialVelocity
+struct NamedSpatialVelocity
     field string frame
     field SpatialVelocity velocity
 end
@@ -98,7 +98,7 @@ namedarray SpatialAcceleration
     field Vector3 linear
 end
 
-namedarray NamedSpatialAcceleration
+struct NamedSpatialAcceleration
     field string frame
     field SpatialAcceleration Acceleration
 end
@@ -108,7 +108,7 @@ namedarray Wrench
     field Vector3 force
 end
 
-namedarray NamedWrench
+struct NamedWrench
     field string frame
     field Wrench wrench
 end
@@ -122,4 +122,9 @@ namedarray SpatialInertia
     field int32 iyy
     field int32 iyz
     field int32 izz
+end
+
+struct NamedSpatialInertia
+    field string frame
+	field SpatialInertia inertia
 end

@@ -1,14 +1,16 @@
 service com.robotraconteur.resource
 
-from com.robotraconteur.uuid
+import com.robotraconteur.uuid
+import com.robotraconteur.datetime
 
 using com.robotraconteur.uuid.UUID
+using com.robotraconteur.datetime.DateTimeUTC
 
 struct ResourceInfo
     field UUID uuid
     field string name    
-    field DateTime created
-    field DateTime modified
+    field DateTimeUTC created
+    field DateTimeUTC modified
     field uint64 total_size
     field string description
     field varvalue{string} extended
@@ -35,6 +37,7 @@ object ResourceStorage
     implements ResourceReadOnlyStorage
     property ResourceInfo{string} resource_info
     function ResourcePart{generator} resource_get(string name)
-    function resource_set(string name, bool overrite, ResourcePart{generator} resource)
-    function resource_uuid(UUID uuid, bool overrite, ResourcePart{generator} resource)
+	function ResourcePart{generator} resource_get_uuid(UUID uuid)
+    function void resource_set(string name, bool overrite, ResourcePart{generator} resource)
+    function void resource_set_uuid(UUID uuid, bool overrite, ResourcePart{generator} resource)
 end

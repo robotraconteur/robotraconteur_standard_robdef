@@ -1,14 +1,16 @@
 service com.robotraconteur.robotics.easy
 
 import com.robotraconteur.geometry
-import com.robotraconteur.imaging.camerainfo
+import com.robotraconteur.uuid
+
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.Transform
-using com.robotraconteur.imaging.camerainfo.CameraInfo
+using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.uuid.UUID
 
 enum EasyJointType
-    rotary,
+    rotary = 0,
     prismatic
 end
 
@@ -16,12 +18,21 @@ enum EasyRobotMode
     safety_error = -4,
     hardware_error = -3,
     software_error = -2,
-    softstop_error = -1
+    softstop_error = -1,
     halt = 0,
     jog,
     trajectory,
     position_command,
     velocity_command
+end
+
+enum EasyTrajectoryStatusCode
+    error = -2,
+    failed = -1,
+    unknown = 0,
+    queued,
+    running,
+    complete    
 end
 
 struct EasyToolInfo
@@ -81,7 +92,7 @@ struct EasyRobotState
     field bool trajectory_running
 end
 
-namedarray EasyTrajectoryWaypoint
+struct EasyTrajectoryWaypoint
     field double[] joint_position
     field double[] joint_velocity
     field double[] position_tolerance
@@ -90,17 +101,8 @@ namedarray EasyTrajectoryWaypoint
 end
 
 struct EasyTrajectory
-    field EasyTrajectoryWaypoint[] waypoints
+    field EasyTrajectoryWaypoint{list} waypoints
     field varvalue{string} extended
-end
-
-enum EasyTrajectoryStatusCode
-    error = -2
-    failed = -1,
-    unknown = 0,
-    queued,
-    running,
-    complete    
 end
 
 struct EasyTrajectoryStatus
@@ -117,7 +119,7 @@ struct EasyRobotJointCommand
 end
 
 object EasyRobot
-    property easy_robot_info [readonly,nolockread]
+    property EasyRobotInfo easy_robot_info [readonly,nolockread]
     property EasyRobotMode easy_mode [nolockread]
     function void halt()
     function void safety_soft_stop() [urgent,nolock]
@@ -131,8 +133,7 @@ object EasyRobot
     function double easy_get_signal(string signal_name)
     function void easy_set_signal(string signal_name, double value)
     function void easy_attach_tool(string chain, EasyToolInfo tool)
-    function void easy_detach_tool(string chain)
-    property EasyRobotInfo easy_robot_info [readonly]
+    function void easy_detach_tool(string chain)    
     property string{list} easy_param_names [readonly]
     function varvalue easy_get_param(string param_name)
     function void easy_set_param(string param_name, varvalue value)
