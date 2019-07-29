@@ -2,35 +2,35 @@ service com.robotraconteur.geometry
 
 namedarray Vector2
     field single x
-	field single y
+    field single y
 end
 
 namedarray Vector3
     field single x
-	field single y
-	field single z
+    field single y
+    field single z
 end
 
 namedarray Point2D
     field single x
-	field single y
+    field single y
 end
 
 namedarray Point
     field single x
-	field single y
-	field single z
+    field single y
+    field single z
 end
 
 namedarray Size2D
     field single width
-	field single height
+    field single height
 end
 
 namedarray Size
     field single width
-	field single height
-	field single depth
+    field single height
+    field single depth
 end
 
 namedarray Rect2D
@@ -45,81 +45,81 @@ end
 
 namedarray Quaternion
     field single w
-	field single x
-	field single y
-	field single z
+    field single x
+    field single y
+    field single z
 end
 
 namedarray Transform
-	field Quaternion rotation
-    field Vector3 translation	
+    field Quaternion rotation
+    field Vector3 translation    
 end
 
 struct NamedTransform
     field string parent_frame
-	field string child_frame
-	field Transform transform
+    field string child_frame
+    field Transform transform
 end
 
 namedarray Pose
-	field Quaternion orientation
+    field Quaternion orientation
     field Point position
 end
 
 struct NamedPose
     field string parent_frame
-	field string frame
-	field Pose transform
+    field string frame
+    field Pose transform
 end
 
 namedarray Pose2D
     field single orientation
-	field Point2D position
+    field Point2D position
 end
 
 struct NamedPose2D
     field string parent_frame
-	field string frame
-	field Pose2D transform
+    field string frame
+    field Pose2D transform
 end
 
 namedarray SpatialVelocity
-	field Vector3 angular
-	field Vector3 linear
+    field Vector3 angular
+    field Vector3 linear
 end
 
 namedarray NamedSpatialVelocity
-	field string frame
-	field SpatialVelocity velocity
+    field string frame
+    field SpatialVelocity velocity
 end
 
 namedarray SpatialAcceleration
-	field Vector3 angular
-	field Vector3 linear
+    field Vector3 angular
+    field Vector3 linear
 end
 
 namedarray NamedSpatialAcceleration
-	field string frame
-	field SpatialAcceleration Acceleration
+    field string frame
+    field SpatialAcceleration Acceleration
 end
 
 namedarray Wrench
-	field Vector3 torque
-	field Vector3 force
+    field Vector3 torque
+    field Vector3 force
 end
 
 namedarray NamedWrench
-	field string frame
-	field Wrench wrench
+    field string frame
+    field Wrench wrench
 end
 
 namedarray SpatialInertia
     field single m
-	field Vector3 com
-	field single ixx
-	field single ixy
-	field single ixz
-	field single iyy
-	field single iyz
-	field single izz
+    field Vector3 com
+    field single ixx
+    field single ixy
+    field single ixz
+    field single iyy
+    field single iyz
+    field single izz
 end

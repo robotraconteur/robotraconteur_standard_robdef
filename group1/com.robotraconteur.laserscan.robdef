@@ -6,28 +6,28 @@ using com.robotraconteur.imaging.PixelRGB
 
 struct LaserScan2D
     field DateTime ts
-	field double angle_min
-	field double angle_max
-	field double angle_increment
-	field double time_increment
-	field double scan_time
-	field double range_min
-	field double range_max
-	field double[] ranges
-	field double[] intentities
-	field PixelRGB[] color
+    field double angle_min
+    field double angle_max
+    field double angle_increment
+    field double time_increment
+    field double scan_time
+    field double range_min
+    field double range_max
+    field double[] ranges
+    field double[] intentities
+    field PixelRGB[] color
 end
 
 struct LaserScan2Df
     field DateTime ts
-	field single angle_min
-	field single angle_max
-	field single angle_increment
-	field single time_increment
-	field single scan_time
-	field single range_min
-	field single range_max
-	field single[] ranges
-	field single[] intentities
-	field PixelRGB[] color
+    field single angle_min
+    field single angle_max
+    field single angle_increment
+    field single time_increment
+    field single scan_time
+    field single range_min
+    field single range_max
+    field single[] ranges
+    field single[] intentities
+    field PixelRGB[] color
 end

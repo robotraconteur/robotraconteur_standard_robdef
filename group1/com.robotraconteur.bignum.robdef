@@ -13,6 +13,6 @@ end
 # Arbitrary precision floating point number
 struct BigFloat
     field BigNum num
-	field BigNum den
-	field BigNum radix
+    field BigNum den
+    field BigNum radix
 end

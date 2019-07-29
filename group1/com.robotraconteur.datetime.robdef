@@ -4,17 +4,17 @@ constant string EPOCH_ISO8601 "1970-01-01T00:00:00Z"
 
 struct DateTimeUTC
     field int64 seconds
-	field int32 nanoseconds
+    field int32 nanoseconds
 end
 
 struct DateTimeLocal
     field int64 seconds
-	field int32 nanoseconds
-	field int32 utc_offset_seconds
-	field string timezone_name
+    field int32 nanoseconds
+    field int32 utc_offset_seconds
+    field string timezone_name
 end
 
 struct Duration
     field int64 seconds
-	field int32 nanoseconds
+    field int32 nanoseconds
 end

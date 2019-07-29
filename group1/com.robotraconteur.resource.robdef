@@ -6,35 +6,35 @@ using com.robotraconteur.uuid.UUID
 
 struct ResourceInfo
     field UUID uuid
-    field string name	
-	field DateTime created
-	field DateTime modified
-	field uint64 total_size
-	field string description
-	field varvalue{string} extended
+    field string name    
+    field DateTime created
+    field DateTime modified
+    field uint64 total_size
+    field string description
+    field varvalue{string} extended
 end
 
 struct Resource
     field ResourceInfo info
-	field uint8[] data
+    field uint8[] data
 end
 
 struct ResourcePart
     field ResourceInfo info
-	field uint64 data_offset
-	field uint8[] data
+    field uint64 data_offset
+    field uint8[] data
 end
 
 object ResourceReadOnlyStorage
     property ResourceInfo{string} resource_info
-    function ResourcePart{generator} resource_get(string name)	
-	function ResourcePart{generator} resource_get_uuid(UUID uuid)	
+    function ResourcePart{generator} resource_get(string name)    
+    function ResourcePart{generator} resource_get_uuid(UUID uuid)    
 end
 
 object ResourceStorage
     implements ResourceReadOnlyStorage
-	property ResourceInfo{string} resource_info
+    property ResourceInfo{string} resource_info
     function ResourcePart{generator} resource_get(string name)
     function resource_set(string name, bool overrite, ResourcePart{generator} resource)
-	function resource_uuid(UUID uuid, bool overrite, ResourcePart{generator} resource)
+    function resource_uuid(UUID uuid, bool overrite, ResourcePart{generator} resource)
 end

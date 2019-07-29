@@ -5,40 +5,40 @@ using com.robotraconteur.datetime.DateTimeUtc
 
 enum ImageEncoding
     unknown = 0,
-	rgb8,
-	rgba8,
-	bgr8,
-	bgra8,
-	rgbe8,
-	bgre8,
-	rgbm8,
-	bgrm8,
-	mono8,
-	mono16,
-	mono32,
-	monof32,
-	monof64,
-	bayer_rggb8,
-	bayer_bggr8,
-	bayer_gbrg8,
-	bayer_grbg8,
-	depth_u16,
-	depth_u32,
-	depth_i64,
-	depth_f64
+    rgb8,
+    rgba8,
+    bgr8,
+    bgra8,
+    rgbe8,
+    bgre8,
+    rgbm8,
+    bgrm8,
+    mono8,
+    mono16,
+    mono32,
+    monof32,
+    monof64,
+    bayer_rggb8,
+    bayer_bggr8,
+    bayer_gbrg8,
+    bayer_grbg8,
+    depth_u16,
+    depth_u32,
+    depth_i64,
+    depth_f64
 end
 
 namedarray PixelRGB
     field uint8 r
-	field uint8 g
-	field uint8 b
+    field uint8 g
+    field uint8 b
 end
 
 namedarray PixelRGBA
     field uint8 r
-	field uint8 g
-	field uint8 b
-	field uint8 a
+    field uint8 g
+    field uint8 b
+    field uint8 a
 end
 
 # Used with laser scan and point cloud
@@ -50,20 +50,20 @@ namedarray PixelRGBFloatPackedf
 end
 
 struct ImageInfo
-	field DateTimeUTC ts
+    field DateTimeUTC ts
     field uint32 height
     field uint32 width
     field uint32 step
-	field ImageEncoding encoding	
+    field ImageEncoding encoding    
 end
 
 struct FreeformImageInfo
-	field DateTimeUTC ts
+    field DateTimeUTC ts
     field uint32 height
     field uint32 width
     field uint32 step
-	field string encoding
-	field varvalue{string} extended
+    field string encoding
+    field varvalue{string} extended
 end
 
 struct Image
@@ -71,9 +71,9 @@ struct Image
     field uint32 height
     field uint32 width
     field uint32 step
-	field ImageEncoding encoding
-	# Data is always little-endian
-	field uint8[] data
+    field ImageEncoding encoding
+    # Data is always little-endian
+    field uint8[] data
 end
 
 struct CompressedImage
@@ -85,11 +85,11 @@ end
 struct FreeformImage
     field DateTimeUTC ts
     field uint32 height
-	field uint32 width
-	field uint32 step
-	field string encoding
+    field uint32 width
+    field uint32 step
+    field string encoding
     field varvalue data
-	field varvalue{string} extended
+    field varvalue{string} extended
 end
 
 struct ImagePart
@@ -97,34 +97,34 @@ struct ImagePart
     field uint32 height
     field uint32 width
     field uint32 step
-	field ImageEncoding encoding
-	# Data is always little-endian
-	field uint32 data_offset
-	field uint32 data_total_len
-	field uint8[] data_part
+    field ImageEncoding encoding
+    # Data is always little-endian
+    field uint32 data_offset
+    field uint32 data_total_len
+    field uint8[] data_part
 end
 
 struct FreeformImagePart
     field DateTimeUTC ts
     field uint32 height
-	field uint32 width
-	field uint32 step
-	field string encoding
-	field uint32 data_offset
-	field uint32 data_total_len
+    field uint32 width
+    field uint32 step
+    field string encoding
+    field uint32 data_offset
+    field uint32 data_total_len
     field varvalue data_part
-	field varvalue{string} extended
+    field varvalue{string} extended
 end
 
 struct DepthImage
     field Image depth_image
-	field Image intensity_image
-	field double depth_ticks_per_meter
+    field Image intensity_image
+    field double depth_ticks_per_meter
 end
 
 struct FreeformDepthImage
     field FreeformImage depth_image
-	field FreeformImage intensity_image
-	field double depth_ticks_per_meter
-	field varvalue{string} extended
+    field FreeformImage intensity_image
+    field double depth_ticks_per_meter
+    field varvalue{string} extended
 end

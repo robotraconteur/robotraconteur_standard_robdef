@@ -23,28 +23,28 @@ end
 
 object EasyCamera
     property uint32 easy_capabilities [readonly]
-	function Image easy_capture_frame()
-	property EasyTriggerMode easy_trigger_mode [nolockread]
-	function void easy_trigger()
-	function void easy_start_streaming()
-	function void easy_stop_streaming()
-	pipe Image easy_frame_stream [readonly]
-	pipe CompressedImage easy_preview_stream [readonly,nolock]
-	property string{list} easy_param_names [readonly]
-	function varvalue easy_get_param(string param_name)
-	function void easy_set_param(string param_name, varvalue value)
-	property CameraInfo camera_info [readonly]
+    function Image easy_capture_frame()
+    property EasyTriggerMode easy_trigger_mode [nolockread]
+    function void easy_trigger()
+    function void easy_start_streaming()
+    function void easy_stop_streaming()
+    pipe Image easy_frame_stream [readonly]
+    pipe CompressedImage easy_preview_stream [readonly,nolock]
+    property string{list} easy_param_names [readonly]
+    function varvalue easy_get_param(string param_name)
+    function void easy_set_param(string param_name, varvalue value)
+    property CameraInfo camera_info [readonly]
 end
 
 object EasyMultiCamera
     property string{int32} camera_names [readonly,nolockread]
     objref EasyCamera{int32} easy_cameras
-	function Image{int32} easy_capture_frame_all()
-	function void easy_trigger_all()
-	pipe Image{int32} easy_frame_stream_all [readonly]
-	pipe CompressedImage{int32} easy_preview_stream_all [readonly,nolock]
-	property string{list} easy_param_names [readonly]
-	function varvalue easy_get_param(string param_name)
-	function void easy_set_param(string param_name, varvalue value)
-	property CameraInfo{int32} camera_info_all [readonly]
+    function Image{int32} easy_capture_frame_all()
+    function void easy_trigger_all()
+    pipe Image{int32} easy_frame_stream_all [readonly]
+    pipe CompressedImage{int32} easy_preview_stream_all [readonly,nolock]
+    property string{list} easy_param_names [readonly]
+    function varvalue easy_get_param(string param_name)
+    function void easy_set_param(string param_name, varvalue value)
+    property CameraInfo{int32} camera_info_all [readonly]
 end
