@@ -1,9 +1,11 @@
 service com.robotraconteur.robotics.easy
 
 import com.robotraconteur.geometry
+import com.robotraconteur.imaging.camerainfo
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.Transform
+using com.robotraconteur.imaging.camerainfo.CameraInfo
 
 enum EasyJointType
     rotary,
@@ -29,6 +31,7 @@ struct EasyToolInfo
 	field string type
 	field Transform tcp
 	field UUID description_resource_uuid
+	field UUID device_uuid
 end
 
 struct EasyJointLimits
@@ -63,6 +66,7 @@ struct EasyRobotInfo
     field EasyRobotKinChainInfo{string} chains
     field EasySignalInfo{string} signals
 	field UUID description_resource_uuid
+	field UUID device_uuid
     field varvalue{string} extended	
 end
 
@@ -103,7 +107,7 @@ struct EasyTrajectoryStatus
     field uint64 seqno
     field EasyTrajectoryStatusCode status
 	field uint32 current_waypoint
-	field uint32 
+	field double trajectory_time 
 end
 
 struct EasyRobotJointCommand
@@ -129,7 +133,7 @@ object EasyRobot
 	function void easy_attach_tool(string chain, EasyToolInfo tool)
 	function void easy_detach_tool(string chain)
 	property EasyRobotInfo easy_robot_info [readonly]
-	property string{list} easy_parameter_names [readonly]
+	property string{list} easy_param_names [readonly]
 	function varvalue easy_get_param(string param_name)
 	function void easy_set_param(string param_name, varvalue value)
 end

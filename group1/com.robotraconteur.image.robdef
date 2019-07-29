@@ -49,6 +49,23 @@ namedarray PixelRGBFloatPackedf
     field single rgb
 end
 
+struct ImageInfo
+	field DateTimeUTC ts
+    field uint32 height
+    field uint32 width
+    field uint32 step
+	field ImageEncoding encoding	
+end
+
+struct FreeformImageInfo
+	field DateTimeUTC ts
+    field uint32 height
+    field uint32 width
+    field uint32 step
+	field string encoding
+	field varvalue{string} extended
+end
+
 struct Image
     field DateTimeUTC ts
     field uint32 height
