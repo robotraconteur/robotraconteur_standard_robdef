@@ -43,6 +43,11 @@ namedarray Rect
    field Size size
 end
 
+namedarray Plane
+    field Vector3 normal
+	field single d
+end
+
 namedarray Quaternion
     field single w
     field single x

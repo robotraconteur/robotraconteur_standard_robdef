@@ -50,6 +50,11 @@ namedarray Quaternion
     field double z
 end
 
+namedarray Plane
+    field Vector3 normal
+	field double d
+end
+
 namedarray Transform
     field Quaternion rotation
     field Vector3 translation    
