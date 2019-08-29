@@ -1,5 +1,7 @@
 service com.robotraconteur.geometryf
 
+stdver 0.9
+
 namedarray Vector2
     field single x
     field single y

@@ -1,5 +1,7 @@
 service com.robotraconteur.units
 
+stdver 0.9
+
 pod SIUnit
     field int8 m
     field int8 s

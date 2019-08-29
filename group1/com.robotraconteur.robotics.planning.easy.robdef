@@ -1,0 +1,92 @@
+service com.robotraconteur.robotics.planning.easy
+
+stdver 0.9
+
+import com.robotraconteur.geometry
+import com.robotraconteur.robotics.easy
+import com.robotraconteur.geometry.shapes
+
+using com.robotraconteur.geometry.NamedTransform
+using com.robotraconteur.geometry.NamedPose
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.robotics.easy.EasyJointTrajectory
+using com.robotraconteur.robotics.easy.EasyRobotInfo
+using com.robotraconteur.robotics.easy.EasyRobotState
+using com.robotraconteur.geometry.shapes.ShapeObject
+
+enum EasyPlannerStatusCode
+	is_not_configured = -2,
+	failure = -1,
+	unknown = 0,
+	is_configured = 1,
+	running = 2,
+	success = 3	
+end
+
+struct EasyEnvState
+	field double[]{string} joints
+	field NamedTransform{string} transforms
+	field varvalue{string} extended
+end
+
+struct EasyPlanningRequest
+	field string name
+	field EasyEnvState start_state
+	field string config
+	field string config_format
+	field varvalue{string} extended
+end
+
+struct EasyPlanningResponse
+	field EasyPlannerStatusCode status_code
+	field EasyJointTrajectory joint_trajectory
+	field varvalue{string} extended
+end
+
+struct EasyContactResult
+	field double distance
+	field uint8 shape1_type_id
+	field uint8 shape2_type_id
+	field string shape1_name
+	field string shape2_name
+	field uint32 shape1_subid
+	field uint32 shape2_subid
+	field Vector3 shape1_nearest_point
+	field Vector3 shape2_nearest_point
+	field Vector3 normal
+	field Vector3 shape1_cc_nearest_points
+	field Vector3 shape2_cc_nearest_points
+	field double cc_time
+	field uint8 cc_type
+	field varvalue{string} extended
+end
+
+struct EasyInvKinResult
+	field double[]{list} joints
+end
+
+object EasyPlanner
+	function EasyPlanningResponse{generator} easy_plan(EasyPlanningRequest request)
+	
+	function EasyContactResult{list} easy_compute_contacts(EasyEnvState state)
+	
+	function EasyInvKinResult{list} easy_invkin(string robot_name, NamedPose tcp_pose)
+end
+
+object EasyPlanningScene
+	property EasyEnvState env_state
+
+	property EasyRobotInfo{string} robots [readonly]
+	property EasyRobotState{string} robot_states [readonly]
+	property ShapeObject{string} shapes [readonly]
+	property NamedTransform{string} transforms [readonly]
+	
+	function void add_robot(string name, EasyRobotInfo robot, NamedPose pose)
+	function void update_robot_info(string robot_name, EasyRobotInfo robot)
+	function void update_robot_state(string robot_name, EasyRobotState robot_state)
+	
+	function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
+	
+	function void remove_item(string name)	
+	function void move_item(string name, NamedPose transform)
+end

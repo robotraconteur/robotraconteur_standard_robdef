@@ -1,5 +1,7 @@
 service com.robotraconteur.robotics.joints
 
+stdver 0.9
+
 import com.robotraconteur.units
 using com.robotraconteur.units.SIUnit
 

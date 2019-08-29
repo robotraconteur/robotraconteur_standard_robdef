@@ -1,0 +1,17 @@
+service com.robotraconteur.imu
+
+stdver 0.9
+
+import com.robotraconteur.sensordata
+import com.robotraconteur.geometry
+
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.Quaternion
+
+struct ImuState
+	field SensorDataHeader data_header
+	field Vector3 angular_velocity
+	field Vector3 linear_acceleration
+	field Quaternion orientation
+end struct

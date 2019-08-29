@@ -1,11 +1,16 @@
 service com.robotraconteur.image
 
-import com.robotraconteur.datetime
-using com.robotraconteur.datetime.DateTimeUTC
+stdver 0.9
+
+import com.robotraconteur.sensordata
+import com.robotraconteur.uuid
+
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.uuid.UUID
 
 enum ImageEncoding
     unknown = 0,
-    rgb8,
+    rgb8 = 0x1000,
     rgba8,
     bgr8,
     bgra8,
@@ -13,19 +18,22 @@ enum ImageEncoding
     bgre8,
     rgbm8,
     bgrm8,
-    mono8,
+    mono8 = 0x2000,
     mono16,
     mono32,
     monof32,
     monof64,
-    bayer_rggb8,
+    bayer_rggb8 = 0x3000,
     bayer_bggr8,
     bayer_gbrg8,
     bayer_grbg8,
-    depth_u16,
+    depth_u16 = 0x4000,
     depth_u32,
     depth_i64,
-    depth_f64
+	depth_f32,
+    depth_f64,
+	freeform = 0x5000,
+	compressed = 0x6000
 end
 
 namedarray PixelRGB
@@ -50,7 +58,7 @@ namedarray PixelRGBFloatPackedf
 end
 
 struct ImageInfo
-    field DateTimeUTC ts
+    field SensorDataHeader data_header
     field uint32 height
     field uint32 width
     field uint32 step
@@ -58,46 +66,39 @@ struct ImageInfo
 end
 
 struct FreeformImageInfo
-    field DateTimeUTC ts
-    field uint32 height
-    field uint32 width
-    field uint32 step
+    field ImageInfo image_info
     field string encoding
     field varvalue{string} extended
 end
 
 struct Image
-    field DateTimeUTC ts
-    field uint32 height
-    field uint32 width
-    field uint32 step
-    field ImageEncoding encoding
+    field ImageInfo image_info
     # Data is always little-endian
     field uint8[] data
 end
 
 struct CompressedImage
-    field DateTimeUTC ts
+    field ImageInfo image_info
     # Use magic to determine data type
     field uint8[] data
 end
 
 struct FreeformImage
-    field DateTimeUTC ts
-    field uint32 height
-    field uint32 width
-    field uint32 step
-    field string encoding
+    field FreeformImageInfo image_info
     field varvalue data
     field varvalue{string} extended
 end
 
 struct ImagePart
-    field DateTimeUTC ts
-    field uint32 height
-    field uint32 width
-    field uint32 step
-    field ImageEncoding encoding
+    field ImageInfo image_info
+    # Data is always little-endian
+    field uint32 data_offset
+    field uint32 data_total_len
+    field uint8[] data_part
+end
+
+struct CompressedImagePart
+    field ImageInfo image_info
     # Data is always little-endian
     field uint32 data_offset
     field uint32 data_total_len
@@ -105,11 +106,7 @@ struct ImagePart
 end
 
 struct FreeformImagePart
-    field DateTimeUTC ts
-    field uint32 height
-    field uint32 width
-    field uint32 step
-    field string encoding
+    field FreeformImageInfo image_info
     field uint32 data_offset
     field uint32 data_total_len
     field varvalue data_part
@@ -127,4 +124,9 @@ struct FreeformDepthImage
     field FreeformImage intensity_image
     field double depth_ticks_per_meter
     field varvalue{string} extended
+end
+
+struct ImageResource
+	field UUID image_resource_uuid
+	field string image_resource_name
 end

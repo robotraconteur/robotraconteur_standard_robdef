@@ -1,0 +1,109 @@
+service com.robotraconteur.servo.easy
+
+stdver 0.9
+
+import com.robotraconteur.uuid
+import com.robotraconteur.sensordata
+
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.sensordata.SensorDataHeader
+
+enum EasyServoTypeCode
+	unknown = 0,
+	generic_rotary,
+	generic_prismatic,
+	rotary_electric,
+	rotary_linear,
+	rc_servo
+end
+
+enum EasyServoCapabilities
+	unknown = 0,
+	position_command = 0x1,
+	velocity_command = 0x2,
+	effort_command = 0x4,
+	trapezoidal_command = 0x8
+end
+
+enum EasyServoMode
+	error = -2,
+	disabled = -1,
+	halt = 0,
+	position_command,
+	velocity_command,
+	effort_command,
+	trapezoidal_command
+end
+
+struct EasyServoInfo
+	field string servo_name
+	field string manufacturer
+    field string model
+	field string user_description
+	field EasyServoTypeCode servo_type
+	field uint32 capabilities
+	field uint32 axis_count
+	field double[] position_min
+	field double[] position_max
+	field double[] velocity_min
+	field double[] velocity_max
+	field double[] acceleration_min
+	field double[] acceleration_max	
+	field double[] torque_min
+	field double[] torque_max
+	field double[] gear_ratio
+	field UUID description_resource_uuid
+    field UUID device_uuid
+    field varvalue{string} extended	
+end
+
+struct EasyServoState
+	field uint64 seqno
+	field EasyServoMode mode
+	field double[] position
+	field double[] velocity
+	field double[] acceleration
+	field double[] effort
+	field double[] position_command
+	field double[] velocity_command
+	field double[] effort_command
+end
+
+struct EasyServoStateSensorData
+	field SensorDataHeader data_header
+	field EasyServoState servo_state
+	field varvalue{string} extended
+end
+
+struct EasyServoCommand
+    field uint64 seqno
+    field uint64 status_seqno
+    field double[] command    
+end
+
+object EasyServo	
+	function void halt() [urgent,nolock]
+	property EasyServoMode easy_mode [nolockread]	
+	wire double[] easy_position [readonly,nolockread]
+	wire double[] easy_velocity [readonly, nolockread]
+	wire EasyServoState easy_servo_state	
+	wire EasyServoCommand easy_position_command [writeonly]
+	wire EasyServoCommand easy_velocity_command [writeonly]
+	wire EasyServoCommand easy_effort_command [writeonly]
+end
+
+object EasyAdvancedServo
+	implements EasyServo
+	function void halt() [urgent,nolock]
+	property EasyServoInfo easy_servo_info [readonly,nolockread]
+	property EasyServoMode easy_mode [nolockread]
+	wire double[] easy_position [readonly,nolockread]
+	wire double[] easy_velocity [readonly, nolockread]
+	wire EasyServoState easy_servo_state
+	pipe EasyServoStateSensorData easy_servo_state_sensor_data
+	wire EasyServoCommand easy_position_command [writeonly]
+	wire EasyServoCommand easy_velocity_command [writeonly]
+	wire EasyServoCommand easy_effort_command [writeonly]
+	function void easy_trapezoid_move(double[] target_pos, double[] target_vel, double[] vel, double[] accel)
+end
+

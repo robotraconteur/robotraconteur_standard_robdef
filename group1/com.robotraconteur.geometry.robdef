@@ -1,5 +1,7 @@
 service com.robotraconteur.geometry
 
+stdver 0.9
+
 namedarray Vector2
     field double x
     field double y
@@ -52,7 +54,7 @@ end
 
 namedarray Plane
     field Vector3 normal
-	field double d
+	field double a
 end
 
 namedarray Transform
@@ -75,6 +77,16 @@ struct NamedPose
     field string parent_frame
     field string frame
     field Pose transform
+end
+
+struct PoseWithCovariance
+	field Pose pose
+	field double[6,6] covariance
+end
+
+struct NamedPoseWithCovariance
+	field NamedPose pose
+	field double[6,6] covariance
 end
 
 namedarray Pose2D

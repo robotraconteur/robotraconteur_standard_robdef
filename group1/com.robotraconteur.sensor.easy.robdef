@@ -1,0 +1,71 @@
+service com.robotraconteur.sensor.easy
+
+stdver 0.9
+
+import com.robotraconteur.sensordata
+import com.robotraconteur.device
+
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.device.DeviceInfo
+
+enum EasySensorTypeCode
+	unknown = 0,
+	generic_digital,
+	generic_analog,
+	pushbutton,
+	dial,
+	limitswitch,
+	infrared,
+	pressure,
+	vacuum,
+	temperature,
+	humidity,
+	level,
+	contact,
+	ultrasonic,
+	magnetic,
+	encoder,
+	potentiometer,
+	resolver,
+	linear_encoder,
+	linear_potentiometer,
+	lvds,
+	accelerometer,
+	gyroscopic,
+	torque,
+	force,
+	proximity,
+	voltage,
+	current,
+	laser,
+	flow,
+	pyrometer,
+	forcetorque,
+	light_color,
+	light_intensity,
+	object_color
+end
+
+struct EasySensorInfo
+	field DeviceInfo device_info
+	field EasySensorTypeCode sensor_type	
+	field bool analog_sensor
+	field uint32 output_count
+	field double update_frequency
+    field varvalue{string} extended	
+end
+
+struct EasySensorData
+	field SensorDataHeader data_header
+	field double[] data
+	field varvalue{string} extended
+end
+
+object EasySensor
+	property EasySensorInfo easy_sensor_info [readonly,nolockread]
+	wire double[] value [readonly,nolock]
+	pipe EasySensorData sensor_data [readonly,nolock]
+	property string{list} easy_param_names [readonly,nolock]
+    function varvalue easy_get_param(string param_name)
+    function void easy_set_param(string param_name, varvalue value)
+end

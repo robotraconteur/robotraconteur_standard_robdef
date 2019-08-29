@@ -1,0 +1,49 @@
+service com.robotraconteur.actuator
+
+stdver 0.9
+
+import com.robotraconteur.device
+
+using com.robotraconteur.device.DeviceInfo
+
+enum EasyActuatorTypeCode
+	unknown = 0,
+	generic,
+	motor_torque,
+	motor_force,
+	motor_velocity,
+	solenoid,
+	voice_coil,
+	piezoelectric,
+	pneumatic_pressure,
+	vacuum_pressure,
+	heater_power,
+	chiller_power,
+	valve
+end
+
+enum EasyActuatorMode
+	error = -2,
+	disabled = -1,
+	halt = 0,
+	reduced_performance = 1,
+	normal = 2
+end
+
+struct EasyActuatorInfo
+	field DeviceInfo device_info
+	field EasyActuatorTypeCode actuator_type	
+	field bool analog_output
+	field uint32 output_count
+    field varvalue{string} extended	
+end
+
+object EasyActuator
+	property EasyActuatorInfo easy_actuator_info [readonly,nolockread]
+	property EasyActuatorMode easy_mode [nolockread]
+	wire double[] easy_actuator_command [writeonly]
+	property string{list} easy_param_names [readonly,nolock]
+    function varvalue easy_get_param(string param_name)
+    function void easy_set_param(string param_name, varvalue value)
+end
+

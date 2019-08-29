@@ -1,0 +1,17 @@
+service com.robotraconteur.gps
+
+stdver 0.9
+
+import com.robotraconteur.sensordata
+
+using com.robotraconteur.sensordata.SensorDataHeader
+
+struct GpsState
+	field SensorDataHeader data_header
+	field double altitude
+	field double latitude_deg
+	field double longitude_deg
+	field double velocity_east
+	field double velocity_north
+	field double velocity_up
+end struct

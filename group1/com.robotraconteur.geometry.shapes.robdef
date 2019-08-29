@@ -1,0 +1,58 @@
+service com.robotraconteur.geometry.shapes
+
+stdver 0.9
+
+import com.robotraconteur.geometry
+import com.robotraconteur.uuid
+import com.robotraconteur.color
+
+using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.Pose
+using com.robotraconteur.geometry.NamedPose
+using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.color.ColorRGBA
+
+struct Box
+	field double x
+	field double y
+	field double z
+end
+
+struct Sphere
+	field double radius
+end
+
+struct Cylinder
+	field double height
+	field double radius
+end
+
+struct Cone
+	field double height
+	field double radius
+end
+
+namedarray MeshTriangle
+	field uint32 v1
+	field uint32 v2
+	field uint32 v3
+end
+
+struct Mesh
+	field MeshTriangle[] triangles
+	field Point[] vertices	
+end
+
+struct MeshFromResource
+	field UUID mesh_resource_uuid
+	field string mesh_resource_name
+end
+
+struct ShapeObject
+	field string name
+	field varvalue{list} shapes
+	field Pose{list} shape_poses
+	field ColorRGBA{list} shape_colors
+	field SpatialInertia inertia
+end

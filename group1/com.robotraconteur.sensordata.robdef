@@ -1,0 +1,26 @@
+service com.robotraconteur.sensordata
+
+stdver 0.9
+
+import com.robotraconteur.datetime
+import com.robotraconteur.uuid
+import com.robotraconteur.geometry
+
+using com.robotraconteur.datetime.DateTimeUTC
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.geometry.Pose
+
+struct SensorDataHeader
+    field DateTimeUTC ts
+	field uint64 seqno
+	field SensorDataSourceInfo source_info	
+end
+
+struct SensorDataSourceInfo
+	field UUID source_uuid
+	field string source_name
+	field Pose source_world_pose
+	field string source_config_nonce
+	field varvalue{string} source_params
+	field varvalue{string} extended
+end

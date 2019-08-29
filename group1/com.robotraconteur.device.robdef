@@ -1,0 +1,17 @@
+service com.robotraconteur.device
+
+stdver 0.9
+
+import com.robotraconteur.uuid
+
+using com.robotraconteur.uuid.UUID
+
+struct DeviceInfo
+	field string device_name
+	field string manufacturer
+    field string model
+	field string user_description
+	field UUID description_resource_uuid
+    field UUID device_uuid
+	field varvalue{string} extended
+end

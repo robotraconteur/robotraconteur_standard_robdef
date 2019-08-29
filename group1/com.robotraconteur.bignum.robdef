@@ -1,5 +1,7 @@
 service com.robotraconeteur.bignum
 
+stdver 0.9
+
 # Signed arbritary precisison number, little endian
 struct BigNum
     field uint8[] data

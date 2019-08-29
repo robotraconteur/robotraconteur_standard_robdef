@@ -1,0 +1,40 @@
+service com.robotraconteur.octree
+
+stdver 0.9
+
+import com.robotraconteur.sensordata
+import com.robotraconteur.uuid
+
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.uuid.UUID
+
+enum OcTreeEncoding
+	unknown=0,
+	octomap_ot,
+	octomap_bt,
+	other
+end
+
+struct OcTreeInfo
+	struct SensorDataHeader data_header
+	field OcTreeEncoding encoding
+	field string id
+	field double resolution
+end
+
+struct OcTree
+	field OcTreeInfo octree_info
+	field uint8[] data
+end
+
+struct OcTreePart
+	field OcTreeInfo octree_info
+	field uint32 data_offset
+    field uint32 data_total_len
+	field uint8[] data	
+end
+
+struct OcTreeResource
+	field UUID octree_resource_uuid
+	field string octree_resource_name
+end

@@ -1,30 +1,44 @@
 service com.robotraconteur.laserscan
 
+stdver 0.9
+
 import com.robotraconteur.image
-import com.robotraconteur.datetime
+import com.robotraconteur.sensordata
 
 using com.robotraconteur.image.PixelRGB
-using com.robotraconteur.datetime.DateTimeUTC
+using com.robotraconteur.sensordata.SensorDataHeader
 
-struct LaserScan2D
-    field DateTimeUTC ts
+struct LaserScan
+    field SensorDataHeader data_header
     field double angle_min
     field double angle_max
     field double angle_increment
-    field double time_increment
+	field uint32 angle_count
+	field double vertical_angle_min
+	field double vertical_angle_max
+	field double vertical_angle_step
+	field uint32 vertical_angle_count
+    field double time_increment	
     field double scan_time
     field double range_min
     field double range_max
     field double[] ranges
     field double[] intentities
     field PixelRGB[] color
+	field int32[] fiducial
+	field varvalue{string} extended
 end
 
-struct LaserScan2Df
-    field DateTimeUTC ts
+struct LaserScanf
+    field SensorDataHeader data_header
     field single angle_min
     field single angle_max
     field single angle_increment
+	field uint32 angle_count
+	field single vertical_angle_min
+	field single vertical_angle_max
+	field single vertical_angle_step
+	field uint32 vertical_angle_count
     field single time_increment
     field single scan_time
     field single range_min
@@ -32,4 +46,6 @@ struct LaserScan2Df
     field single[] ranges
     field single[] intentities
     field PixelRGB[] color
+	field int32[] fiducial
+	field varvalue{string} extended
 end
