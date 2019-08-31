@@ -50,6 +50,17 @@ enum EasyRobotCapabilities
 	velocity_command = 0x8
 end
 
+enum EasyInterpolationMode
+	default = 0,
+	joint,
+	linear,
+	cylindrical,
+	spherical,
+	joint_cubic_spline,
+	cubic_spline,
+	custom	
+end
+
 struct EasyToolInfo
     field string tool_name    
     field string manufacturer
@@ -114,6 +125,7 @@ struct EasyJointTrajectoryWaypoint
     field double[] joint_velocity
     field double[] position_tolerance
     field double[] velocity_tolerance
+	field EasyInterpolationMode interpolation_mode
     field double time_from_start
 end
 

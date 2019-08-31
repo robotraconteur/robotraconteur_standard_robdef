@@ -83,18 +83,6 @@ end
 
 object EasyServo	
 	function void halt() [urgent,nolock]
-	property EasyServoMode easy_mode [nolockread]	
-	wire double[] easy_position [readonly,nolockread]
-	wire double[] easy_velocity [readonly, nolockread]
-	wire EasyServoState easy_servo_state	
-	wire EasyServoCommand easy_position_command [writeonly]
-	wire EasyServoCommand easy_velocity_command [writeonly]
-	wire EasyServoCommand easy_effort_command [writeonly]
-end
-
-object EasyAdvancedServo
-	implements EasyServo
-	function void halt() [urgent,nolock]
 	property EasyServoInfo easy_servo_info [readonly,nolockread]
 	property EasyServoMode easy_mode [nolockread]
 	wire double[] easy_position [readonly,nolockread]
@@ -105,5 +93,8 @@ object EasyAdvancedServo
 	wire EasyServoCommand easy_velocity_command [writeonly]
 	wire EasyServoCommand easy_effort_command [writeonly]
 	function void easy_trapezoid_move(double[] target_pos, double[] target_vel, double[] vel, double[] accel)
+	property string{list} easy_param_names [readonly,nolock]
+    function varvalue easy_get_param(string param_name)
+    function void easy_set_param(string param_name, varvalue value)
 end
 

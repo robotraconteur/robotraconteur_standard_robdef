@@ -32,6 +32,8 @@ enum EasySensorTypeCode
 	lvds,
 	accelerometer,
 	gyroscopic,
+	velocity,
+	angular_velocity,
 	torque,
 	force,
 	proximity,
@@ -43,7 +45,8 @@ enum EasySensorTypeCode
 	forcetorque,
 	light_color,
 	light_intensity,
-	object_color
+	object_color,
+	altitude
 end
 
 struct EasySensorInfo
@@ -61,10 +64,11 @@ struct EasySensorData
 	field varvalue{string} extended
 end
 
-object EasySensor
+object EasySensor	
+	property bool active
 	property EasySensorInfo easy_sensor_info [readonly,nolockread]
-	wire double[] value [readonly,nolock]
-	pipe EasySensorData sensor_data [readonly,nolock]
+	wire double[] easy_value [readonly,nolock]
+	pipe EasySensorData easy_sensor_data [readonly,nolock]
 	property string{list} easy_param_names [readonly,nolock]
     function varvalue easy_get_param(string param_name)
     function void easy_set_param(string param_name, varvalue value)

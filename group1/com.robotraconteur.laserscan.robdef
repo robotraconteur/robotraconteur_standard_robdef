@@ -8,43 +8,75 @@ import com.robotraconteur.sensordata
 using com.robotraconteur.image.PixelRGB
 using com.robotraconteur.sensordata.SensorDataHeader
 
-struct LaserScan
-    field SensorDataHeader data_header
+struct LaserScanInfo
+	field SensorDataHeader data_header
     field double angle_min
     field double angle_max
     field double angle_increment
 	field uint32 angle_count
 	field double vertical_angle_min
 	field double vertical_angle_max
-	field double vertical_angle_step
+	field double vertical_angle_increment
 	field uint32 vertical_angle_count
     field double time_increment	
     field double scan_time
     field double range_min
     field double range_max
+	field double range_resolution
+end
+
+struct LaserScan
+	field LaserScanInfo scan_info
     field double[] ranges
-    field double[] intentities
+    field double[] intensities
     field PixelRGB[] color
 	field int32[] fiducial
 	field varvalue{string} extended
 end
 
-struct LaserScanf
-    field SensorDataHeader data_header
+struct LaserScanInfof
+	field SensorDataHeader data_header
     field single angle_min
     field single angle_max
     field single angle_increment
 	field uint32 angle_count
 	field single vertical_angle_min
 	field single vertical_angle_max
-	field single vertical_angle_step
+	field single vertical_angle_increment
 	field uint32 vertical_angle_count
     field single time_increment
     field single scan_time
     field single range_min
     field single range_max
+	field single range_resolution
+end
+
+struct LaserScanf
+    field LaserScanInfof scan_info
     field single[] ranges
-    field single[] intentities
+    field single[] intensities
+    field PixelRGB[] color
+	field int32[] fiducial
+	field varvalue{string} extended
+end
+
+struct LaserScanPart
+	field LaserScanInfo scan_info
+	field uint32 data_offset
+    field uint32 data_total_len
+    field double[] ranges
+    field double[] intensities
+    field PixelRGB[] color
+	field int32[] fiducial
+	field varvalue{string} extended
+end
+
+struct LaserScanPartf
+    field LaserScanInfof scan_info
+	field uint32 data_offset
+    field uint32 data_total_len
+    field single[] ranges
+    field single[] intensities
     field PixelRGB[] color
 	field int32[] fiducial
 	field varvalue{string} extended
