@@ -2,12 +2,13 @@ service com.robotraconteur.gps
 
 stdver 0.9
 
-import com.robotraconteur.sensordata
+import com.robotraconteur.sensor
 
-using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.sensor.Sensor
+using com.robotraconteur.sensor.SensorInfo
+using com.robotraconteur.sensor.SensorData
 
 struct GpsState
-	field SensorDataHeader data_header
 	field double altitude
 	field double latitude_deg
 	field double longitude_deg
@@ -15,3 +16,14 @@ struct GpsState
 	field double velocity_north
 	field double velocity_up
 end struct
+
+object GpsSensor
+	implements Sensor
+	property bool active
+	property SensorInfo sensor_info [readonly,nolockread]
+	wire double[] sensor_value [readonly,nolock]
+	pipe SensorData sensor_data [readonly,nolock]	
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+	wire GpsState gps_state [readonly,nolock]	
+end

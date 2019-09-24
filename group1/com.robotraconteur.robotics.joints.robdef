@@ -3,7 +3,10 @@ service com.robotraconteur.robotics.joints
 stdver 0.9
 
 import com.robotraconteur.units
+import com.robotraconteur.uuid
+
 using com.robotraconteur.units.SIUnit
+using com.robotraconteur.uuid.UUID
 
 enum JointPositionUnits
     implicit = 0,
@@ -68,6 +71,37 @@ enum JointEffortUnits
     degree_second2
 end
 
+enum JointType
+    revolute = 0,
+    prismatic,
+	wheel,
+	screw,
+	other,
+	# Compound joint types
+	revolute2,
+	universal,
+	ball,
+	pose2d,
+	pose,
+	other_compound	
+end
+
+struct JointLimits
+    field double lower
+    field double upper
+    field double velocity
+    field double acceleration	
+end
+
+struct JointInfo
+	field string joint_name
+	field UUID joint_uuid
+	field JointType joint_type
+	field JointLimits joint_limits
+	field JointPositionUnits default_units
+	field bool passive
+end
+
 pod JointPosition
     field double[8-] positions
     field uint8[8-] units
@@ -90,6 +124,11 @@ pod DualArmJointPosition
     field DualArmJointUnits units
 end
 
+pod DiffDriveWheelAngle
+	field double[2] positions
+    field uint8[2] units
+end
+
 struct FreeformRobotPosition
     field string{list} joint_names
     field double[]{list} positions
@@ -100,7 +139,8 @@ end
 struct MultiRobotPosition
     field JointPosition{string} robots
     field DualArmJointPosition{string} dual_arm_robots
-    field FreeformRobotPosition{string} freeform_robots
+	field DiffDriveWheelAngle{string} diffdrive_robots
+    field FreeformRobotPosition{string} freeform_robots	
     field MultiRobotPosition{string} multi_robots
 end
 
@@ -114,6 +154,11 @@ pod DualArmJointVelocity
     field DualArmJointUnits units
 end
 
+pod DiffDriveWheelAngularVelocity
+	field double[2] positions
+    field uint8[2] units
+end
+
 struct FreeformRobotJointVelocity
     field string{list} joint_names
     field double[]{list} velocity
@@ -123,6 +168,7 @@ end
 struct MultiRobotJointVelocity
     field JointVelocity{string} robots
     field DualArmJointVelocity{string} dual_arm_robots
+	field DiffDriveWheelAngularVelocity{string} diffdrive_robots
     field FreeformRobotJointVelocity{string} freeform_robots
     field MultiRobotJointVelocity{string} multi_robots
 end
@@ -137,6 +183,11 @@ pod DualArmJointEffort
     field DualArmJointUnits units
 end
 
+pod DiffDriveWheelEffort
+	field double[2] positions
+    field uint8[2] units
+end
+
 struct FreeformRobotJointEffort
     field string{list} joint_names
     field double[]{list} effort
@@ -146,6 +197,7 @@ end
 struct MultiRobotJointEffort
     field JointEffort{string} robots
     field DualArmJointEffort{string} dual_arm_robots
+	field DiffDriveWheelEffort diffdrive_robots
     field FreeformRobotJointEffort{string} freeform_robots
     field MultiRobotJointEffort{string} multi_robots
 end
@@ -157,6 +209,15 @@ pod JointState
     # Velocity units implicit from position
     field double[8-] effort
     field uint8[8-] effort_units
+end
+
+pod DiffDriveWheelState
+    field double[2] angle
+    field uint8[2] angle_units
+    field double[2] angular_velocity
+    # Velocity units implicit from position
+    field double[2] effort
+    field uint8[2] effort_units
 end
 
 pod DualArmJointState
@@ -181,6 +242,7 @@ end
 struct MultiRobotJointState
     field JointState{string} robots
     field DualArmJointState{string} dual_arm_robots
+	field DiffDriveWheelState{string} diffdrive_robots
     field FreeformRobotJointState{string} freeform_robots
     field MultiRobotJointState{string} multi_robots
 end

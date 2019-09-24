@@ -13,6 +13,15 @@ namedarray Vector3
     field double z
 end
 
+namedarray Vector6
+	field double alpha
+	field double beta
+	field double gamma
+    field double x
+    field double y
+    field double z
+end
+
 namedarray Point2D
     field double x
     field double y

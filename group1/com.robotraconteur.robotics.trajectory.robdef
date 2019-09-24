@@ -1,0 +1,101 @@
+service com.robotraconteur.robotics.trajectory
+
+stdver 0.9
+
+import com.robotraconteur.robotics.joints
+import com.robotraconteur.uuid
+
+using com.robotraconteur.robotics.joints.JointPositionUnits
+using com.robotraconteur.uuid.UUID
+
+enum TrajectoryStatusCode
+    error = -2,
+    failed = -1,
+    unknown = 0,
+    queued,
+    running,
+    complete    
+end
+
+enum InterpolationMode
+	default = 0,
+	joint,
+	linear,
+	cylindrical,
+	spherical,
+	joint_cubic_spline,
+	cubic_spline,
+	custom	
+end
+
+struct JointTrajectoryWaypoint
+    field double[] joint_position
+    field double[] joint_velocity
+    field double[] position_tolerance
+    field double[] velocity_tolerance
+	field InterpolationMode interpolation_mode
+    field double time_from_start
+end
+
+struct JointTrajectory	
+	field string{list} joint_names
+	field JointPositionUnits{list} joint_units
+    field JointTrajectoryWaypoint{list} waypoints
+	field varvalue{string} extended
+end
+
+struct TrajectoryStatus
+    field uint64 seqno
+    field TrajectoryStatusCode status
+    field uint32 current_waypoint
+    field double trajectory_time 
+end
+
+struct AdvancedJointTrajectoryDeviceWaypoint
+	# Use list for compound joints
+	field double[]{list} joint_position
+	field double[]{list} joint_velocity
+	field double[]{list} joint_acceleration
+	field double[]{list} joint_jerk
+	field double[]{list} position_tolerance
+	field double[]{list} velocity_tolerance
+	field InterpolationMode interpolation_mode
+	field varvalue{string} signals
+end
+
+struct AdvancedJointTrajectoryWaypoint
+    field AdvancedJointTrajectoryDeviceWaypoint{list} joints	
+    field double time_from_start
+end
+
+struct AdvancedJointTrajectoryDevice
+	field string device_name
+	field UUID device_uuid
+	field string{list} joint_names
+	field JointPositionUnits{list} joint_units
+	field varvalue{string} extended
+end
+
+struct AdvancedJointTrajectory	
+	field AdvancedJointTrajectoryDevice{list} devices
+    field AdvancedJointTrajectoryWaypoint{list} waypoints
+	field varvalue{string} extended
+end
+
+struct FreeformJointTrajectoryWaypoint
+    field varvalue{list} joint_position
+    field varvalue{list} joint_velocity
+    field varvalue{list} position_tolerance
+    field varvalue{list} velocity_tolerance
+	field string interpolation_mode
+	field varvalue{string} signals
+    field double time_from_start
+	field varvalue{string} extended
+end
+
+struct FreeformJointTrajectory	
+	field string{list} joint_names
+	field string{list} joint_units
+    field FreeformJointTrajectoryWaypoint{list} waypoints
+	field varvalue{string} extended
+end

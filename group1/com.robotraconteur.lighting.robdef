@@ -1,4 +1,4 @@
-service com.robotraconteur.lighting.easy
+service com.robotraconteur.lighting
 
 stdver 0.9
 
@@ -10,29 +10,29 @@ using com.robotraconteur.uuid.UUID
 using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.device.DeviceInfo
 
-struct EasyLightInfo
+struct LightInfo
 	field DeviceInfo device_info
 	field double max_lumens
 	field varvalue{string} extended
 end
 
-object EasyLight
-	property EasyLightInfo easy_light_info
+object Light
+	property LightInfo light_info
 	property bool on_off
 end
 
-object EasyDimmableLight
-	implements EasyLight
-	property EasyLightInfo easy_light_info
+object DimmableLight
+	implements Light
+	property LightInfo light_info
 	property bool on_off
 	# intensity 0.0 to 1.0
 	property double intensity	
 end
 
-object EasyColorTunableLight
-	implements EasyLight
-	implements EasyDimmableLight
-	property EasyLightInfo easy_light_info
+object ColorTunableLight
+	implements Light
+	implements DimmableLight
+	property LightInfo light_info
 	property bool on_off
 	# intensity 0.0 to 1.0
 	property double intensity

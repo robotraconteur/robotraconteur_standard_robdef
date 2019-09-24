@@ -1,0 +1,209 @@
+service com.robotraconteur.robotics.robot
+
+stdver 0.9
+
+import com.robotraconteur.geometry
+import com.robotraconteur.uuid
+import com.robotraconteur.sensordata
+import com.robotraconteur.device
+import com.robotraconteur.signal
+import com.robotraconteur.param
+import com.robotraconteur.robotics.joints
+import com.robotraconteur.robotics.tool
+import com.robotraconteur.robotics.payload
+import com.robotraconteur.robotics.trajectory
+
+using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.Transform
+using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.geometry.Pose
+using com.robotraconteur.geometry.NamedPose
+using com.robotraconteur.geometry.SpatialVelocity
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.signal.SignalInfo
+using com.robotraconteur.robotics.joints.JointInfo
+using com.robotraconteur.robotics.tool.ToolInfo
+using com.robotraconteur.robotics.payload.PayloadInfo
+using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.robotics.trajectory.TrajectoryStatus
+using com.robotraconteur.robotics.trajectory.JointTrajectory
+
+enum RobotType
+	unknown = 0,
+	serial = 1,
+	dual_arm,
+	differential_drive,
+	planar,
+	floating,
+	freeform,
+	other
+end
+
+enum RobotCommandMode
+	fatal_error = -2,
+    error = -1,
+    halt = 0,
+    jog,
+    trajectory,
+    position_command,
+    velocity_command
+end
+
+enum RobotOperationalMode
+	undefined = 0,
+	manual_reduced_speed,
+	manual_full_speed,
+	auto
+end
+
+enum RobotControllerState
+	undefined = 0,
+	init = 1,
+	motor_on,
+	motor_off,
+	guard_stop,
+	emergency_stop,
+	emergency_stop_reset	
+end
+
+enum RobotErrorLevel
+    undefined = 0,
+	debug = 1,
+	info,
+	warning,
+	recoverable_error,
+	safety_violation_error,
+	fatal_error,
+	emergency_error,
+	catastrophic_error
+end
+
+enum RobotErrorCategory
+    unknown = 0,
+	invalid_operation,
+	invalid_argument,
+	invalid_command,
+	invalid_mode,
+	hardware_fault,
+	software_fault,
+	communication_failure,
+	kinematic_error,
+	dynamic_error,
+	overload_error,
+	command_error,
+	user_software_error,
+	collision_imminent,
+	collision_occured,
+	sensor_failure,
+	sensor_out_of_range,
+	safety_violation,
+	workspace_violation,
+	workspace_intrusion
+end
+
+enum RobotCapabilities
+	unknown = 0,
+	jog_command = 0x1,
+	trajectory_command = 0x2,
+	position_command = 0x4,
+	velocity_command = 0x8
+end
+
+struct RobotKinChainInfo
+    field Vector3[] H
+    field Vector3[] P
+    field SpatialInertia[] link_inertias
+	field string{list} link_names
+    field uint32[] joint_numbers
+    field ToolInfo current_tool
+	field PayloadInfo current_payload
+    field varvalue{string} extended
+end
+
+struct RobotInfo
+    field DeviceInfo device_info	
+	field RobotType robot_type
+	field UUID robot_type_uuid    
+    field JointInfo{list} joint_info
+    field RobotKinChainInfo{string} chains
+	field uint32 capabilities
+    field SignalInfo{string} signal_info
+	field ParameterInfo{string} parameter_info
+	field string parent_device_name
+	field UUID parent_device_uuid
+	field NamedPose robot_origin_pose
+    field varvalue{string} extended    
+end
+
+struct RobotState
+    field uint64 seqno
+    field RobotCommandMode controller_mode
+	field RobotOperationalMode operational_mode
+	field RobotControllerState controller_state
+    field double[] joint_position
+    field double[] joint_velocity
+    field double[] joint_effort    
+    field double[] position_command
+    field double[] velocity_command
+    field bool trajectory_running
+end
+
+struct AdvancedRobotState
+    field uint64 seqno
+    field RobotCommandMode controller_mode
+	field RobotOperationalMode operational_mode
+	field RobotControllerState controller_state
+    field double[] joint_position
+    field double[] joint_velocity	
+    field double[] joint_effort    
+    field double[] position_command
+    field double[] velocity_command
+	field uint8[] joint_position_units
+	field uint8[] joint_effort_units
+    field bool trajectory_running
+end
+
+struct RobotStateSensorData
+    field SensorDataHeader data_header
+    field AdvancedRobotState robot_state
+end
+
+struct RobotJointCommand
+    field uint64 seqno
+    field uint64 status_seqno
+    field double[] command
+	# Use JointUnits values
+	field uint8[] units
+end
+
+object Robot
+    property RobotInfo robot_info [readonly,nolockread]
+    property RobotCommandMode command_mode [nolockread]
+	property RobotOperationalMode operational_mode [readonly,nolock]
+	property RobotControllerState controller_state [readonly, nolock]
+    function void halt() [urgent,nolock]
+	property double speed_ratio
+    function void jog_joint(double[] joint_position, double[] max_velocity, bool relative, bool wait)
+	function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
+    function TrajectoryStatus{generator} execute_trajectory(JointTrajectory trajectory)
+    wire RobotState robot_state [readonly,nolock]
+	wire AdvancedRobotState advanced_robot_state [readonly,nolock]
+	pipe RobotStateSensorData robot_state_sensor_data [readonly,nolock]
+    property uint32 update_downsample [perclient]
+    property double update_rate [readonly]
+    wire RobotJointCommand position_command [writeonly]
+    wire RobotJointCommand velocity_command [writeonly]
+    function double getf_signal(string signal_name)
+    function void setf_signal(string signal_name, double value)
+    function void tool_attached(int32 chain, ToolInfo tool)
+    function void tool_detached(int32 chain, string tool_name)
+	function void payload_attached(int32 chain, PayloadInfo payload, Pose pose)
+	function void payload_detached(int32 chain, string payload_name)
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+end
+
+

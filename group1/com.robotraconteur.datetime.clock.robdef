@@ -1,0 +1,20 @@
+service com.robotraconteur.datetime.clock
+
+import com.robotraconteur.datetime
+import com.robotraconteur.device
+
+using com.robotraconteur.datetime.DateTimeUTC
+using com.robotraconteur.datetime.DateTimeLocal
+using com.robotraconteur.datetime.ClockTypeCode
+using com.robotraconteur.device.DeviceInfo
+
+struct ClockDeviceInfo
+	field DeviceInfo device_info
+	field ClockTypeCode clock_type
+end
+
+object Clock	
+	property ClockDeviceInfo device_info [readonly]
+	wire DateTimeUTC time_utc [readonly]
+	wire DateTimeLocal time_local [readonly]
+end

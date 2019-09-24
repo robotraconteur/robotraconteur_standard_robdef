@@ -1,0 +1,53 @@
+service com.robotraconteur.pointcloud.sensor
+
+stdver 0.9
+
+import com.robotraconteur.device
+import com.robotraconteur.param
+import com.robotraconteur.pointcloud
+import com.robotraconteur.geometry
+import com.robotraconteur.sensor
+
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.pointcloud.PointCloudf as PointCloud
+using com.robotraconteur.pointcloud.PointCloudPartf as PointCloudPart
+using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.sensor.SensorData
+
+struct PointCloudSensorInfo
+	field DeviceInfo device_info
+	field Point range_min
+	field Point range_max
+	field Vector3 resolution
+	field double update_rate
+	field ParameterInfo{string} param_info
+	field varvalue{string} extended
+end
+
+struct PointCloudSensorData
+	field SensorData sensor_data
+	field PointCloud point_cloud
+end
+
+struct PointCloudPartSensorData
+	field SensorData sensor_data
+	field PointCloudPart point_cloud
+end
+
+object PointCloudSensor
+	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property bool active
+    pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end
+
+object PointCloudPartSensor
+	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property bool active
+    pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end

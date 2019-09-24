@@ -1,0 +1,17 @@
+service com.robotraconteur.robotics.tool
+
+stdver 0.9
+
+import com.robotraconteur.device
+import com.robotraconteur.geometry
+
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.geometry.Transform
+using com.robotraconteur.geometry.SpatialInertia
+
+struct ToolInfo
+    field DeviceInfo device_info    
+    field Transform tcp
+	field SpatialInertia inertia
+	field varvalue{string} extended    
+end

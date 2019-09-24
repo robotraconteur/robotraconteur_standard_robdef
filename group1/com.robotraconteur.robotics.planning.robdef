@@ -1,20 +1,21 @@
-service com.robotraconteur.robotics.planning.easy
+service com.robotraconteur.robotics.planning
 
 stdver 0.9
 
 import com.robotraconteur.geometry
-import com.robotraconteur.robotics.easy
+import com.robotraconteur.robotics.robot
+import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.geometry.shapes
 
 using com.robotraconteur.geometry.NamedTransform
 using com.robotraconteur.geometry.NamedPose
 using com.robotraconteur.geometry.Vector3
-using com.robotraconteur.robotics.easy.EasyJointTrajectory
-using com.robotraconteur.robotics.easy.EasyRobotInfo
-using com.robotraconteur.robotics.easy.EasyRobotState
+using com.robotraconteur.robotics.trajectory.JointTrajectory
+using com.robotraconteur.robotics.robot.RobotInfo
+using com.robotraconteur.robotics.robot.RobotState
 using com.robotraconteur.geometry.shapes.ShapeObject
 
-enum EasyPlannerStatusCode
+enum PlannerStatusCode
 	is_not_configured = -2,
 	failure = -1,
 	unknown = 0,
@@ -23,27 +24,27 @@ enum EasyPlannerStatusCode
 	success = 3	
 end
 
-struct EasyEnvState
+struct EnvState
 	field double[]{string} joints
 	field NamedTransform{string} transforms
 	field varvalue{string} extended
 end
 
-struct EasyPlanningRequest
+struct PlanningRequest
 	field string name
-	field EasyEnvState start_state
+	field EnvState start_state
 	field string config
 	field string config_format
 	field varvalue{string} extended
 end
 
-struct EasyPlanningResponse
-	field EasyPlannerStatusCode status_code
-	field EasyJointTrajectory joint_trajectory
+struct PlanningResponse
+	field PlannerStatusCode status_code
+	field JointTrajectory joint_trajectory
 	field varvalue{string} extended
 end
 
-struct EasyContactResult
+struct ContactResult
 	field double distance
 	field uint8 shape1_type_id
 	field uint8 shape2_type_id
@@ -61,29 +62,29 @@ struct EasyContactResult
 	field varvalue{string} extended
 end
 
-struct EasyInvKinResult
+struct InvKinResult
 	field double[]{list} joints
 end
 
-object EasyPlanner
-	function EasyPlanningResponse{generator} easy_plan(EasyPlanningRequest request)
+object Planner
+	function PlanningResponse{generator} plan(PlanningRequest request)
 	
-	function EasyContactResult{list} easy_compute_contacts(EasyEnvState state)
+	function ContactResult{list} compute_contacts(EnvState state)
 	
-	function EasyInvKinResult{list} easy_invkin(string robot_name, NamedPose tcp_pose)
+	function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
 end
 
-object EasyPlanningScene
-	property EasyEnvState env_state
+object PlanningScene
+	property EnvState env_state
 
-	property EasyRobotInfo{string} robots [readonly]
-	property EasyRobotState{string} robot_states [readonly]
+	property RobotInfo{string} robots [readonly]
+	property RobotState{string} robot_states [readonly]
 	property ShapeObject{string} shapes [readonly]
 	property NamedTransform{string} transforms [readonly]
 	
-	function void add_robot(string name, EasyRobotInfo robot, NamedPose pose)
-	function void update_robot_info(string robot_name, EasyRobotInfo robot)
-	function void update_robot_state(string robot_name, EasyRobotState robot_state)
+	function void add_robot(string name, RobotInfo robot, NamedPose pose)
+	function void update_robot_info(string robot_name, RobotInfo robot)
+	function void update_robot_state(string robot_name, RobotState robot_state)
 	
 	function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
 	

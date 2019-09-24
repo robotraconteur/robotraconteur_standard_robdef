@@ -1,0 +1,112 @@
+service com.robotraconteur.servo
+
+stdver 0.9
+
+import com.robotraconteur.uuid
+import com.robotraconteur.sensordata
+import com.robotraconteur.device
+import com.robotraconteur.signal
+import com.robotraconteur.param
+import com.robotraconteur.robotics.joints
+
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.signal.SignalInfo
+using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.robotics.joints.JointPositionUnits
+using com.robotraconteur.robotics.joints.JointEffortUnits
+
+enum ServoTypeCode
+	unknown = 0,
+	generic_revolute,
+	generic_prismatic,
+	revolute_electric,
+	revolute_linear,
+	rc_servo	
+end
+
+enum ServoCapabilities
+	unknown = 0,
+	position_command = 0x1,
+	velocity_command = 0x2,
+	effort_command = 0x4,
+	trapezoidal_command = 0x8,
+	signals = 0x1000
+end
+
+enum ServoMode
+	error = -2,
+	disabled = -1,
+	halt = 0,
+	position_command,
+	velocity_command,
+	effort_command,
+	trapezoidal_command
+end
+
+struct ServoInfo
+	field DeviceInfo device_info
+	field ServoTypeCode servo_type
+	field uint32 capabilities
+	field uint32 axis_count
+	field JointPositionUnits{list} position_units
+	field JointEffortUnits{list} effort_units
+	field double[] position_min
+	field double[] position_max
+	field double[] velocity_min
+	field double[] velocity_max
+	field double[] acceleration_min
+	field double[] acceleration_max	
+	field double[] torque_min
+	field double[] torque_max
+	field double[] gear_ratio
+	field double[] sensor_resolution
+	field double[] effort_command_resolution
+	field ParameterInfo{string} parameter_info
+	field SignalInfo{string} signal_info
+    field varvalue{string} extended	
+end
+
+struct ServoState
+	field uint64 seqno
+	field ServoMode mode
+	field double[] position
+	field double[] velocity
+	field double[] acceleration
+	field double[] effort
+	field double[] position_command
+	field double[] velocity_command
+	field double[] effort_command
+end
+
+struct ServoStateSensorData
+	field SensorDataHeader data_header
+	field ServoState servo_state
+	field varvalue{string} extended
+end
+
+struct ServoCommand
+    field uint64 seqno
+    field uint64 status_seqno
+    field double[] command    
+end
+
+object Servo	
+	function void halt() [urgent,nolock]
+	property ServoInfo servo_info [readonly,nolockread]
+	property ServoMode mode [nolockread]
+	wire double[] position [readonly,nolockread]
+	wire double[] velocity [readonly, nolockread]
+	wire ServoState servo_state
+	pipe ServoStateSensorData servo_state_sensor_data
+	wire ServoCommand position_command [writeonly]
+	wire ServoCommand velocity_command [writeonly]
+	wire ServoCommand effort_command [writeonly]
+	function void trapezoid_move(double[] target_pos, double[] target_vel, double[] vel, double[] accel)
+	function varvalue getf_signal(string signal_name)
+    function void setf_signal(string signal_name, varvalue value)	
+	function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+end
+

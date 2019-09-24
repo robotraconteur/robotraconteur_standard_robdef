@@ -9,7 +9,12 @@ using com.robotraconteur.uuid.UUID
 struct DeviceInfo
 	field string device_name
 	field string manufacturer
-    field string model
+    field string model	
+	field string{string} options
+	field string serial_number
+	field UUID model_uuid	
+	field UUID{list} options_uuid
+	field UUID{list} device_classes_uuid
 	field string user_description
 	field UUID description_resource_uuid
     field UUID device_uuid

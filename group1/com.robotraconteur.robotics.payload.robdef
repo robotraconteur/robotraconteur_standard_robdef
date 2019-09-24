@@ -1,0 +1,16 @@
+service com.robotraconteur.robotics.payload
+
+stdver 0.9
+
+import com.robotraconteur.device
+import com.robotraconteur.geometry
+
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.geometry.Transform
+using com.robotraconteur.geometry.SpatialInertia
+
+struct PayloadInfo
+    field DeviceInfo device_info    
+	field SpatialInertia inertia
+	field varvalue{string} extended    
+end

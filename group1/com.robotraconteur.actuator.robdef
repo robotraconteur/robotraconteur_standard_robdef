@@ -3,10 +3,16 @@ service com.robotraconteur.actuator
 stdver 0.9
 
 import com.robotraconteur.device
+import com.robotraconteur.param
+import com.robotraconteur.units
+import com.robotraconteur.datatype
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.units.SIUnit
+using com.robotraconteur.datatype.DataType
 
-enum EasyActuatorTypeCode
+enum ActuatorTypeCode
 	unknown = 0,
 	generic,
 	motor_torque,
@@ -22,7 +28,7 @@ enum EasyActuatorTypeCode
 	valve
 end
 
-enum EasyActuatorMode
+enum ActuatorMode
 	error = -2,
 	disabled = -1,
 	halt = 0,
@@ -30,20 +36,22 @@ enum EasyActuatorMode
 	normal = 2
 end
 
-struct EasyActuatorInfo
+struct ActuatorInfo
 	field DeviceInfo device_info
-	field EasyActuatorTypeCode actuator_type	
-	field bool analog_output
-	field uint32 output_count
+	field ActuatorTypeCode actuator_type
+	field SIUnit{list} command_units
+	field DataType command_data_type
+	field double[] command_resolution
+	field bool analog_output	
+	field ParameterInfo{string} parameter_info
     field varvalue{string} extended	
 end
 
-object EasyActuator
-	property EasyActuatorInfo easy_actuator_info [readonly,nolockread]
-	property EasyActuatorMode easy_mode [nolockread]
-	wire double[] easy_actuator_command [writeonly]
-	property string{list} easy_param_names [readonly,nolock]
-    function varvalue easy_get_param(string param_name)
-    function void easy_set_param(string param_name, varvalue value)
+object Actuator
+	property ActuatorInfo actuator_info [readonly,nolockread]
+	property ActuatorMode actuator_mode [nolockread]
+	wire double[] actuator_command [writeonly]	
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
 end
 

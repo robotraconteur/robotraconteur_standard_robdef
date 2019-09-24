@@ -13,6 +13,15 @@ namedarray Vector3
     field single z
 end
 
+namedarray Vector6
+	field single alpha
+	field single beta
+	field single gamma
+    field single x
+    field single y
+    field single z
+end
+
 namedarray Point2D
     field single x
     field single y

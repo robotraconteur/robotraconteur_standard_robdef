@@ -1,0 +1,37 @@
+service com.robotraconteur.laserscanner
+
+stdver 0.9
+
+import com.robotraconteur.device
+import com.robotraconteur.param
+import com.robotraconteur.laserscan
+
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.laserscan.LaserScanInfof as LaserScanInfo
+using com.robotraconteur.laserscan.LaserScanf as LaserScan
+using com.robotraconteur.laserscan.LaserScanPartf as LaserScanPart
+
+struct LaserScannerInfo
+	field DeviceInfo device_info
+	field LaserScanInfo scanner_info
+	field double scan_rate
+	field ParameterInfo{string} param_info
+	field varvalue{string} extended
+end
+
+object LaserScanner
+	property LaserScannerInfo scanner_info [readonly,nolock]
+    property bool active
+    pipe LaserScan laser_scan_sensor_data [readonly]    
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end
+
+object LaserScanPartScanner
+	property LaserScannerInfo scanner_info [readonly,nolock]
+    property bool active
+    pipe LaserScanPart laser_scan_sensor_data [readonly]    
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end

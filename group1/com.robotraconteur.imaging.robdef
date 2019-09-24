@@ -1,0 +1,77 @@
+service com.robotraconteur.imaging
+
+stdver 0.9
+
+import com.robotraconteur.image
+import com.robotraconteur.imaging.camerainfo
+import com.robotraconteur.param
+
+using com.robotraconteur.image.Image
+using com.robotraconteur.image.ImagePart
+using com.robotraconteur.image.CompressedImage
+using com.robotraconteur.imaging.camerainfo.CameraInfo
+using com.robotraconteur.param.ParameterInfo
+
+enum TriggerMode
+   unknown = 0,
+   software,
+   continuous,
+   external,
+   aux1,
+   aux2,
+   aux3,
+   aux4
+end
+
+enum Capabilities
+   unknown = 0,
+   still = 0x1,
+   stream = 0x2,
+   preview = 0x4,
+   software_trigger = 0x10,
+   continuous_trigger = 0x20,
+   external_trigger = 0x40,
+   aux_trigger = 0x80
+end
+
+object Camera
+    property uint32 capabilities [readonly]
+    function Image capture_frame()
+    property TriggerMode trigger_mode [nolockread]
+    function void trigger()
+    function void start_streaming()
+    function void stop_streaming()
+    pipe Image frame_stream [readonly]
+    pipe CompressedImage preview_stream [readonly,nolock]
+    property ParameterInfo{string} param_info [readonly]
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    property CameraInfo camera_info [readonly]
+end
+
+object MultiCamera
+    property string{int32} camera_names [readonly,nolockread]
+    objref Camera{int32} cameras
+    function Image{int32} capture_frame_all()
+    function void trigger_all()
+    pipe Image{int32} frame_stream_all [readonly]
+    pipe CompressedImage{int32} preview_stream_all [readonly,nolock]
+    property ParameterInfo{string} param_info [readonly]
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    property CameraInfo{int32} camera_info_all [readonly]
+end
+
+object ImagePartCamera
+    property uint32 capabilities [readonly]
+    function ImagePart{generator} capture_frame()
+    property TriggerMode trigger_mode [nolockread]
+    function void trigger()
+    function void start_streaming()
+    function void stop_streaming()    
+    pipe CompressedImage preview_stream [readonly,nolock]
+    property ParameterInfo{string} param_info [readonly]
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    property CameraInfo camera_info [readonly]
+end

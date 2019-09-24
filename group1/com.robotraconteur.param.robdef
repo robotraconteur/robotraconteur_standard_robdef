@@ -1,0 +1,21 @@
+service com.robotraconteur.param
+
+stdver 0.9
+
+import com.robotraconteur.uuid
+import com.robotraconteur.datatype
+
+using com.robotraconteur.uuid.UUID
+using com.robotraconteur.datatype.DataType
+
+struct ParameterInfo
+	field string parameter_name
+	field UUID parameter_uuid
+	field DataType data_type
+	field string description
+	field varvalue default_value
+	field varvalue min_value
+	field varvalue max_value
+	field varvalue{string} enum_values
+	field varvalue{string} extended
+end
