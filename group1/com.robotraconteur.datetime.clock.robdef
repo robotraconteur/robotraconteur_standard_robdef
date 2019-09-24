@@ -1,5 +1,7 @@
 service com.robotraconteur.datetime.clock
 
+stdver 0.9
+
 import com.robotraconteur.datetime
 import com.robotraconteur.device
 
