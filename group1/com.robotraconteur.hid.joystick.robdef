@@ -1,0 +1,45 @@
+service com.robotraconteur.hid.joystick
+
+stdver 0.9
+
+import com.robotraconteur.device
+import com.robotraconteur.sensordata
+import com.robotraconteur.geometry
+
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.geometry.Vector2
+
+enum JoystickCapabilities
+	none = 0,
+	rumble = 0x1,
+	force_feedback = 0x2,
+	standard_gamepad = 0x4
+end
+
+struct JoystickInfo
+	field DeviceInfo device_info
+	field uint32 axes_count
+	field uint32 button_count	
+	field uint32 joystick_capabilities	
+end
+
+struct JoystickState
+	field single[] axes
+	field int32[] buttons
+end
+
+struct JoystickStateSensorData
+	field SensorDataHeader data_header
+	field JoystickState joystick_state
+end
+
+object Joystick
+	property JoystickInfo joystick_info [readonly,nolock]	
+	property uint32 update_downsample [perclient]
+    property double update_rate [readonly,nolock]
+	wire JoystickState joystick_state [readonly,nolock]
+	pipe JoystickStateSensorData joystick_sensor_data [readonly,nolock]
+	function void rumble(double intensity)
+	function void force_feedback(Vector2 force)
+end
