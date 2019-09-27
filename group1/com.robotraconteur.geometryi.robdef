@@ -44,12 +44,12 @@ namedarray Size
     field int32 depth
 end
 
-namedarray Rect2D
+namedarray Rect
    field Point2D origin
    field Size2D size
 end
 
-namedarray Rect
+namedarray Box
    field Point origin
    field Size size
 end
