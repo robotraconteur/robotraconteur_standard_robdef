@@ -6,6 +6,7 @@ import com.robotraconteur.robotics.joints
 import com.robotraconteur.uuid
 
 using com.robotraconteur.robotics.joints.JointPositionUnits
+using com.robotraconteur.robotics.joints.JointEffortUnits
 using com.robotraconteur.uuid.UUID
 
 enum TrajectoryStatusCode
@@ -57,6 +58,7 @@ struct AdvancedJointTrajectoryDeviceWaypoint
 	field double[]{list} joint_velocity
 	field double[]{list} joint_acceleration
 	field double[]{list} joint_jerk
+	field double[]{list} joint_effort
 	field double[]{list} position_tolerance
 	field double[]{list} velocity_tolerance
 	field InterpolationMode interpolation_mode
@@ -73,6 +75,7 @@ struct AdvancedJointTrajectoryDevice
 	field UUID device_uuid
 	field string{list} joint_names
 	field JointPositionUnits{list} joint_units
+	field JointEffortUnits{list} joint_effort_units
 	field varvalue{string} extended
 end
 
