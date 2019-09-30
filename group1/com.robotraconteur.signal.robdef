@@ -2,12 +2,12 @@ service com.robotraconteur.signal
 
 stdver 0.9
 
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 import com.robotraconteur.datatype
 import com.robotraconteur.device
 import com.robotraconteur.units
 
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.units.SIUnit
@@ -35,8 +35,7 @@ enum SignalAccessLevel
 end
 
 struct SignalInfo
-    field string signal_name
-	field UUID signal_uuid
+    field Identifier signal
 	field SIUnit{list} units
     field DataType data_type
 	field SignalType signal_type

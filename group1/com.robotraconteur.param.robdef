@@ -2,15 +2,14 @@ service com.robotraconteur.param
 
 stdver 0.9
 
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 import com.robotraconteur.datatype
 
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 
 struct ParameterInfo
-	field string parameter_name
-	field UUID parameter_uuid
+	field Identifier parameter
 	field DataType data_type
 	field string description
 	field varvalue default_value

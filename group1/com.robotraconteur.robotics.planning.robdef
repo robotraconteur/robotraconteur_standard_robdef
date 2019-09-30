@@ -6,7 +6,7 @@ import com.robotraconteur.geometry
 import com.robotraconteur.robotics.robot
 import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.geometry.shapes
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 
 using com.robotraconteur.geometry.NamedTransform
 using com.robotraconteur.geometry.NamedPose
@@ -18,7 +18,7 @@ using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.robotics.robot.RobotInfo
 using com.robotraconteur.robotics.robot.RobotState
 using com.robotraconteur.geometry.shapes.ShapeObject
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 
 enum PlannerStatusCode
 	is_not_configured = -2,
@@ -111,10 +111,8 @@ struct PlanningRequestTrajectoryConstraints
 end
 
 struct PlanningRequest
-	field string device_name
-	field UUID device_uuid
-	field string planner_name
-	field UUID planner_uuid
+	field Identifier device
+	field Identifier planner	
 	field Box workspace_bounds
 	field EnvState start_state
 	field PlanningRequestWaypointConstraints{list} waypoints

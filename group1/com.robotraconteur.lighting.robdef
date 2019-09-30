@@ -2,11 +2,9 @@ service com.robotraconteur.lighting
 
 stdver 0.9
 
-import com.robotraconteur.uuid
 import com.robotraconteur.color
 import com.robotraconteur.device
 
-using com.robotraconteur.uuid.UUID
 using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.device.DeviceInfo
 

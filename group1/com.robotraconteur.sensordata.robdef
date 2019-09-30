@@ -3,11 +3,11 @@ service com.robotraconteur.sensordata
 stdver 0.9
 
 import com.robotraconteur.datetime
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 import com.robotraconteur.geometry
 
 using com.robotraconteur.datetime.DateTimeUTC
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.geometry.Pose
 
 struct SensorDataHeader
@@ -17,8 +17,7 @@ struct SensorDataHeader
 end
 
 struct SensorDataSourceInfo
-	field UUID source_uuid
-	field string source_name
+	field Identifier source
 	field Pose source_world_pose
 	field string source_config_nonce
 	field varvalue{string} source_params

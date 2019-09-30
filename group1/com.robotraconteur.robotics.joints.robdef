@@ -3,10 +3,10 @@ service com.robotraconteur.robotics.joints
 stdver 0.9
 
 import com.robotraconteur.units
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 
 using com.robotraconteur.units.SIUnit
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 
 enum JointPositionUnits
     implicit = 0,
@@ -94,8 +94,7 @@ struct JointLimits
 end
 
 struct JointInfo
-	field string joint_name
-	field UUID joint_uuid
+	field Identifier joint_identifier
 	field JointType joint_type
 	field JointLimits joint_limits
 	field JointPositionUnits default_units

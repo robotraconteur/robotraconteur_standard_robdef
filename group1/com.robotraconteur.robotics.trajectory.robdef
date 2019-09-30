@@ -3,11 +3,11 @@ service com.robotraconteur.robotics.trajectory
 stdver 0.9
 
 import com.robotraconteur.robotics.joints
-import com.robotraconteur.uuid
+import com.robotraconteur.identifier
 
 using com.robotraconteur.robotics.joints.JointPositionUnits
 using com.robotraconteur.robotics.joints.JointEffortUnits
-using com.robotraconteur.uuid.UUID
+using com.robotraconteur.identifier.Identifier
 
 enum TrajectoryStatusCode
     error = -2,
@@ -71,8 +71,7 @@ struct AdvancedJointTrajectoryWaypoint
 end
 
 struct AdvancedJointTrajectoryDevice
-	field string device_name
-	field UUID device_uuid
+	field Identifier device	
 	field string{list} joint_names
 	field JointPositionUnits{list} joint_units
 	field JointEffortUnits{list} joint_effort_units

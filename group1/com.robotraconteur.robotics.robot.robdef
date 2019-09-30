@@ -12,6 +12,7 @@ import com.robotraconteur.robotics.joints
 import com.robotraconteur.robotics.tool
 import com.robotraconteur.robotics.payload
 import com.robotraconteur.robotics.trajectory
+import com.robotraconteur.identifier
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -30,6 +31,7 @@ using com.robotraconteur.robotics.payload.PayloadInfo
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.robotics.trajectory.TrajectoryStatus
 using com.robotraconteur.robotics.trajectory.JointTrajectory
+using com.robotraconteur.identifier.Identifier
 
 enum RobotType
 	unknown = 0,
@@ -132,8 +134,7 @@ struct RobotInfo
 	field uint32 capabilities
     field SignalInfo{string} signal_info
 	field ParameterInfo{string} parameter_info
-	field string parent_device_name
-	field UUID parent_device_uuid
+	field Identifier parent_device
 	field NamedPose robot_origin_pose
     field varvalue{string} extended    
 end

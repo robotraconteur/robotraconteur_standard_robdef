@@ -1,0 +1,12 @@
+service com.robotraconteur.identifier
+
+stdver 0.9
+
+import com.robotraconteur.uuid
+
+using com.robotraconteur.uuid.UUID
+
+struct Identifier
+	field string name
+	field UUID uuid
+end

@@ -2,14 +2,12 @@ service com.robotraconteur.servo
 
 stdver 0.9
 
-import com.robotraconteur.uuid
 import com.robotraconteur.sensordata
 import com.robotraconteur.device
 import com.robotraconteur.signal
 import com.robotraconteur.param
 import com.robotraconteur.robotics.joints
 
-using com.robotraconteur.uuid.UUID
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.signal.SignalInfo
