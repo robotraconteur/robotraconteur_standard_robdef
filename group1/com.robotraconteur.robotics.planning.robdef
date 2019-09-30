@@ -6,14 +6,19 @@ import com.robotraconteur.geometry
 import com.robotraconteur.robotics.robot
 import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.geometry.shapes
+import com.robotraconteur.uuid
 
 using com.robotraconteur.geometry.NamedTransform
 using com.robotraconteur.geometry.NamedPose
+using com.robotraconteur.geometry.Pose
 using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.Vector6
+using com.robotraconteur.geometry.Box
 using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.robotics.robot.RobotInfo
 using com.robotraconteur.robotics.robot.RobotState
 using com.robotraconteur.geometry.shapes.ShapeObject
+using com.robotraconteur.uuid.UUID
 
 enum PlannerStatusCode
 	is_not_configured = -2,
@@ -24,17 +29,97 @@ enum PlannerStatusCode
 	success = 3	
 end
 
+enum ConstraintType
+	default = 0,
+	constraint,
+	cost	
+end
+
 struct EnvState
 	field double[]{string} joints
 	field NamedTransform{string} transforms
 	field varvalue{string} extended
 end
 
+struct DynamicCartesionPoseConstraint
+	field ConstraintType constraint_type
+	field string target
+	field string link
+	field Pose tcp
+	field Pose target_tcp
+	field Vector6 coeffs	
+end
+
+struct CartesianPoseConstraint
+	field ConstraintType constraint_type
+	field string link
+	field Pose tcp
+	field Pose target_tcp
+	field Vector6 coeffs	
+end
+
+struct CartesionVelocityConstraint
+	field ConstraintType constraint_type
+	field string link
+	field double max_displacement
+end
+
+struct JointPositionConstraint
+	field ConstraintType constraint_type
+	field double[] targets
+	field double[] upper_tols
+	field double[] lower_tols
+	field double[] coeffs	
+end
+
+struct JointVelocityConstraint
+	field ConstraintType constraint_type
+	field double[] targets
+	field double[] upper_tols
+	field double[] lower_tols
+	field double[] coeffs	
+end
+
+struct JointAccelerationConstraint
+	field ConstraintType constraint_type
+	field double[] targets
+	field double[] upper_tols
+	field double[] lower_tols
+	field double[] coeffs	
+end
+
+struct JointJerkConstraint
+	field ConstraintType constraint_type
+	field double[] targets
+	field double[] upper_tols
+	field double[] lower_tols
+	field double[] coeffs	
+end
+
+struct JsonEncodedConstraint
+	field string json_constraint
+end
+
+struct PlanningRequestWaypointConstraints
+	field varvalue{list} constraints
+	field varvalue{string} extended
+end
+
+struct PlanningRequestTrajectoryConstraints
+	field varvalue{list} constraints
+	field varvalue{string} extended
+end
+
 struct PlanningRequest
-	field string name
+	field string device_name
+	field UUID device_uuid
+	field string planner_name
+	field UUID planner_uuid
+	field Box workspace_bounds
 	field EnvState start_state
-	field string config
-	field string config_format
+	field PlanningRequestWaypointConstraints{list} waypoints
+	field PlanningRequestTrajectoryConstraints{list} trajectory_constraints
+	field varvalue{string} planner_specific
 	field varvalue{string} extended
 end
 
