@@ -29,94 +29,40 @@ enum PlannerStatusCode
 	success = 3	
 end
 
-enum ConstraintType
-	default = 0,
-	constraint,
-	cost	
-end
-
 struct EnvState
 	field double[]{string} joints
 	field NamedTransform{string} transforms
 	field varvalue{string} extended
 end
 
-struct DynamicCartesionPoseConstraint
-	field ConstraintType constraint_type
-	field string target
-	field string link
-	field Pose tcp
-	field Pose target_tcp
-	field Vector6 coeffs	
+struct JointWaypoint
+	field double[] joint_positions
+	field double[] coeffs
+	field bool is_critical
 end
 
-struct CartesianPoseConstraint
-	field ConstraintType constraint_type
-	field string link
-	field Pose tcp
-	field Pose target_tcp
-	field Vector6 coeffs	
+struct CartesianWaypoint
+	field Pose cartesion_position
+	field double[] coeffs
+	field bool is_critical
 end
 
-struct CartesionVelocityConstraint
-	field ConstraintType constraint_type
-	field string link
-	field double max_displacement
-end
-
-struct JointPositionConstraint
-	field ConstraintType constraint_type
-	field double[] targets
-	field double[] upper_tols
-	field double[] lower_tols
-	field double[] coeffs	
-end
-
-struct JointVelocityConstraint
-	field ConstraintType constraint_type
-	field double[] targets
-	field double[] upper_tols
-	field double[] lower_tols
-	field double[] coeffs	
-end
-
-struct JointAccelerationConstraint
-	field ConstraintType constraint_type
-	field double[] targets
-	field double[] upper_tols
-	field double[] lower_tols
-	field double[] coeffs	
-end
-
-struct JointJerkConstraint
-	field ConstraintType constraint_type
-	field double[] targets
-	field double[] upper_tols
-	field double[] lower_tols
-	field double[] coeffs	
-end
-
-struct JsonEncodedConstraint
-	field string json_constraint
-end
-
-struct PlanningRequestWaypointConstraints
-	field varvalue{list} constraints
-	field varvalue{string} extended
-end
-
-struct PlanningRequestTrajectoryConstraints
-	field varvalue{list} constraints
-	field varvalue{string} extended
+struct JointTolerancedWaypoint
+	field double[] joint_positions
+	field double[] lower_tolerance
+	field double[] upper_tolerance
+	field double[] coeffs
+	field bool is_critical
 end
 
 struct PlanningRequest
 	field Identifier device
-	field Identifier planner	
 	field Box workspace_bounds
-	field EnvState start_state
-	field PlanningRequestWaypointConstraints{list} waypoints
-	field PlanningRequestTrajectoryConstraints{list} trajectory_constraints
+	field varvalue start_waypoint
+	field varvalue goal_waypoint
+	field varvalue{list} intermediate_waypoints
+	field bool collision_check
+	field double collision_safety_margin
 	field varvalue{string} planner_specific
 	field varvalue{string} extended
 end
