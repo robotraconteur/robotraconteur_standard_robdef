@@ -5,6 +5,7 @@ stdver 0.9
 import com.robotraconteur.geometry
 import com.robotraconteur.identifier
 import com.robotraconteur.color
+import com.robotraconteur.resource
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Pose
@@ -12,6 +13,7 @@ using com.robotraconteur.geometry.NamedPose
 using com.robotraconteur.geometry.SpatialInertia
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.color.ColorRGBA
+using com.robotraconteur.resource.ResourceIdentifier
 
 struct Box
 	field double x
@@ -45,7 +47,7 @@ struct Mesh
 end
 
 struct MeshFromResource
-	field Identifier mesh_resource	
+	field ResourceIdentifier mesh_resource	
 end
 
 struct ShapeObject

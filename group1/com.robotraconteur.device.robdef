@@ -3,8 +3,10 @@ service com.robotraconteur.device
 stdver 0.9
 
 import com.robotraconteur.identifier
+import com.robotraconteur.resource
 
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.resource.ResourceIdentifier
 
 struct DeviceOption
 	field Identifier option_identifier
@@ -19,6 +21,6 @@ struct DeviceInfo
 	field string serial_number
 	field Identifier{list} device_classes_uuid
 	field string user_description
-	field Identifier description_resource_uuid
+	field ResourceIdentifier description_resource
 	field varvalue{string} extended
 end

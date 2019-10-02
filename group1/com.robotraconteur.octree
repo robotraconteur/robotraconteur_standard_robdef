@@ -4,9 +4,11 @@ stdver 0.9
 
 import com.robotraconteur.sensordata
 import com.robotraconteur.identifier
+import com.robotraconteur.resource
 
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.resource.ResourceIdentifier
 
 enum OcTreeEncoding
 	unknown=0,
@@ -35,5 +37,5 @@ struct OcTreePart
 end
 
 struct OcTreeResource
-	field Identifier octree_resource	
+	field ResourceIdentifier octree_resource	
 end

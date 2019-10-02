@@ -4,9 +4,11 @@ stdver 0.9
 
 import com.robotraconteur.sensordata
 import com.robotraconteur.identifier
+import com.robotraconteur.resource
 
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.resource.ResourceIdentifier
 
 enum ImageEncoding
     unknown = 0,
@@ -129,5 +131,5 @@ struct FreeformDepthImage
 end
 
 struct ImageResource
-	field Identifier image_resource_uuid	
+	field ResourceIdentifier image_resource	
 end

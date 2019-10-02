@@ -10,8 +10,19 @@ using com.robotraconteur.uuid.UUID
 using com.robotraconteur.datetime.DateTimeUTC
 using com.robotraconteur.identifier.Identifier
 
+struct ResourceIdentifier
+	field Identifier bucket
+	field string key
+end
+
+struct BucketInfo
+	field Identifier identifier
+	field string{list} keys
+end
+
 struct ResourceInfo
-    field Identifier identifier  
+    field ResourceIdentifier identifier
+	field string key
     field DateTimeUTC created
     field DateTimeUTC modified
     field uint64 total_size
@@ -31,19 +42,20 @@ struct ResourcePart
 end
 
 object ResourceReadOnlyStorage
-    property ResourceInfo{string} resource_info
-	function ResourcePart{generator} resource_get(Identifier identifier)
-    function ResourcePart{generator} resource_get_string(string name)    
-    function ResourcePart{generator} resource_get_uuid(UUID uuid)    
+    property BucketInfo{list} resource_bucket_info
+	function ResourceInfo resource_get_info(ResourceIdentifier identifier)	
+	function ResourcePart{generator} resource_get(ResourceIdentifier identifier)
+	function ResourcePart{generator} resource_get_all(Identifier bucket_identifier)
 end
 
 object ResourceStorage
     implements ResourceReadOnlyStorage
-    property ResourceInfo{string} resource_info
-	function ResourcePart{generator} resource_get(Identifier identifier)
-    function ResourcePart{generator} resource_get_string(string name)
-	function ResourcePart{generator} resource_get_uuid(UUID uuid)
-	function void resource_set(Identifier identifier, bool overrite, ResourcePart{generator} resource)
-    function void resource_set_string(string name, bool overrite, ResourcePart{generator} resource)
-    function void resource_set_uuid(UUID uuid, bool overrite, ResourcePart{generator} resource)
+    property BucketInfo{list} resource_bucket_info
+	function ResourceInfo resource_get_info(ResourceIdentifier identifier)
+	function ResourcePart{generator} resource_get(ResourceIdentifier identifier)
+	function ResourcePart{generator} resource_get_all(Identifier bucket_identifier)
+	function void resource_bucket_add(Identifier bucket_identifier)
+	function void resource_bucket_delete(Identifier bucket_identifier)
+	function void resource_set(ResourceIdentifier identifier, bool overrite, ResourcePart{generator} resource)
+	function void resource_delete(ResourceIdentifier identifier)
 end
