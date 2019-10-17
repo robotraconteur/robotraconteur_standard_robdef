@@ -191,7 +191,7 @@ object Robot
     function void halt() [urgent,nolock]
 	property double speed_ratio
     function void jog_joint(double[] joint_position, double[] max_velocity, bool relative, bool wait)
-	function void jog_cartesian(Pose[] target_pose, SpatialVelocity[] max_velocity, bool relative, bool wait)
+	function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
     function TrajectoryStatus{generator} execute_trajectory(JointTrajectory trajectory)
     wire RobotState robot_state [readonly,nolock]
 	wire AdvancedRobotState advanced_robot_state [readonly,nolock]
