@@ -21,105 +21,105 @@ using com.robotraconteur.geometry.shapes.ShapeObject
 using com.robotraconteur.identifier.Identifier
 
 enum PlannerStatusCode
-	is_not_configured = -2,
-	failure = -1,
-	unknown = 0,
-	is_configured = 1,
-	running = 2,
-	success = 3	
+    is_not_configured = -2,
+    failure = -1,
+    unknown = 0,
+    is_configured = 1,
+    running = 2,
+    success = 3	
 end
 
 struct EnvState
-	field double[]{string} joints
-	field NamedTransform{string} transforms
-	field varvalue{string} extended
+    field double[]{string} joints
+    field NamedTransform{string} transforms
+    field varvalue{string} extended
 end
 
 struct JointWaypoint
-	field double[] joint_positions
-	field double[] coeffs
-	field bool is_critical
+    field double[] joint_positions
+    field double[] coeffs
+    field bool is_critical
 end
 
 struct CartesianWaypoint
-	field Pose cartesion_position
-	field double[] coeffs
-	field bool is_critical
+    field Pose cartesion_position
+    field double[] coeffs
+    field bool is_critical
 end
 
 struct JointTolerancedWaypoint
-	field double[] joint_positions
-	field double[] lower_tolerance
-	field double[] upper_tolerance
-	field double[] coeffs
-	field bool is_critical
+    field double[] joint_positions
+    field double[] lower_tolerance
+    field double[] upper_tolerance
+    field double[] coeffs
+    field bool is_critical
 end
 
 struct PlanningRequest
-	field Identifier device
-	field Identifier planner_algorithm
-	field Identifier filter_algorithm
-	field Box workspace_bounds
-	field varvalue start_waypoint
-	field varvalue goal_waypoint
-	field varvalue{list} intermediate_waypoints
-	field bool collision_check
-	field double collision_safety_margin
-	field varvalue{string} planner_specific
-	field varvalue{string} filter_specific
-	field varvalue{string} extended
+    field Identifier device
+    field Identifier planner_algorithm
+    field Identifier filter_algorithm
+    field Box workspace_bounds
+    field varvalue start_waypoint
+    field varvalue goal_waypoint
+    field varvalue{list} intermediate_waypoints
+    field bool collision_check
+    field double collision_safety_margin
+    field varvalue{string} planner_specific
+    field varvalue{string} filter_specific
+    field varvalue{string} extended
 end
 
 struct PlanningResponse
-	field PlannerStatusCode status_code
-	field JointTrajectory joint_trajectory
-	field varvalue{string} extended
+    field PlannerStatusCode status_code
+    field JointTrajectory joint_trajectory
+    field varvalue{string} extended
 end
 
 struct ContactResult
-	field double distance
-	field uint8 shape1_type_id
-	field uint8 shape2_type_id
-	field string shape1_name
-	field string shape2_name
-	field uint32 shape1_subid
-	field uint32 shape2_subid
-	field Vector3 shape1_nearest_point
-	field Vector3 shape2_nearest_point
-	field Vector3 normal
-	field Vector3 shape1_cc_nearest_points
-	field Vector3 shape2_cc_nearest_points
-	field double cc_time
-	field uint8 cc_type
-	field varvalue{string} extended
+    field double distance
+    field uint8 shape1_type_id
+    field uint8 shape2_type_id
+    field string shape1_name
+    field string shape2_name
+    field uint32 shape1_subid
+    field uint32 shape2_subid
+    field Vector3 shape1_nearest_point
+    field Vector3 shape2_nearest_point
+    field Vector3 normal
+    field Vector3 shape1_cc_nearest_points
+    field Vector3 shape2_cc_nearest_points
+    field double cc_time
+    field uint8 cc_type
+    field varvalue{string} extended
 end
 
 struct InvKinResult
-	field double[]{list} joints
+    field double[]{list} joints
 end
 
 object Planner
-	function PlanningResponse{generator} plan(PlanningRequest request)
-	
-	function ContactResult{list} compute_contacts(EnvState state)
-	
-	function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
+    function PlanningResponse{generator} plan(PlanningRequest request)
+    
+    function ContactResult{list} compute_contacts(EnvState state)
+    
+    function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
 end
 
 object PlanningScene
-	property EnvState env_state
+    property EnvState env_state
 
-	property RobotInfo{string} robots [readonly]
-	property RobotState{string} robot_states [readonly]
-	property ShapeObject{string} shapes [readonly]
-	property NamedTransform{string} transforms [readonly]
-	
-	function void add_robot(string name, RobotInfo robot, NamedPose pose)
-	function void update_robot_info(string robot_name, RobotInfo robot)
-	function void update_robot_state(string robot_name, RobotState robot_state)
-	
-	function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
-	
-	function void remove_item(string name)	
-	function void move_item(string name, NamedPose transform)
+    property RobotInfo{string} robots [readonly]
+    property RobotState{string} robot_states [readonly]
+    property ShapeObject{string} shapes [readonly]
+    property NamedTransform{string} transforms [readonly]
+    
+    function void add_robot(string name, RobotInfo robot, NamedPose pose)
+    function void update_robot_info(string robot_name, RobotInfo robot)
+    function void update_robot_state(string robot_name, RobotState robot_state)
+    
+    function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
+    
+    function void remove_item(string name)	
+    function void move_item(string name, NamedPose transform)
 end

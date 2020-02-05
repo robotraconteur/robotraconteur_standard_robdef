@@ -9,30 +9,30 @@ using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.resource.ResourceIdentifier
 
 struct DeviceOption
-	field Identifier option_identifier
-	field varvalue{string} suboptions	
+    field Identifier option_identifier
+    field varvalue{string} suboptions	
 end
 
 struct DeviceCapability
-	field Identifier capability_identifier
-	field varvalue{string} subcapabilities	
+    field Identifier capability_identifier
+    field varvalue{string} subcapabilities	
 end
 
 struct DeviceClass
-	field Identifier class_identifier
-	field string subclass	
+    field Identifier class_identifier
+    field string subclass	
 end
 
 struct DeviceInfo
-	field Identifier device
-	field Identifier manufacturer
+    field Identifier device
+    field Identifier manufacturer
     field Identifier model	
-	field DeviceOption{list} options
-	field DeviceCapability{list} capabilities
-	field string serial_number
-	field DeviceClass{list} device_classes
-	field string user_description
-	field ResourceIdentifier description_resource
-	field string{list} implemented_types
-	field varvalue{string} extended
+    field DeviceOption{list} options
+    field DeviceCapability{list} capabilities
+    field string serial_number
+    field DeviceClass{list} device_classes
+    field string user_description
+    field ResourceIdentifier description_resource
+    field string{list} implemented_types
+    field varvalue{string} extended
 end

@@ -9,12 +9,12 @@ using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 
 struct ParameterInfo
-	field Identifier parameter
-	field DataType data_type
-	field string description
-	field varvalue default_value
-	field varvalue min_value
-	field varvalue max_value
-	field varvalue{string} enum_values
-	field varvalue{string} extended
+    field Identifier parameter
+    field DataType data_type
+    field string description
+    field varvalue default_value
+    field varvalue min_value
+    field varvalue max_value
+    field varvalue{string} enum_values
+    field varvalue{string} extended
 end

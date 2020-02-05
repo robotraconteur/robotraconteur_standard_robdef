@@ -3,30 +3,30 @@ service com.robotraconteur.color
 stdver 0.9
 
 namedarray ColorRGBA
-	field double r
-	field double g
-	field double b
-	field double a
+    field double r
+    field double g
+    field double b
+    field double a
 end
 
 namedarray ColorRGBAf
-	field single r
-	field single g
-	field single b
-	field single a
+    field single r
+    field single g
+    field single b
+    field single a
 end
 
 namedarray ColorRGBAu
-	field uint8 r
-	field uint8 g
-	field uint8 b
-	field uint8 a
+    field uint8 r
+    field uint8 g
+    field uint8 b
+    field uint8 a
 end
 
 namedarray ColorRGBAh
-	field uint16 r
-	field uint16 g
-	field uint16 b
-	field uint16 a
+    field uint16 r
+    field uint16 g
+    field uint16 b
+    field uint16 a
 end
 

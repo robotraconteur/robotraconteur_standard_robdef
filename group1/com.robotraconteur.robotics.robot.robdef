@@ -34,114 +34,114 @@ using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
 
 enum RobotType
-	unknown = 0,
-	serial = 1,
-	dual_arm,
-	differential_drive,
-	planar,
-	floating,
-	freeform,
-	other
+    unknown = 0,
+    serial = 1,
+    dual_arm,
+    differential_drive,
+    planar,
+    floating,
+    freeform,
+    other
 end
 
 enum RobotCommandMode
-	invalid_state = -1,
+    invalid_state = -1,
     halt = 0,
     jog,
     trajectory,
     position_command,
     velocity_command,
-	homing
+    homing
 end
 
 enum RobotOperationalMode
-	undefined = 0,
-	manual_reduced_speed,
-	manual_full_speed,
-	cobot,
-	auto
+    undefined = 0,
+    manual_reduced_speed,
+    manual_full_speed,
+    cobot,
+    auto
 end
 
 enum RobotControllerState
-	undefined = 0,
-	init = 1,
-	motor_on,
-	motor_off,
-	guard_stop,
-	emergency_stop,
-	emergency_stop_reset	
+    undefined = 0,
+    init = 1,
+    motor_on,
+    motor_off,
+    guard_stop,
+    emergency_stop,
+    emergency_stop_reset	
 end
 
 enum RobotErrorLevel
     undefined = 0,
-	debug = 1,
-	info,
-	warning,
-	recoverable_error,
-	safety_violation_error,
-	fatal_error,
-	emergency_error,
-	catastrophic_error
+    debug = 1,
+    info,
+    warning,
+    recoverable_error,
+    safety_violation_error,
+    fatal_error,
+    emergency_error,
+    catastrophic_error
 end
 
 enum RobotErrorCategory
     unknown = 0,
-	invalid_operation,
-	invalid_argument,
-	invalid_command,
-	invalid_mode,
-	hardware_fault,
-	software_fault,
-	communication_failure,
-	kinematic_error,
-	dynamic_error,
-	overload_error,
-	command_error,
-	user_software_error,
-	collision_imminent,
-	collision_occured,
-	sensor_failure,
-	sensor_out_of_range,
-	safety_violation,
-	workspace_violation,
-	workspace_intrusion
+    invalid_operation,
+    invalid_argument,
+    invalid_command,
+    invalid_mode,
+    hardware_fault,
+    software_fault,
+    communication_failure,
+    kinematic_error,
+    dynamic_error,
+    overload_error,
+    command_error,
+    user_software_error,
+    collision_imminent,
+    collision_occured,
+    sensor_failure,
+    sensor_out_of_range,
+    safety_violation,
+    workspace_violation,
+    workspace_intrusion
 end
 
 enum RobotCapabilities
-	unknown = 0,
-	jog_command = 0x1,
-	trajectory_command = 0x2,
-	position_command = 0x4,
-	velocity_command = 0x8,
-	homing_command = 0x10,
-	software_reset_errors = 0x20,
-	software_enable = 0x40
+    unknown = 0,
+    jog_command = 0x1,
+    trajectory_command = 0x2,
+    position_command = 0x4,
+    velocity_command = 0x8,
+    homing_command = 0x10,
+    software_reset_errors = 0x20,
+    software_enable = 0x40
 end
 
 enum RobotStateFlags
     unknown = 0,
-	error = 0x1,
-	fatal_error = 0x2,
-	estop = 0x4,
-	estop_button1 = 0x8,
-	estop_button2 = 0x10,
-	estop_button3 = 0x20,
-	estop_button4 = 0x40,
-	estop_guard1 = 0x80,
-	estop_guard2 = 0x100,
-	estop_guard3 = 0x200,
-	estop_guard4 = 0x400,
-	estop_software = 0x800,
-	estop_fault = 0x1000,
-	estop_internal = 0x2000,
-	estop_other = 0x4000,
-	estop_released = 0x8000,
-	enabling_switch = 0x10000,	
-	enabled = 0x20000,
-	ready = 0x40000,
-	homed = 0x80000,
-	homing_required = 0x100000,
-	communication_failure = 0x200000
+    error = 0x1,
+    fatal_error = 0x2,
+    estop = 0x4,
+    estop_button1 = 0x8,
+    estop_button2 = 0x10,
+    estop_button3 = 0x20,
+    estop_button4 = 0x40,
+    estop_guard1 = 0x80,
+    estop_guard2 = 0x100,
+    estop_guard3 = 0x200,
+    estop_guard4 = 0x400,
+    estop_software = 0x800,
+    estop_fault = 0x1000,
+    estop_internal = 0x2000,
+    estop_other = 0x4000,
+    estop_released = 0x8000,
+    enabling_switch = 0x10000,	
+    enabled = 0x20000,
+    ready = 0x40000,
+    homed = 0x80000,
+    homing_required = 0x100000,
+    communication_failure = 0x200000
 end
 
 struct RobotKinChainInfo
@@ -149,58 +149,58 @@ struct RobotKinChainInfo
     field Vector3[] H
     field Vector3[] P
     field SpatialInertia[] link_inertias
-	field string{list} link_names
+    field string{list} link_names
     field uint32[] joint_numbers
     field ToolInfo current_tool
-	field PayloadInfo current_payload
+    field PayloadInfo current_payload
     field varvalue{string} extended
 end
 
 struct RobotInfo
     field DeviceInfo device_info	
-	field RobotType robot_type
-	field Identifier{list} robot_type_ex    
+    field RobotType robot_type
+    field Identifier{list} robot_type_ex    
     field JointInfo{list} joint_info
     field RobotKinChainInfo{list} chains
-	field uint32 robot_capabilities
+    field uint32 robot_capabilities
     field SignalInfo{string} signal_info
-	field ParameterInfo{string} parameter_info
-	field Identifier parent_device
-	field NamedPose robot_origin_pose
+    field ParameterInfo{string} parameter_info
+    field Identifier parent_device
+    field NamedPose robot_origin_pose
     field varvalue{string} extended    
 end
 
 struct RobotState
     field uint64 seqno
     field RobotCommandMode command_mode
-	field RobotOperationalMode operational_mode
-	field RobotControllerState controller_state
-	field uint64 robot_state_flags
+    field RobotOperationalMode operational_mode
+    field RobotControllerState controller_state
+    field uint64 robot_state_flags
     field double[] joint_position
     field double[] joint_velocity
     field double[] joint_effort    
     field double[] joint_position_command
     field double[] joint_velocity_command
-	field Pose[] kin_chain_tcp
-	field SpatialVelocity[] kin_chain_tcp_vel
+    field Pose[] kin_chain_tcp
+    field SpatialVelocity[] kin_chain_tcp_vel
     field bool trajectory_running
 end
 
 struct AdvancedRobotState
     field uint64 seqno
     field RobotCommandMode command_mode
-	field RobotOperationalMode operational_mode
-	field RobotControllerState controller_state
-	field uint64 robot_state_flags
+    field RobotOperationalMode operational_mode
+    field RobotControllerState controller_state
+    field uint64 robot_state_flags
     field double[] joint_position
     field double[] joint_velocity	
     field double[] joint_effort    
     field double[] joint_position_command
     field double[] joint_velocity_command
-	field uint8[] joint_position_units
-	field uint8[] joint_effort_units
-	field Pose[] kin_chain_tcp
-	field SpatialVelocity[] kin_chain_tcp_vel
+    field uint8[] joint_position_units
+    field uint8[] joint_effort_units
+    field Pose[] kin_chain_tcp
+    field SpatialVelocity[] kin_chain_tcp_vel
     field bool trajectory_running
 end
 
@@ -213,37 +213,37 @@ struct RobotJointCommand
     field uint64 seqno
     field uint64 status_seqno
     field double[] command
-	# Use JointUnits values
-	field uint8[] units
+    # Use JointUnits values
+    field uint8[] units
 end
 
 object Robot
     property RobotInfo robot_info [readonly,nolockread]
     property RobotCommandMode command_mode [nolockread]
-	property RobotOperationalMode operational_mode [readonly, nolock]
-	property RobotControllerState controller_state [readonly, nolock]
+    property RobotOperationalMode operational_mode [readonly, nolock]
+    property RobotControllerState controller_state [readonly, nolock]
     function void halt() [urgent]	
-	function void enable()
-	function void disable() [urgent]
-	function void reset_errors()
-	property double speed_ratio
+    function void enable()
+    function void disable() [urgent]
+    function void reset_errors()
+    property double speed_ratio
     function void jog_joint(double[] joint_position, double[] max_velocity, bool relative, bool wait)
-	function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
+    function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
     function TrajectoryStatus{generator} execute_trajectory(JointTrajectory trajectory)
     wire RobotState robot_state [readonly,nolock]
-	wire AdvancedRobotState advanced_robot_state [readonly,nolock]
-	pipe RobotStateSensorData robot_state_sensor_data [readonly,nolock]
+    wire AdvancedRobotState advanced_robot_state [readonly,nolock]
+    pipe RobotStateSensorData robot_state_sensor_data [readonly,nolock]
     property uint32 update_downsample [perclient]
     property double update_rate [readonly]
     wire RobotJointCommand position_command [writeonly]
     wire RobotJointCommand velocity_command [writeonly]
-	function ActionStatusCode{generator} home()
+    function ActionStatusCode{generator} home()
     function double getf_signal(string signal_name)
     function void setf_signal(string signal_name, double value)
     function void tool_attached(int32 chain, ToolInfo tool)
     function void tool_detached(int32 chain, string tool_name)
-	function void payload_attached(int32 chain, PayloadInfo payload, Pose pose)
-	function void payload_detached(int32 chain, string payload_name)
+    function void payload_attached(int32 chain, PayloadInfo payload, Pose pose)
+    function void payload_detached(int32 chain, string payload_name)
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
 end

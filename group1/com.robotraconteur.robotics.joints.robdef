@@ -76,16 +76,16 @@ enum JointType
     revolute,
     continuous,
     prismatic,
-	wheel,
-	screw,
-	other,
-	# Compound joint types
-	revolute2,
-	universal,
-	ball,
-	planar,
+    wheel,
+    screw,
+    other,
+    # Compound joint types
+    revolute2,
+    universal,
+    ball,
+    planar,
     floating,
-	other_compound	
+    other_compound	
 end
 
 struct JointLimits
@@ -96,11 +96,11 @@ struct JointLimits
 end
 
 struct JointInfo
-	field Identifier joint_identifier
-	field JointType joint_type
-	field JointLimits joint_limits
-	field JointPositionUnits default_units
-	field bool passive
+    field Identifier joint_identifier
+    field JointType joint_type
+    field JointLimits joint_limits
+    field JointPositionUnits default_units
+    field bool passive
 end
 
 pod JointPosition
@@ -126,7 +126,7 @@ pod DualArmJointPosition
 end
 
 pod DiffDriveWheelAngle
-	field double[2] positions
+    field double[2] positions
     field uint8[2] units
 end
 
@@ -140,7 +140,7 @@ end
 struct MultiRobotPosition
     field JointPosition{string} robots
     field DualArmJointPosition{string} dual_arm_robots
-	field DiffDriveWheelAngle{string} diffdrive_robots
+    field DiffDriveWheelAngle{string} diffdrive_robots
     field FreeformRobotPosition{string} freeform_robots	
     field MultiRobotPosition{string} multi_robots
 end
@@ -156,7 +156,7 @@ pod DualArmJointVelocity
 end
 
 pod DiffDriveWheelAngularVelocity
-	field double[2] positions
+    field double[2] positions
     field uint8[2] units
 end
 
@@ -169,7 +169,7 @@ end
 struct MultiRobotJointVelocity
     field JointVelocity{string} robots
     field DualArmJointVelocity{string} dual_arm_robots
-	field DiffDriveWheelAngularVelocity{string} diffdrive_robots
+    field DiffDriveWheelAngularVelocity{string} diffdrive_robots
     field FreeformRobotJointVelocity{string} freeform_robots
     field MultiRobotJointVelocity{string} multi_robots
 end
@@ -185,7 +185,7 @@ pod DualArmJointEffort
 end
 
 pod DiffDriveWheelEffort
-	field double[2] positions
+    field double[2] positions
     field uint8[2] units
 end
 
@@ -198,7 +198,7 @@ end
 struct MultiRobotJointEffort
     field JointEffort{string} robots
     field DualArmJointEffort{string} dual_arm_robots
-	field DiffDriveWheelEffort diffdrive_robots
+    field DiffDriveWheelEffort diffdrive_robots
     field FreeformRobotJointEffort{string} freeform_robots
     field MultiRobotJointEffort{string} multi_robots
 end
@@ -243,7 +243,7 @@ end
 struct MultiRobotJointState
     field JointState{string} robots
     field DualArmJointState{string} dual_arm_robots
-	field DiffDriveWheelState{string} diffdrive_robots
+    field DiffDriveWheelState{string} diffdrive_robots
     field FreeformRobotJointState{string} freeform_robots
     field MultiRobotJointState{string} multi_robots
 end

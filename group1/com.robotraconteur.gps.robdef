@@ -9,21 +9,21 @@ using com.robotraconteur.sensor.SensorInfo
 using com.robotraconteur.sensor.SensorData
 
 struct GpsState
-	field double altitude
-	field double latitude_deg
-	field double longitude_deg
-	field double velocity_east
-	field double velocity_north
-	field double velocity_up
+    field double altitude
+    field double latitude_deg
+    field double longitude_deg
+    field double velocity_east
+    field double velocity_north
+    field double velocity_up
 end struct
 
 object GpsSensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire GpsState gps_state [readonly,nolock]	
+    wire GpsState gps_state [readonly,nolock]	
 end

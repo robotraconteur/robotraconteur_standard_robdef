@@ -8,37 +8,37 @@ using com.robotraconteur.uuid.UUID
 constant string EPOCH_ISO8601 "1970-01-01T00:00:00Z"
 
 enum ClockTypeCode
-	unknown = 0,
-	default,
-	system_rtc_clock,
-	system_ntp_clock,
-	system_ptp_clock,
-	system_other_clock,
-	sim_clock_realtime,
-	sim_clock_scaled,
-	aux_0 = 0x1000,
-	aux_1,
-	aux_2,
-	aux_3,
-	aux_4,
-	aux_5,
-	aux_6,
-	aux_7
+    unknown = 0,
+    default,
+    system_rtc_clock,
+    system_ntp_clock,
+    system_ptp_clock,
+    system_other_clock,
+    sim_clock_realtime,
+    sim_clock_scaled,
+    aux_0 = 0x1000,
+    aux_1,
+    aux_2,
+    aux_3,
+    aux_4,
+    aux_5,
+    aux_6,
+    aux_7
 end
 
 pod ClockInfo
-	field int32 clock_type
-	field UUID clock_uuid
+    field int32 clock_type
+    field UUID clock_uuid
 end
 
 pod DateTimeUTC
-	field ClockInfo clock_info	
+    field ClockInfo clock_info	
     field int64 seconds
     field int32 nanoseconds
 end
 
 struct DateTimeLocal
-	field ClockInfo clock_info
+    field ClockInfo clock_info
     field int64 seconds
     field int32 nanoseconds
     field int32 utc_offset_seconds
@@ -46,7 +46,7 @@ struct DateTimeLocal
 end
 
 pod Duration
-	field ClockInfo clock_info
+    field ClockInfo clock_info
     field int64 seconds
     field int32 nanoseconds
 end

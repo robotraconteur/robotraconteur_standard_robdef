@@ -19,27 +19,27 @@ using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensor.SensorData
 
 struct PointCloudSensorInfo
-	field DeviceInfo device_info
-	field Point range_min
-	field Point range_max
-	field Vector3 resolution
-	field double update_rate
-	field ParameterInfo{string} param_info
-	field varvalue{string} extended
+    field DeviceInfo device_info
+    field Point range_min
+    field Point range_max
+    field Vector3 resolution
+    field double update_rate
+    field ParameterInfo{string} param_info
+    field varvalue{string} extended
 end
 
 struct PointCloudSensorData
-	field SensorData sensor_data
-	field PointCloud point_cloud
+    field SensorData sensor_data
+    field PointCloud point_cloud
 end
 
 struct PointCloudPartSensorData
-	field SensorData sensor_data
-	field PointCloudPart point_cloud
+    field SensorData sensor_data
+    field PointCloudPart point_cloud
 end
 
 object PointCloudSensor
-	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
     function varvalue getf_param(string param_name)
@@ -47,7 +47,7 @@ object PointCloudSensor
 end
 
 object PointCloudPartSensor
-	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
     function varvalue getf_param(string param_name)
@@ -56,31 +56,31 @@ end
 
 
 struct PointCloud2SensorData
-	field SensorData sensor_data
-	field PointCloud2 point_cloud
+    field SensorData sensor_data
+    field PointCloud2 point_cloud
 end
 
 struct PointCloud2PartSensorData
-	field SensorData sensor_data
-	field PointCloud2Part point_cloud
+    field SensorData sensor_data
+    field PointCloud2Part point_cloud
 end
 
 object PointCloud2Sensor
     implements PointCloudSensor
-	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
-	pipe PointCloud2SensorData point_cloud2_sensor_data [readonly]
+    pipe PointCloud2SensorData point_cloud2_sensor_data [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)    
 end
 
 object PointCloud2PartSensor
     implements PointCloudPartSensor
-	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
-	pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]  
+    pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]  
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)    
 end

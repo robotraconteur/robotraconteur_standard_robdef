@@ -12,14 +12,14 @@ using com.robotraconteur.geometry.Pose
 
 struct SensorDataHeader
     field DateTimeUTC ts
-	field uint64 seqno
-	field SensorDataSourceInfo source_info	
+    field uint64 seqno
+    field SensorDataSourceInfo source_info	
 end
 
 struct SensorDataSourceInfo
-	field Identifier source
-	field Pose source_world_pose
-	field string source_config_nonce
-	field varvalue{string} source_params
-	field varvalue{string} extended
+    field Identifier source
+    field Pose source_world_pose
+    field string source_config_nonce
+    field varvalue{string} source_params
+    field varvalue{string} extended
 end

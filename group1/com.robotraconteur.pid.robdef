@@ -3,11 +3,11 @@ service com.robotraconteur.pid
 stdver 0.9
 
 struct PIDParam
-	field double p
-	field double i
-	field double d
-	field double imax
-	field double imin
-	field double cmdMax
-	field double cmdMin
+    field double p
+    field double i
+    field double d
+    field double imax
+    field double imin
+    field double cmdMax
+    field double cmdMin
 end struct

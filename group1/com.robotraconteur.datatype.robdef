@@ -4,58 +4,58 @@ stdver 0.9
 
 enum DataTypeCode
     void_c = 0,
-	double_c,
-	single_c,
-	int8_c,
-	uint8_c,
-	int16_c,
-	uint16_c,
-	int32_c,
-	uint32_c,
-	int64_c,
-	uint64_c,
-	string_c,
-	cdouble_c,
-	csingle_c,
-	bool_c,
-	structure_c = 101,
-	vector_c,
-	dictionary_c,
-	object_c,
-	varvalue_c,
-	varobject_c,	
-	list_c = 108,
-	pod_c,
-	pod_array_c,
-	pod_multidimarray_c,
-	enum_c,
-	namedtype_c,
-	namedarray_c,
-	namedarray_array_c,
-	namedarray_multidimarray_c,
-	multidimarray_c
+    double_c,
+    single_c,
+    int8_c,
+    uint8_c,
+    int16_c,
+    uint16_c,
+    int32_c,
+    uint32_c,
+    int64_c,
+    uint64_c,
+    string_c,
+    cdouble_c,
+    csingle_c,
+    bool_c,
+    structure_c = 101,
+    vector_c,
+    dictionary_c,
+    object_c,
+    varvalue_c,
+    varobject_c,	
+    list_c = 108,
+    pod_c,
+    pod_array_c,
+    pod_multidimarray_c,
+    enum_c,
+    namedtype_c,
+    namedarray_c,
+    namedarray_array_c,
+    namedarray_multidimarray_c,
+    multidimarray_c
 end
 
 enum ArrayTypeCode
     none_c = 0,
-	array_c,
-	multidimarray_c
+    array_c,
+    multidimarray_c
 end
 
 enum ContainerType
     none_c = 0,
-	list_c,
-	map_int32_c,
-	map_string_c,
-	generator_c
+    list_c,
+    map_int32_c,
+    map_string_c,
+    generator_c
 end
 
 struct DataType
     field string name
-	field DataTypeCode type_code
-	field string type_string
-	field ArrayTypeCode array_type_code
-	field bool array_var_len
-	field uint32[] array_len
-	field ContainerType container_type_code
+    field DataTypeCode type_code
+    field string type_string
+    field ArrayTypeCode array_type_code
+    field bool array_var_len
+    field uint32[] array_len
+    field ContainerType container_type_code
 end

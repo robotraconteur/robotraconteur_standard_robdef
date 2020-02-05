@@ -3,7 +3,7 @@ service com.robotraconteur.units
 stdver 0.9
 
 pod SIUnit
-	field double coeff
+    field double coeff
     field int8 m
     field int8 s
     field int8 kg

@@ -16,44 +16,44 @@ using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.resource.ResourceIdentifier
 
 struct Box
-	field double x
-	field double y
-	field double z
+    field double x
+    field double y
+    field double z
 end
 
 struct Sphere
-	field double radius
+    field double radius
 end
 
 struct Cylinder
-	field double height
-	field double radius
+    field double height
+    field double radius
 end
 
 struct Cone
-	field double height
-	field double radius
+    field double height
+    field double radius
 end
 
 namedarray MeshTriangle
-	field uint32 v1
-	field uint32 v2
-	field uint32 v3
+    field uint32 v1
+    field uint32 v2
+    field uint32 v3
 end
 
 struct Mesh
-	field MeshTriangle[] triangles
-	field Point[] vertices	
+    field MeshTriangle[] triangles
+    field Point[] vertices	
 end
 
 struct MeshFromResource
-	field ResourceIdentifier mesh_resource	
+    field ResourceIdentifier mesh_resource	
 end
 
 struct ShapeObject
-	field Identifier name
-	field varvalue{list} shapes
-	field Pose{list} shape_poses
-	field ColorRGBA{list} shape_colors
-	field SpatialInertia inertia
+    field Identifier name
+    field varvalue{list} shapes
+    field Pose{list} shape_poses
+    field ColorRGBA{list} shape_colors
+    field SpatialInertia inertia
 end

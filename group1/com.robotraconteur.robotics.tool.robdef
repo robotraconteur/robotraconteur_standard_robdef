@@ -12,6 +12,6 @@ using com.robotraconteur.geometry.SpatialInertia
 struct ToolInfo
     field DeviceInfo device_info    
     field Transform tcp
-	field SpatialInertia inertia
-	field varvalue{string} extended    
+    field SpatialInertia inertia
+    field varvalue{string} extended    
 end

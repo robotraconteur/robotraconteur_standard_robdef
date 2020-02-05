@@ -18,9 +18,9 @@ namedarray Vector3
 end
 
 namedarray Vector6
-	field double alpha
-	field double beta
-	field double gamma
+    field double alpha
+    field double beta
+    field double gamma
     field double x
     field double y
     field double z
@@ -67,7 +67,7 @@ end
 
 namedarray Plane
     field Vector3 normal
-	field double a
+    field double a
 end
 
 namedarray Transform
@@ -93,13 +93,13 @@ struct NamedPose
 end
 
 struct PoseWithCovariance
-	field Pose pose
-	field double[6,6] covariance
+    field Pose pose
+    field double[6,6] covariance
 end
 
 struct NamedPoseWithCovariance
-	field NamedPose pose
-	field double[6,6] covariance
+    field NamedPose pose
+    field double[6,6] covariance
 end
 
 namedarray Pose2D
@@ -156,5 +156,5 @@ end
 
 struct NamedSpatialInertia
     field Identifier frame
-	field SpatialInertia inertia
+    field SpatialInertia inertia
 end

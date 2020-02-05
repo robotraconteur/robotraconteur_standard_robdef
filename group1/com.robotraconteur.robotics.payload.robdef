@@ -11,6 +11,6 @@ using com.robotraconteur.geometry.SpatialInertia
 
 struct PayloadInfo
     field DeviceInfo device_info    
-	field SpatialInertia inertia
-	field varvalue{string} extended    
+    field SpatialInertia inertia
+    field varvalue{string} extended    
 end

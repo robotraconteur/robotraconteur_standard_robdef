@@ -13,51 +13,51 @@ using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.units.SIUnit
 
 enum SignalType
-	unknown = 0,
-	digital = 1,
-	analog,
-	digital_port,
-	analog_port,
-	vector3,
-	vector6,
-	wrench,
-	pose,
-	transform,
-	other
+    unknown = 0,
+    digital = 1,
+    analog,
+    digital_port,
+    analog_port,
+    vector3,
+    vector6,
+    wrench,
+    pose,
+    transform,
+    other
 end
 
 enum SignalAccessLevel
-	undefined = 0,
-	internal,
-	restricted,
-	readonly,
-	all
+    undefined = 0,
+    internal,
+    restricted,
+    readonly,
+    all
 end
 
 struct SignalInfo
     field Identifier signal
-	field SIUnit{list} units
+    field SIUnit{list} units
     field DataType data_type
-	field SignalType signal_type
-	field SignalAccessLevel access_level
-	field uint32[] address
-	field string user_description
-	field double max_update_rate
-	field varvalue min_value
-	field varvalue max_value
+    field SignalType signal_type
+    field SignalAccessLevel access_level
+    field uint32[] address
+    field string user_description
+    field double max_update_rate
+    field varvalue min_value
+    field varvalue max_value
     field varvalue{string} extended
 end
 
 object Signal
-	property SignalInfo signal_info [readonly,nolock]
-	wire varvalue signal_value [readonly]
-	wire varvalue signal_command [writeonly]
-	property uint32 update_downsample [perclient]
+    property SignalInfo signal_info [readonly,nolock]
+    wire varvalue signal_value [readonly]
+    wire varvalue signal_command [writeonly]
+    property uint32 update_downsample [perclient]
     property double update_rate [readonly]
 end
 
 object SignalDevice
-	property DeviceInfo device_info [readonly,nolock]
-	property SignalInfo{list} signal_info
-	objref Signal{int32} signals	
+    property DeviceInfo device_info [readonly,nolock]
+    property SignalInfo{list} signal_info
+    objref Signal{int32} signals	
 end

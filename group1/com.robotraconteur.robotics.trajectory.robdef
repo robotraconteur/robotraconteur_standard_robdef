@@ -12,14 +12,14 @@ using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
 
 enum InterpolationMode
-	default = 0,
-	joint,
-	linear,
-	cylindrical,
-	spherical,
-	joint_cubic_spline,
-	cubic_spline,
-	custom	
+    default = 0,
+    joint,
+    linear,
+    cylindrical,
+    spherical,
+    joint_cubic_spline,
+    cubic_spline,
+    custom	
 end
 
 struct JointTrajectoryWaypoint
@@ -27,15 +27,15 @@ struct JointTrajectoryWaypoint
     field double[] joint_velocity
     field double[] position_tolerance
     field double[] velocity_tolerance
-	field InterpolationMode interpolation_mode
+    field InterpolationMode interpolation_mode
     field double time_from_start
 end
 
 struct JointTrajectory	
-	field string{list} joint_names
-	field JointPositionUnits{list} joint_units
+    field string{list} joint_names
+    field JointPositionUnits{list} joint_units
     field JointTrajectoryWaypoint{list} waypoints
-	field varvalue{string} extended
+    field varvalue{string} extended
 end
 
 struct TrajectoryStatus
@@ -46,16 +46,16 @@ struct TrajectoryStatus
 end
 
 struct AdvancedJointTrajectoryDeviceWaypoint
-	# Use list for compound joints
-	field double[]{list} joint_position
-	field double[]{list} joint_velocity
-	field double[]{list} joint_acceleration
-	field double[]{list} joint_jerk
-	field double[]{list} joint_effort
-	field double[]{list} position_tolerance
-	field double[]{list} velocity_tolerance
-	field InterpolationMode interpolation_mode
-	field varvalue{string} signals
+    # Use list for compound joints
+    field double[]{list} joint_position
+    field double[]{list} joint_velocity
+    field double[]{list} joint_acceleration
+    field double[]{list} joint_jerk
+    field double[]{list} joint_effort
+    field double[]{list} position_tolerance
+    field double[]{list} velocity_tolerance
+    field InterpolationMode interpolation_mode
+    field varvalue{string} signals
 end
 
 struct AdvancedJointTrajectoryWaypoint
@@ -64,17 +64,17 @@ struct AdvancedJointTrajectoryWaypoint
 end
 
 struct AdvancedJointTrajectoryDevice
-	field Identifier device	
-	field string{list} joint_names
-	field JointPositionUnits{list} joint_units
-	field JointEffortUnits{list} joint_effort_units
-	field varvalue{string} extended
+    field Identifier device	
+    field string{list} joint_names
+    field JointPositionUnits{list} joint_units
+    field JointEffortUnits{list} joint_effort_units
+    field varvalue{string} extended
 end
 
 struct AdvancedJointTrajectory	
-	field AdvancedJointTrajectoryDevice{list} devices
+    field AdvancedJointTrajectoryDevice{list} devices
     field AdvancedJointTrajectoryWaypoint{list} waypoints
-	field varvalue{string} extended
+    field varvalue{string} extended
 end
 
 struct FreeformJointTrajectoryWaypoint
@@ -82,15 +82,15 @@ struct FreeformJointTrajectoryWaypoint
     field varvalue{list} joint_velocity
     field varvalue{list} position_tolerance
     field varvalue{list} velocity_tolerance
-	field string interpolation_mode
-	field varvalue{string} signals
+    field string interpolation_mode
+    field varvalue{string} signals
     field double time_from_start
-	field varvalue{string} extended
+    field varvalue{string} extended
 end
 
 struct FreeformJointTrajectory	
-	field string{list} joint_names
-	field string{list} joint_units
+    field string{list} joint_names
+    field string{list} joint_units
     field FreeformJointTrajectoryWaypoint{list} waypoints
-	field varvalue{string} extended
+    field varvalue{string} extended
 end

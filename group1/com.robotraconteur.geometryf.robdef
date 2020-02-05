@@ -18,9 +18,9 @@ namedarray Vector3
 end
 
 namedarray Vector6
-	field single alpha
-	field single beta
-	field single gamma
+    field single alpha
+    field single beta
+    field single gamma
     field single x
     field single y
     field single z
@@ -60,7 +60,7 @@ end
 
 namedarray Plane
     field Vector3 normal
-	field single d
+    field single d
 end
 
 namedarray Quaternion
@@ -146,5 +146,5 @@ end
 
 struct NamedSpatialInertia
     field Identifier frame
-	field SpatialInertia inertia
+    field SpatialInertia inertia
 end

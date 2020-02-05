@@ -9,30 +9,30 @@ using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.device.DeviceInfo
 
 struct LightInfo
-	field DeviceInfo device_info
-	field double max_lumens
-	field varvalue{string} extended
+    field DeviceInfo device_info
+    field double max_lumens
+    field varvalue{string} extended
 end
 
 object Light
-	property LightInfo light_info
-	property bool on_off
+    property LightInfo light_info
+    property bool on_off
 end
 
 object DimmableLight
-	implements Light
-	property LightInfo light_info
-	property bool on_off
-	# intensity 0.0 to 1.0
-	property double intensity	
+    implements Light
+    property LightInfo light_info
+    property bool on_off
+    # intensity 0.0 to 1.0
+    property double intensity	
 end
 
 object ColorTunableLight
-	implements Light
-	implements DimmableLight
-	property LightInfo light_info
-	property bool on_off
-	# intensity 0.0 to 1.0
-	property double intensity
-	property ColorRGBA color
+    implements Light
+    implements DimmableLight
+    property LightInfo light_info
+    property bool on_off
+    # intensity 0.0 to 1.0
+    property double intensity
+    property ColorRGBA color
 end

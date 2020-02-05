@@ -20,8 +20,8 @@ enum ImageEncoding
     bgre8,
     rgbm8,
     bgrm8,
-	rgba16,
-	abgr16,
+    rgba16,
+    abgr16,
     mono8 = 0x2000,
     mono16,
     mono32,
@@ -34,10 +34,10 @@ enum ImageEncoding
     depth_u16 = 0x4000,
     depth_u32,
     depth_i64,
-	depth_f32,
+    depth_f32,
     depth_f64,
-	freeform = 0x5000,
-	compressed = 0x6000
+    freeform = 0x5000,
+    compressed = 0x6000
 end
 
 namedarray PixelRGB
@@ -131,5 +131,5 @@ struct FreeformDepthImage
 end
 
 struct ImageResource
-	field ResourceIdentifier image_resource	
+    field ResourceIdentifier image_resource	
 end

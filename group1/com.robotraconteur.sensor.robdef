@@ -20,127 +20,127 @@ using com.robotraconteur.units.SIUnit
 using com.robotraconteur.datatype.DataType
 
 enum SensorTypeCode
-	unknown = 0,
-	generic_digital,
-	generic_analog,
-	pushbutton,
-	dial,
-	limitswitch,
-	infrared,
-	pressure,
-	vacuum,
-	temperature,
-	humidity,
-	level,
-	contact,
-	ultrasonic,
-	magnetic,
-	encoder,
-	potentiometer,
-	resolver,
-	linear_encoder,
-	linear_potentiometer,
-	lvds,
-	accelerometer,
-	gyroscopic,
-	velocity,
-	angular_velocity,
-	spatial_velocity,
-	torque,
-	force,
-	proximity,
-	voltage,
-	current,
-	laser,
-	flow,
-	pyrometer,
-	forcetorque,
-	light_color,
-	light_intensity,
-	object_color,
-	altitude
+    unknown = 0,
+    generic_digital,
+    generic_analog,
+    pushbutton,
+    dial,
+    limitswitch,
+    infrared,
+    pressure,
+    vacuum,
+    temperature,
+    humidity,
+    level,
+    contact,
+    ultrasonic,
+    magnetic,
+    encoder,
+    potentiometer,
+    resolver,
+    linear_encoder,
+    linear_potentiometer,
+    lvds,
+    accelerometer,
+    gyroscopic,
+    velocity,
+    angular_velocity,
+    spatial_velocity,
+    torque,
+    force,
+    proximity,
+    voltage,
+    current,
+    laser,
+    flow,
+    pyrometer,
+    forcetorque,
+    light_color,
+    light_intensity,
+    object_color,
+    altitude
 end
 
 struct SensorInfo
-	field DeviceInfo device_info
-	field SensorTypeCode sensor_type
-	field SIUnit{list} units
-	field DataType data_type
-	field double[] sensor_resolution
-	field bool analog_sensor
-	field double update_frequency	
-	field ParameterInfo{string} parameter_info
+    field DeviceInfo device_info
+    field SensorTypeCode sensor_type
+    field SIUnit{list} units
+    field DataType data_type
+    field double[] sensor_resolution
+    field bool analog_sensor
+    field double update_frequency	
+    field ParameterInfo{string} parameter_info
     field varvalue{string} extended	
 end
 
 struct SensorData
-	field SensorDataHeader data_header
-	field double[] data
-	field DataType data_type
-	field varvalue{string} parameters
-	field varvalue{string} extended
+    field SensorDataHeader data_header
+    field double[] data
+    field DataType data_type
+    field varvalue{string} parameters
+    field varvalue{string} extended
 end
 
 object Sensor	
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
 end
 
 object Vector2Sensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire Vector2 vector2_sensor_value [readonly,nolock]	
+    wire Vector2 vector2_sensor_value [readonly,nolock]	
 end
 
 object Vector3Sensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire Vector3 vector3_sensor_value [readonly,nolock]	
+    wire Vector3 vector3_sensor_value [readonly,nolock]	
 end
 
 object Vector6Sensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire Vector6 vector6_sensor_value [readonly,nolock]	
+    wire Vector6 vector6_sensor_value [readonly,nolock]	
 end
 
 object WrenchSensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire Wrench wrench_sensor_value [readonly,nolock]	
+    wire Wrench wrench_sensor_value [readonly,nolock]	
 end
 
 object FreeformSensor
-	implements Sensor
-	property bool active
-	property SensorInfo sensor_info [readonly,nolockread]
-	wire double[] sensor_value [readonly,nolock]
-	pipe SensorData sensor_data [readonly,nolock]	
+    implements Sensor
+    property bool active
+    property SensorInfo sensor_info [readonly,nolockread]
+    wire double[] sensor_value [readonly,nolock]
+    pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-	wire varvalue freeform_sensor_value [readonly,nolock]	
+    wire varvalue freeform_sensor_value [readonly,nolock]	
 end
