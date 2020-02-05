@@ -1,0 +1,12 @@
+service com.robotraconteur.action
+
+stdver 0.9
+
+enum ActionStatusCode
+    error = -2,
+    failed = -1,
+    unknown = 0,
+    queued,
+    running,
+    complete    
+end

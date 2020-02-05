@@ -12,6 +12,8 @@ using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.pointcloud.PointCloudf as PointCloud
 using com.robotraconteur.pointcloud.PointCloudPartf as PointCloudPart
+using com.robotraconteur.pointcloud.PointCloud2f as PointCloud2
+using com.robotraconteur.pointcloud.PointCloud2Partf as PointCloud2Part
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensor.SensorData
@@ -47,7 +49,38 @@ end
 object PointCloudPartSensor
 	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
+    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end
+
+
+struct PointCloud2SensorData
+	field SensorData sensor_data
+	field PointCloud2 point_cloud
+end
+
+struct PointCloud2PartSensorData
+	field SensorData sensor_data
+	field PointCloud2Part point_cloud
+end
+
+object PointCloud2Sensor
+    implements PointCloudSensor
+	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property bool active
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
+	pipe PointCloud2SensorData point_cloud2_sensor_data [readonly]
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)    
+end
+
+object PointCloud2PartSensor
+    implements PointCloudPartSensor
+	property PointCloudSensorInfo point_sensor_info [readonly,nolock]
+    property bool active
+    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
+	pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]  
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)    
 end

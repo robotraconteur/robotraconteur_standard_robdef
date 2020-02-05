@@ -51,7 +51,7 @@ struct MeshFromResource
 end
 
 struct ShapeObject
-	field string name
+	field Identifier name
 	field varvalue{list} shapes
 	field Pose{list} shape_poses
 	field ColorRGBA{list} shape_colors

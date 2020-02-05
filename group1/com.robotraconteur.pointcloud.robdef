@@ -47,6 +47,7 @@ end
 
 namedarray PointCloud2Point
     field Point point
+    field double intensity
     field Vector3 normal
     field PixelRGBFloatPacked rgb
     field double[3] moment_invariants
@@ -71,6 +72,7 @@ end
 
 namedarray PointCloud2Pointf
     field Pointf point
+    field single intensity
     field Vector3f normal
     field PixelRGBFloatPackedf rgb
     field single[3] moment_invariants

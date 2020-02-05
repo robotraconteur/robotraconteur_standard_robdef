@@ -3,7 +3,6 @@ service com.robotraconteur.robotics.robot
 stdver 0.9
 
 import com.robotraconteur.geometry
-import com.robotraconteur.uuid
 import com.robotraconteur.sensordata
 import com.robotraconteur.device
 import com.robotraconteur.signal
@@ -13,6 +12,7 @@ import com.robotraconteur.robotics.tool
 import com.robotraconteur.robotics.payload
 import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.identifier
+import com.robotraconteur.action
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -21,7 +21,6 @@ using com.robotraconteur.geometry.SpatialInertia
 using com.robotraconteur.geometry.Pose
 using com.robotraconteur.geometry.NamedPose
 using com.robotraconteur.geometry.SpatialVelocity
-using com.robotraconteur.uuid.UUID
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.signal.SignalInfo
@@ -32,6 +31,7 @@ using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.robotics.trajectory.TrajectoryStatus
 using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.action.ActionStatusCode
 
 enum RobotType
 	unknown = 0,
@@ -45,19 +45,20 @@ enum RobotType
 end
 
 enum RobotCommandMode
-	fatal_error = -2,
-    error = -1,
+	invalid_state = -1,
     halt = 0,
     jog,
     trajectory,
     position_command,
-    velocity_command
+    velocity_command,
+	homing
 end
 
 enum RobotOperationalMode
 	undefined = 0,
 	manual_reduced_speed,
 	manual_full_speed,
+	cobot,
 	auto
 end
 
@@ -111,7 +112,36 @@ enum RobotCapabilities
 	jog_command = 0x1,
 	trajectory_command = 0x2,
 	position_command = 0x4,
-	velocity_command = 0x8
+	velocity_command = 0x8,
+	homing_command = 0x10,
+	software_reset_errors = 0x20,
+	software_enable = 0x40
+end
+
+enum RobotStateFlags
+    unknown = 0,
+	error = 0x1,
+	fatal_error = 0x2,
+	estop = 0x4,
+	estop_button1 = 0x8,
+	estop_button2 = 0x10,
+	estop_button3 = 0x20,
+	estop_button4 = 0x40,
+	estop_guard1 = 0x80,
+	estop_guard2 = 0x100,
+	estop_guard3 = 0x200,
+	estop_guard4 = 0x400,
+	estop_software = 0x800,
+	estop_fault = 0x1000,
+	estop_internal = 0x2000,
+	estop_other = 0x4000,
+	estop_released = 0x8000,
+	enabling_switch = 0x10000,	
+	enabled = 0x20000,
+	ready = 0x40000,
+	homed = 0x80000,
+	homing_required = 0x100000,
+	communication_failure = 0x200000
 end
 
 struct RobotKinChainInfo
@@ -129,10 +159,10 @@ end
 struct RobotInfo
     field DeviceInfo device_info	
 	field RobotType robot_type
-	field UUID robot_type_uuid    
+	field Identifier{list} robot_type_ex    
     field JointInfo{list} joint_info
     field RobotKinChainInfo{list} chains
-	field uint32 capabilities
+	field uint32 robot_capabilities
     field SignalInfo{string} signal_info
 	field ParameterInfo{string} parameter_info
 	field Identifier parent_device
@@ -142,31 +172,35 @@ end
 
 struct RobotState
     field uint64 seqno
-    field RobotCommandMode controller_mode
+    field RobotCommandMode command_mode
 	field RobotOperationalMode operational_mode
 	field RobotControllerState controller_state
+	field uint64 robot_state_flags
     field double[] joint_position
     field double[] joint_velocity
     field double[] joint_effort    
-    field double[] position_command
-    field double[] velocity_command
+    field double[] joint_position_command
+    field double[] joint_velocity_command
 	field Pose[] kin_chain_tcp
+	field SpatialVelocity[] kin_chain_tcp_vel
     field bool trajectory_running
 end
 
 struct AdvancedRobotState
     field uint64 seqno
-    field RobotCommandMode controller_mode
+    field RobotCommandMode command_mode
 	field RobotOperationalMode operational_mode
 	field RobotControllerState controller_state
+	field uint64 robot_state_flags
     field double[] joint_position
     field double[] joint_velocity	
     field double[] joint_effort    
-    field double[] position_command
-    field double[] velocity_command
+    field double[] joint_position_command
+    field double[] joint_velocity_command
 	field uint8[] joint_position_units
 	field uint8[] joint_effort_units
 	field Pose[] kin_chain_tcp
+	field SpatialVelocity[] kin_chain_tcp_vel
     field bool trajectory_running
 end
 
@@ -186,9 +220,12 @@ end
 object Robot
     property RobotInfo robot_info [readonly,nolockread]
     property RobotCommandMode command_mode [nolockread]
-	property RobotOperationalMode operational_mode [readonly,nolock]
+	property RobotOperationalMode operational_mode [readonly, nolock]
 	property RobotControllerState controller_state [readonly, nolock]
-    function void halt() [urgent,nolock]
+    function void halt() [urgent]	
+	function void enable()
+	function void disable() [urgent]
+	function void reset_errors()
 	property double speed_ratio
     function void jog_joint(double[] joint_position, double[] max_velocity, bool relative, bool wait)
 	function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
@@ -200,6 +237,7 @@ object Robot
     property double update_rate [readonly]
     wire RobotJointCommand position_command [writeonly]
     wire RobotJointCommand velocity_command [writeonly]
+	function ActionStatusCode{generator} home()
     function double getf_signal(string signal_name)
     function void setf_signal(string signal_name, double value)
     function void tool_attached(int32 chain, ToolInfo tool)

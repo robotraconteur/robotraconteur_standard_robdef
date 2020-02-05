@@ -57,6 +57,8 @@ end
 
 struct PlanningRequest
 	field Identifier device
+	field Identifier planner_algorithm
+	field Identifier filter_algorithm
 	field Box workspace_bounds
 	field varvalue start_waypoint
 	field varvalue goal_waypoint
@@ -64,6 +66,7 @@ struct PlanningRequest
 	field bool collision_check
 	field double collision_safety_margin
 	field varvalue{string} planner_specific
+	field varvalue{string} filter_specific
 	field varvalue{string} extended
 end
 

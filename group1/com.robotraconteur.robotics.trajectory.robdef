@@ -4,19 +4,12 @@ stdver 0.9
 
 import com.robotraconteur.robotics.joints
 import com.robotraconteur.identifier
+import com.robotraconteur.action
 
 using com.robotraconteur.robotics.joints.JointPositionUnits
 using com.robotraconteur.robotics.joints.JointEffortUnits
 using com.robotraconteur.identifier.Identifier
-
-enum TrajectoryStatusCode
-    error = -2,
-    failed = -1,
-    unknown = 0,
-    queued,
-    running,
-    complete    
-end
+using com.robotraconteur.action.ActionStatusCode
 
 enum InterpolationMode
 	default = 0,
@@ -47,7 +40,7 @@ end
 
 struct TrajectoryStatus
     field uint64 seqno
-    field TrajectoryStatusCode status
+    field ActionStatusCode action_status
     field uint32 current_waypoint
     field double trajectory_time 
 end

@@ -2,6 +2,10 @@ service com.robotraconteur.geometryf
 
 stdver 0.9
 
+import com.robotraconteur.identifier
+
+using com.robotraconteur.identifier.Identifier
+
 namedarray Vector2
     field single x
     field single y
@@ -72,8 +76,8 @@ namedarray Transform
 end
 
 struct NamedTransform
-    field string parent_frame
-    field string child_frame
+    field Identifier parent_frame
+    field Identifier child_frame
     field Transform transform
 end
 
@@ -83,8 +87,8 @@ namedarray Pose
 end
 
 struct NamedPose
-    field string parent_frame
-    field string frame
+    field Identifier parent_frame
+    field Identifier frame
     field Pose transform
 end
 
@@ -94,8 +98,8 @@ namedarray Pose2D
 end
 
 struct NamedPose2D
-    field string parent_frame
-    field string frame
+    field Identifier parent_frame
+    field Identifier frame
     field Pose2D transform
 end
 
@@ -105,7 +109,7 @@ namedarray SpatialVelocity
 end
 
 struct NamedSpatialVelocity
-    field string frame
+    field Identifier frame
     field SpatialVelocity velocity
 end
 
@@ -115,7 +119,7 @@ namedarray SpatialAcceleration
 end
 
 struct NamedSpatialAcceleration
-    field string frame
+    field Identifier frame
     field SpatialAcceleration Acceleration
 end
 
@@ -125,7 +129,7 @@ namedarray Wrench
 end
 
 struct NamedWrench
-    field string frame
+    field Identifier frame
     field Wrench wrench
 end
 
@@ -141,6 +145,6 @@ namedarray SpatialInertia
 end
 
 struct NamedSpatialInertia
-    field string frame
+    field Identifier frame
 	field SpatialInertia inertia
 end
