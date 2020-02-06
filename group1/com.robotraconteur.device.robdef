@@ -25,6 +25,7 @@ end
 
 struct DeviceInfo
     field Identifier device
+	field Identifier parent_device
     field Identifier manufacturer
     field Identifier model	
     field DeviceOption{list} options
