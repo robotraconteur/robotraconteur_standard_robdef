@@ -19,7 +19,6 @@ using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.Transform
 using com.robotraconteur.geometry.SpatialInertia
 using com.robotraconteur.geometry.Pose
-using com.robotraconteur.geometry.NamedPose
 using com.robotraconteur.geometry.SpatialVelocity
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
@@ -165,8 +164,7 @@ struct RobotInfo
     field uint32 robot_capabilities
     field SignalInfo{string} signal_info
     field ParameterInfo{string} parameter_info
-    field Identifier parent_device
-    field NamedPose robot_origin_pose
+    field Identifier parent_device    
     field varvalue{string} extended    
 end
 

@@ -4,9 +4,11 @@ stdver 0.9
 
 import com.robotraconteur.identifier
 import com.robotraconteur.resource
+import com.robotraconteur.geometry
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.resource.ResourceIdentifier
+using com.robotraconteur.geometry.NamedPose
 
 struct DeviceOption
     field Identifier option_identifier
@@ -35,5 +37,6 @@ struct DeviceInfo
     field string user_description
     field ResourceIdentifier description_resource
     field string{list} implemented_types
+    field NamedPose device_origin_pose
     field varvalue{string} extended
 end
