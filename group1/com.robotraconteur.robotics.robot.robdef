@@ -163,8 +163,7 @@ struct RobotInfo
     field RobotKinChainInfo{list} chains
     field uint32 robot_capabilities
     field SignalInfo{string} signal_info
-    field ParameterInfo{string} parameter_info
-    field Identifier parent_device    
+    field ParameterInfo{string} parameter_info       
     field varvalue{string} extended    
 end
 
