@@ -89,7 +89,7 @@ end
 struct NamedPose
     field Identifier parent_frame
     field Identifier frame
-    field Pose transform
+    field Pose pose
 end
 
 struct PoseWithCovariance
@@ -110,7 +110,7 @@ end
 struct NamedPose2D
     field Identifier parent_frame
     field Identifier frame
-    field Pose2D transform
+    field Pose2D pose
 end
 
 namedarray SpatialVelocity

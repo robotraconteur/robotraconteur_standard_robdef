@@ -121,5 +121,5 @@ object PlanningScene
     function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
     
     function void remove_item(string name)	
-    function void move_item(string name, NamedPose transform)
+    function void move_item(string name, NamedPose pose)
 end
