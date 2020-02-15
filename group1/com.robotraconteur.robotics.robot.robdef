@@ -158,7 +158,6 @@ end
 struct RobotInfo
     field DeviceInfo device_info	
     field RobotType robot_type
-    field Identifier{list} robot_type_ex    
     field JointInfo{list} joint_info
     field RobotKinChainInfo{list} chains
     field uint32 robot_capabilities
