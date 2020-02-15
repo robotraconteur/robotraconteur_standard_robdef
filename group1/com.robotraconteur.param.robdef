@@ -14,7 +14,7 @@ struct ParameterInfo
     field Identifier parameter_identifier
     field DeviceClass parameter_class
     field DataType data_type
-    field string description
+    field string user_description
     field varvalue default_value
     field varvalue min_value
     field varvalue max_value
