@@ -4,12 +4,15 @@ stdver 0.9
 
 import com.robotraconteur.identifier
 import com.robotraconteur.datatype
+import com.robotraconteur.device
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
+using com.robotraconteur.device.DeviceClass
 
 struct ParameterInfo
-    field Identifier parameter
+    field Identifier parameter_identifier
+    field DeviceClass parameter_class
     field DataType data_type
     field string description
     field varvalue default_value
