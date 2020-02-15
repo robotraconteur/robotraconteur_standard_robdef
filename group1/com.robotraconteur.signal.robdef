@@ -10,6 +10,7 @@ import com.robotraconteur.units
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.DeviceClass
 using com.robotraconteur.units.SIUnit
 
 enum SignalType
@@ -35,7 +36,8 @@ enum SignalAccessLevel
 end
 
 struct SignalInfo
-    field Identifier signal
+    field Identifier signal_identifier
+    field DeviceClass signal_class
     field SIUnit{list} units
     field DataType data_type
     field SignalType signal_type
@@ -49,9 +51,11 @@ struct SignalInfo
 end
 
 object Signal
-    property SignalInfo signal_info [readonly,nolock]
+    property SignalInfo signal_info [readonly,nolockread]
     wire varvalue signal_value [readonly]
     wire varvalue signal_command [writeonly]
+    wire double[] signal_value_vec [readonly]
+    wire double[] signal_command_vec [writeonly]
     property uint32 update_downsample [perclient]
     property double update_rate [readonly]
 end
