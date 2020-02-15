@@ -101,4 +101,5 @@ struct JointInfo
     field JointLimits joint_limits
     field JointPositionUnits default_units
     field bool passive
+    field varvalue{string} extended
 end
