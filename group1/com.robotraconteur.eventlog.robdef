@@ -39,7 +39,7 @@ struct EventLogMessage
 end
 
 object EventLog
-    property DeviceInfo device_info [readonly, nolockread]
+    property DeviceInfo device_info [readonly,nolock]
     property uint64 message_count [readonly]
     function EventLogMessage{list} getf_messages(uint64 offset, uint64 count)
     pipe EventLogMessage message_stream [readonly]

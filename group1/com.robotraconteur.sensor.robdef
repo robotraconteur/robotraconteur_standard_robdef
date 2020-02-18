@@ -83,7 +83,7 @@ end
 
 object Sensor	
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
@@ -93,7 +93,7 @@ end
 object Vector2Sensor
     implements Sensor
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
@@ -104,7 +104,7 @@ end
 object Vector3Sensor
     implements Sensor
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
@@ -115,7 +115,7 @@ end
 object Vector6Sensor
     implements Sensor
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
@@ -126,7 +126,7 @@ end
 object WrenchSensor
     implements Sensor
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)
@@ -137,7 +137,7 @@ end
 object FreeformSensor
     implements Sensor
     property bool active
-    property SensorInfo sensor_info [readonly,nolockread]
+    property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]	
     function varvalue getf_param(string param_name)

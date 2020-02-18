@@ -48,7 +48,7 @@ struct ActuatorInfo
 end
 
 object Actuator
-    property ActuatorInfo actuator_info [readonly,nolockread]
+    property ActuatorInfo actuator_info [readonly,nolock]
     property ActuatorMode actuator_mode [nolockread]
     wire double[] actuator_command [writeonly]	
     function varvalue getf_param(string param_name)

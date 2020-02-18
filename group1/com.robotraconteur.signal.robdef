@@ -51,7 +51,7 @@ struct SignalInfo
 end
 
 object Signal
-    property SignalInfo signal_info [readonly,nolockread]
+    property SignalInfo signal_info [readonly,nolock]
     wire varvalue signal_value [readonly]
     wire varvalue signal_command [writeonly]
     wire double[] signal_value_vec [readonly]
@@ -61,7 +61,7 @@ object Signal
 end
 
 object SignalDevice
-    property DeviceInfo device_info [readonly,nolockread]
-    property SignalInfo{list} signal_info [readonly,nolockread]
+    property DeviceInfo device_info [readonly,nolock]
+    property SignalInfo{list} signal_info [readonly,nolock]
     objref Signal{int32} signals	
 end

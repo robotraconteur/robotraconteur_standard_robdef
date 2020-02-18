@@ -206,7 +206,7 @@ struct RobotJointCommand
 end
 
 object Robot
-    property RobotInfo robot_info [readonly,nolockread]
+    property RobotInfo robot_info [readonly,nolock]
     property RobotCommandMode command_mode [nolockread]
     property RobotOperationalMode operational_mode [readonly, nolock]
     property RobotControllerState controller_state [readonly, nolock]

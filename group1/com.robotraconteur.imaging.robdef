@@ -50,7 +50,7 @@ object Camera
 end
 
 object MultiCamera
-    property string{int32} camera_names [readonly,nolockread]
+    property string{int32} camera_names [readonly,nolock]
     objref Camera{int32} cameras
     function Image{int32} capture_frame_all()
     function void trigger_all()

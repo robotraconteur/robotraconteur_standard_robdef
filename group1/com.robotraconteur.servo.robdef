@@ -92,7 +92,7 @@ end
 
 object Servo	
     function void halt() [urgent,nolock]
-    property ServoInfo servo_info [readonly,nolockread]
+    property ServoInfo servo_info [readonly,nolock]
     property ServoMode mode [nolockread]
     wire double[] position [readonly,nolock]
     wire double[] velocity [readonly, nolock]
