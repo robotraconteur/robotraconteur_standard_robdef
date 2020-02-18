@@ -154,7 +154,8 @@ struct RobotInfo
     field RobotKinChainInfo{list} chains
     field uint32 robot_capabilities
     field SignalInfo{string} signal_info
-    field ParameterInfo{string} parameter_info       
+    field ParameterInfo{string} parameter_info
+    field uint16 config_seqno 
     field varvalue{string} extended    
 end
 
@@ -192,8 +193,6 @@ struct AdvancedRobotState
     field bool trajectory_running
     field double trajectory_time
     field double trajectory_max_time
-    field uint16 tool_seqno
-    field uint16 payload_seqno
     field uint16 config_seqno
 end
 
