@@ -190,6 +190,11 @@ struct AdvancedRobotState
     field Pose[] kin_chain_tcp
     field SpatialVelocity[] kin_chain_tcp_vel
     field bool trajectory_running
+    field double trajectory_time
+    field double trajectory_max_time
+    field uint16 tool_seqno
+    field uint16 payload_seqno
+    field uint16 config_seqno
 end
 
 struct RobotStateSensorData
@@ -231,10 +236,13 @@ object Robot
     function void setf_signal(string signal_name, double value)
     function void tool_attached(int32 chain, ToolInfo tool)
     function void tool_detached(int32 chain, string tool_name)
+    event tool_changed(int32 chain, string tool_name)
     function void payload_attached(int32 chain, PayloadInfo payload, Pose pose)
     function void payload_detached(int32 chain, string payload_name)
+    event payload_changed(int32 chain, string payload_name)
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
+    event param_changed(string param_name)
 end
 
 
