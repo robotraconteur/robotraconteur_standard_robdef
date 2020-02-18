@@ -92,7 +92,8 @@ struct JointLimits
     field double lower
     field double upper
     field double velocity
-    field double acceleration	
+    field double acceleration
+    field double effort	
 end
 
 struct JointInfo
@@ -100,6 +101,7 @@ struct JointInfo
     field JointType joint_type
     field JointLimits joint_limits
     field JointPositionUnits default_units
+    field JointEffortUnits default_effort_units
     field bool passive
     field varvalue{string} extended
 end

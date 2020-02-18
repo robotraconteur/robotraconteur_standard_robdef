@@ -13,5 +13,6 @@ struct ToolInfo
     field DeviceInfo device_info    
     field Transform tcp
     field SpatialInertia inertia
+    field double actuation_time
     field varvalue{string} extended    
 end

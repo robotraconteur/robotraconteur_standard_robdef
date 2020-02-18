@@ -71,18 +71,6 @@ enum RobotControllerState
     emergency_stop_reset	
 end
 
-enum RobotErrorLevel
-    undefined = 0,
-    debug = 1,
-    info,
-    warning,
-    recoverable_error,
-    safety_violation_error,
-    fatal_error,
-    emergency_error,
-    catastrophic_error
-end
-
 enum RobotErrorCategory
     unknown = 0,
     invalid_operation,
@@ -146,10 +134,12 @@ end
 struct RobotKinChainInfo
     field Identifier kin_chain_identifier
     field Vector3[] H
-    field Vector3[] P
+    field Vector3[] P    
     field SpatialInertia[] link_inertias
-    field string{list} link_names
+    field Identifier{list} link_identifiers
     field uint32[] joint_numbers
+    field Pose flange_pose
+    field Identifier flange_identifier
     field ToolInfo current_tool
     field PayloadInfo current_payload
     field varvalue{string} extended

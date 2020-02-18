@@ -1,0 +1,48 @@
+service com.robotraconteur.eventlog
+
+stdver 0.9
+
+import com.robotraconteur.identifier
+import com.robotraconteur.datetime
+import com.robotraconteur.device
+
+using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.datetime.DateTimeUTC
+using com.robotraconteur.device.DeviceInfo
+
+enum EventLogLevel
+    undefined = 0,
+    debug = 1,
+    info,
+    warning,
+    recoverable_error,
+    safety_violation_error,
+    fatal_error,
+    emergency_error,
+    catastrophic_error
+end
+
+struct EventLogType
+    field Identifier event_category
+    field string event_type
+end
+
+struct EventLogMessage
+    field EventLogType type
+    field EventLogLevel level
+    field uint64 number
+    field uint64 sequence_number
+    field DateTimeUTC timestamp
+    field string title    
+    field string message
+    field varvalue{string} extended
+end
+
+object EventLog
+    property DeviceInfo device_info [readonly, nolockread]
+    property uint64 message_count [readonly]
+    function EventLogMessage{list} getf_messages(uint64 offset, uint64 count)
+    pipe EventLogMessage message_stream [readonly]
+    function void clear_messages(uint64 offset, uint64 count)
+    function void clear_all_messages()
+end
