@@ -91,7 +91,9 @@ enum RobotErrorCategory
     sensor_out_of_range,
     safety_violation,
     workspace_violation,
-    workspace_intrusion
+    workspace_intrusion,
+    estop_active,
+    guard_stop
 end
 
 enum RobotCapabilities
@@ -208,6 +210,7 @@ object Robot
     property RobotCommandMode command_mode [nolockread]
     property RobotOperationalMode operational_mode [readonly, nolock]
     property RobotControllerState controller_state [readonly, nolock]
+    property RobotErrorCategory{list} current_errors [readonly, nolock]
     function void halt() [urgent]	
     function void enable()
     function void disable() [urgent]
