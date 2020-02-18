@@ -12,17 +12,29 @@ using com.robotraconteur.geometry.NamedPose
 
 struct DeviceOption
     field Identifier option_identifier
-    field varvalue{string} suboptions	
+    field DeviceSubOption{list} suboptions	
+end
+
+struct DeviceSubOption
+    field string suboption_name
+    field double suboption_level    
+    field varvalue{string} extended
 end
 
 struct DeviceCapability
     field Identifier capability_identifier
-    field varvalue{string} subcapabilities	
+    field DeviceSubCapability{list} subcapabilities	
+end
+
+struct DeviceSubCapability
+    field string subcapability_name
+    field double subcapability_level
+    field varvalue{string} extended
 end
 
 struct DeviceClass
     field Identifier class_identifier
-    field string subclass	
+    field string{list} subclasses	
 end
 
 struct DeviceInfo
