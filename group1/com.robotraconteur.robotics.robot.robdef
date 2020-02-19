@@ -153,8 +153,8 @@ struct RobotInfo
     field JointInfo{list} joint_info
     field RobotKinChainInfo{list} chains
     field uint32 robot_capabilities
-    field SignalInfo{string} signal_info
-    field ParameterInfo{string} parameter_info
+    field SignalInfo{list} signal_info
+    field ParameterInfo{list} parameter_info
     field uint16 config_seqno 
     field varvalue{string} extended    
 end
