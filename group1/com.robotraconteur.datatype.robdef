@@ -42,7 +42,7 @@ enum ArrayTypeCode
     multidimarray_c
 end
 
-enum ContainerType
+enum ContainerTypeCode
     none_c = 0,
     list_c,
     map_int32_c,
@@ -57,5 +57,5 @@ struct DataType
     field ArrayTypeCode array_type_code
     field bool array_var_len
     field uint32[] array_len
-    field ContainerType container_type_code
+    field ContainerTypeCode container_type_code
 end
