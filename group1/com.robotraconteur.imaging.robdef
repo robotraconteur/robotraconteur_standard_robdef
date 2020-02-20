@@ -10,6 +10,7 @@ using com.robotraconteur.image.Image
 using com.robotraconteur.image.ImagePart
 using com.robotraconteur.image.CompressedImage
 using com.robotraconteur.imaging.camerainfo.CameraInfo
+using com.robotraconteur.imaging.camerainfo.MultiCameraInfo
 using com.robotraconteur.param.ParameterInfo
 
 enum TriggerMode
@@ -46,7 +47,7 @@ object Camera
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    property CameraInfo camera_info [readonly]
+    property CameraInfo camera_info [readonly,nolock]
 end
 
 object MultiCamera
@@ -59,7 +60,7 @@ object MultiCamera
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    property CameraInfo{int32} camera_info_all [readonly]
+    property MultiCameraInfo multicamera_info [readonly,nolock]
 end
 
 object ImagePartCamera
@@ -73,5 +74,5 @@ object ImagePartCamera
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    property CameraInfo camera_info [readonly]
+    property CameraInfo camera_info [readonly,nolock]
 end

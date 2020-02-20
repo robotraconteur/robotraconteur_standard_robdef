@@ -20,12 +20,23 @@ struct PlumbBobDistortionInfo
     field double k3
 end
 
-struct CameraInfo
-    field DeviceInfo device_info
+struct CameraCalibration
     field Size2D image_size
     field varvalue distortion_info
     field double[3,3] K	
     field Identifier parent_device
     field NamedPose camera_pose
+    field varvalue{string} extended
+end
+
+struct CameraInfo
+    field DeviceInfo device_info
+    field CameraCalibration calibration
+    field varvalue{string} extended
+end
+
+struct MultiCameraInfo
+    field DeviceInfo device_info
+    field CameraInfo{list} camera_info_all
     field varvalue{string} extended
 end
