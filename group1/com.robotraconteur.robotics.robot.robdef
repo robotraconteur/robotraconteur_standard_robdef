@@ -205,7 +205,7 @@ end
 
 struct RobotJointCommand
     field uint64 seqno
-    field uint64 status_seqno
+    field uint64 state_seqno
     field double[] command
     # Use JointUnits values
     field uint8[] units
