@@ -16,7 +16,7 @@ struct ClockDeviceInfo
 end
 
 object Clock	
-    property ClockDeviceInfo device_info [readonly]
+    property ClockDeviceInfo device_info [readonly,nolock]
     wire DateTimeUTC time_utc [readonly]
     wire DateTimeLocal time_local [readonly]
 end
