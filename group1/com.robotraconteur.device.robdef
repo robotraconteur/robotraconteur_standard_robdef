@@ -52,3 +52,7 @@ struct DeviceInfo
     field NamedPose device_origin_pose
     field varvalue{string} extended
 end
+
+object BillboardDevice
+    property DeviceInfo device_info [readonly,nolock]
+end
