@@ -130,7 +130,9 @@ enum RobotStateFlags
     ready = 0x40000,
     homed = 0x80000,
     homing_required = 0x100000,
-    communication_failure = 0x200000
+    communication_failure = 0x200000,
+    valid_position_command = 0x1000000,
+    valid_velocity_command = 0x2000000
 end
 
 struct RobotKinChainInfo
