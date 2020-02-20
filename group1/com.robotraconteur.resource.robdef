@@ -43,7 +43,7 @@ end
 
 object ResourceReadOnlyStorage
     property BucketInfo{list} resource_bucket_info [readonly,nolock]
-    function ResourceInfo resource_get_info(ResourceIdentifier identifier)	
+    function ResourceInfo resource_get_info(ResourceIdentifier identifier)
     function ResourcePart{generator} resource_get(ResourceIdentifier identifier)
     function ResourcePart{generator} resource_get_all(Identifier bucket_identifier)
 end

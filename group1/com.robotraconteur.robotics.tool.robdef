@@ -10,9 +10,9 @@ using com.robotraconteur.geometry.Transform
 using com.robotraconteur.geometry.SpatialInertia
 
 struct ToolInfo
-    field DeviceInfo device_info    
+    field DeviceInfo device_info
     field Transform tcp
     field SpatialInertia inertia
     field double actuation_time
-    field varvalue{string} extended    
+    field varvalue{string} extended
 end

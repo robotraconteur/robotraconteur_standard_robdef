@@ -8,5 +8,5 @@ enum ActionStatusCode
     unknown = 0,
     queued,
     running,
-    complete    
+    complete
 end

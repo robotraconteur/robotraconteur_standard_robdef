@@ -20,8 +20,8 @@ end
 struct JoystickInfo
     field DeviceInfo device_info
     field uint32 axes_count
-    field uint32 button_count	
-    field uint32 joystick_capabilities	
+    field uint32 button_count
+    field uint32 joystick_capabilities
 end
 
 struct JoystickState
@@ -35,7 +35,7 @@ struct JoystickStateSensorData
 end
 
 object Joystick
-    property JoystickInfo joystick_info [readonly,nolock]	
+    property JoystickInfo joystick_info [readonly,nolock]
     property uint32 update_downsample [perclient]
     property double update_rate [readonly,nolock]
     wire JoystickState joystick_state [readonly,nolock]

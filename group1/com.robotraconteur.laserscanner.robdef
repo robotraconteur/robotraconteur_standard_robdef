@@ -23,15 +23,15 @@ end
 object LaserScanner
     property LaserScannerInfo scanner_info [readonly,nolock]
     property bool active
-    pipe LaserScan laser_scan_sensor_data [readonly]    
+    pipe LaserScan laser_scan_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end
 
 object LaserScanPartScanner
     property LaserScannerInfo scanner_info [readonly,nolock]
     property bool active
-    pipe LaserScanPart laser_scan_sensor_data [readonly]    
+    pipe LaserScanPart laser_scan_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end

@@ -19,7 +19,7 @@ enum InterpolationMode
     spherical,
     joint_cubic_spline,
     cubic_spline,
-    custom	
+    custom
 end
 
 struct JointTrajectoryWaypoint
@@ -31,7 +31,7 @@ struct JointTrajectoryWaypoint
     field double time_from_start
 end
 
-struct JointTrajectory	
+struct JointTrajectory
     field string{list} joint_names
     field JointPositionUnits{list} joint_units
     field JointTrajectoryWaypoint{list} waypoints
@@ -42,7 +42,7 @@ struct TrajectoryStatus
     field uint64 seqno
     field ActionStatusCode action_status
     field uint32 current_waypoint
-    field double trajectory_time 
+    field double trajectory_time
 end
 
 struct AdvancedJointTrajectoryDeviceWaypoint
@@ -59,19 +59,19 @@ struct AdvancedJointTrajectoryDeviceWaypoint
 end
 
 struct AdvancedJointTrajectoryWaypoint
-    field AdvancedJointTrajectoryDeviceWaypoint{list} joints	
+    field AdvancedJointTrajectoryDeviceWaypoint{list} joints
     field double time_from_start
 end
 
 struct AdvancedJointTrajectoryDevice
-    field Identifier device	
+    field Identifier device
     field string{list} joint_names
     field JointPositionUnits{list} joint_units
     field JointEffortUnits{list} joint_effort_units
     field varvalue{string} extended
 end
 
-struct AdvancedJointTrajectory	
+struct AdvancedJointTrajectory
     field AdvancedJointTrajectoryDevice{list} devices
     field AdvancedJointTrajectoryWaypoint{list} waypoints
     field varvalue{string} extended
@@ -88,7 +88,7 @@ struct FreeformJointTrajectoryWaypoint
     field varvalue{string} extended
 end
 
-struct FreeformJointTrajectory	
+struct FreeformJointTrajectory
     field string{list} joint_names
     field string{list} joint_units
     field FreeformJointTrajectoryWaypoint{list} waypoints

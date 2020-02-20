@@ -41,17 +41,17 @@ end
 object PointCloudSensor
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
-    pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
+    pipe PointCloudSensorData point_cloud_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end
 
 object PointCloudPartSensor
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
-    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
+    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end
 
 
@@ -69,18 +69,18 @@ object PointCloud2Sensor
     implements PointCloudSensor
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
-    pipe PointCloudSensorData point_cloud_sensor_data [readonly]    
+    pipe PointCloudSensorData point_cloud_sensor_data [readonly]
     pipe PointCloud2SensorData point_cloud2_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end
 
 object PointCloud2PartSensor
     implements PointCloudPartSensor
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
-    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]    
-    pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]  
+    pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]
+    pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end

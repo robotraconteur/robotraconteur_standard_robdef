@@ -43,11 +43,11 @@ end
 
 struct Mesh
     field MeshTriangle[] triangles
-    field Point[] vertices	
+    field Point[] vertices
 end
 
 struct MeshFromResource
-    field ResourceIdentifier mesh_resource	
+    field ResourceIdentifier mesh_resource
 end
 
 struct ShapeObject

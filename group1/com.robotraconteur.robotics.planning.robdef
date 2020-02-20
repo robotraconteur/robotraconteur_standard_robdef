@@ -26,7 +26,7 @@ enum PlannerStatusCode
     unknown = 0,
     is_configured = 1,
     running = 2,
-    success = 3	
+    success = 3
 end
 
 struct EnvState
@@ -100,9 +100,9 @@ end
 
 object Planner
     function PlanningResponse{generator} plan(PlanningRequest request)
-    
+
     function ContactResult{list} compute_contacts(EnvState state)
-    
+
     function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
 end
 
@@ -113,13 +113,13 @@ object PlanningScene
     property RobotState{string} robot_states [readonly]
     property ShapeObject{string} shapes [readonly]
     property NamedTransform{string} transforms [readonly]
-    
+
     function void add_robot(string name, RobotInfo robot, NamedPose pose)
     function void update_robot_info(string robot_name, RobotInfo robot)
     function void update_robot_state(string robot_name, RobotState robot_state)
-    
+
     function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
-    
-    function void remove_item(string name)	
+
+    function void remove_item(string name)
     function void move_item(string name, NamedPose pose)
 end

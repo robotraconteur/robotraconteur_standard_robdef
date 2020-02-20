@@ -10,7 +10,7 @@ using com.robotraconteur.geometry.Transform
 using com.robotraconteur.geometry.SpatialInertia
 
 struct PayloadInfo
-    field DeviceInfo device_info    
+    field DeviceInfo device_info
     field SpatialInertia inertia
-    field varvalue{string} extended    
+    field varvalue{string} extended
 end

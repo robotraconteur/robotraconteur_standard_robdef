@@ -18,7 +18,7 @@ struct LaserScanInfo
     field double vertical_angle_max
     field double vertical_angle_increment
     field uint32 vertical_angle_count
-    field double time_increment	
+    field double time_increment
     field double scan_time
     field double range_min
     field double range_max

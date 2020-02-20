@@ -72,7 +72,7 @@ end
 
 namedarray Transform
     field Quaternion rotation
-    field Vector3 translation    
+    field Vector3 translation
 end
 
 struct NamedTransform

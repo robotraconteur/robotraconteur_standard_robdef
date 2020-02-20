@@ -33,7 +33,7 @@ struct EventLogMessage
     field uint64 number
     field uint64 sequence_number
     field DateTimeUTC timestamp
-    field string title    
+    field string title
     field string message
     field varvalue{string} extended
 end

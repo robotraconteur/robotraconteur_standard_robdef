@@ -13,5 +13,5 @@ pod SIUnit
     field int8 cd
     field int8 rad
     field int8 sr
-    field int8 prefix  
+    field int8 prefix
 end

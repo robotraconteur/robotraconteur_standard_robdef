@@ -32,7 +32,7 @@ pod ClockInfo
 end
 
 pod DateTimeUTC
-    field ClockInfo clock_info	
+    field ClockInfo clock_info
     field int64 seconds
     field int32 nanoseconds
 end

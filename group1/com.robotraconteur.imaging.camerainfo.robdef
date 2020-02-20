@@ -23,7 +23,7 @@ end
 struct CameraCalibration
     field Size2D image_size
     field varvalue distortion_info
-    field double[3,3] K	
+    field double[3,3] K
     field Identifier parent_device
     field NamedPose camera_pose
     field varvalue{string} extended

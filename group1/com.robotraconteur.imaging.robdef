@@ -69,7 +69,7 @@ object ImagePartCamera
     property TriggerMode trigger_mode [nolockread]
     function void trigger()
     function void start_streaming()
-    function void stop_streaming()    
+    function void stop_streaming()
     pipe CompressedImage preview_stream [readonly,nolock]
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)

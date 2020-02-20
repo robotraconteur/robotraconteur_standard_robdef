@@ -13,7 +13,7 @@ using com.robotraconteur.geometry.Pose
 struct SensorDataHeader
     field DateTimeUTC ts
     field uint64 seqno
-    field SensorDataSourceInfo source_info	
+    field SensorDataSourceInfo source_info
 end
 
 struct SensorDataSourceInfo

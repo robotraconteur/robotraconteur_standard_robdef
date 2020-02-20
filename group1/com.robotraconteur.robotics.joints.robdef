@@ -42,7 +42,7 @@ enum JointAccelerationUnits
     ticks_lin_second2,
     ticks_rot_second2,
     nanoticks_lin_second2,
-    nanoticks_rot_second2       
+    nanoticks_rot_second2
 end
 
 enum JointJerkUnits
@@ -53,7 +53,7 @@ enum JointJerkUnits
     ticks_lin_second3,
     ticks_rot_second3,
     nanoticks_lin_second3,
-    nanoticks_rot_second3 
+    nanoticks_rot_second3
 end
 
 enum JointEffortUnits
@@ -85,7 +85,7 @@ enum JointType
     ball,
     planar,
     floating,
-    other_compound	
+    other_compound
 end
 
 struct JointLimits
@@ -93,7 +93,7 @@ struct JointLimits
     field double upper
     field double velocity
     field double acceleration
-    field double effort	
+    field double effort
 end
 
 struct JointInfo

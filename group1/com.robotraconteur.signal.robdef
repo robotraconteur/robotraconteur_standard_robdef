@@ -63,5 +63,5 @@ end
 object SignalDevice
     property DeviceInfo device_info [readonly,nolock]
     property SignalInfo{list} signal_info [readonly,nolock]
-    objref Signal{int32} signals	
+    objref Signal{int32} signals
 end

@@ -24,7 +24,7 @@ object DimmableLight
     property LightInfo light_info [readonly,nolock]
     property bool on_off
     # intensity 0.0 to 1.0
-    property double intensity	
+    property double intensity
 end
 
 object ColorTunableLight

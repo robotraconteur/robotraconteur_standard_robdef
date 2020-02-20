@@ -23,7 +23,7 @@ enum DataTypeCode
     dictionary_c,
     object_c,
     varvalue_c,
-    varobject_c,	
+    varobject_c,
     list_c = 108,
     pod_c,
     pod_array_c,

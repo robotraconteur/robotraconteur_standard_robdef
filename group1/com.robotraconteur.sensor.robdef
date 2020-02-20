@@ -68,9 +68,9 @@ struct SensorInfo
     field DataType data_type
     field double[] sensor_resolution
     field bool analog_sensor
-    field double update_frequency	
+    field double update_frequency
     field ParameterInfo{string} parameter_info
-    field varvalue{string} extended	
+    field varvalue{string} extended
 end
 
 struct SensorData
@@ -81,11 +81,11 @@ struct SensorData
     field varvalue{string} extended
 end
 
-object Sensor	
+object Sensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
 end
@@ -95,10 +95,10 @@ object Vector2Sensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    wire Vector2 vector2_sensor_value [readonly,nolock]	
+    wire Vector2 vector2_sensor_value [readonly,nolock]
 end
 
 object Vector3Sensor
@@ -106,10 +106,10 @@ object Vector3Sensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    wire Vector3 vector3_sensor_value [readonly,nolock]	
+    wire Vector3 vector3_sensor_value [readonly,nolock]
 end
 
 object Vector6Sensor
@@ -117,10 +117,10 @@ object Vector6Sensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    wire Vector6 vector6_sensor_value [readonly,nolock]	
+    wire Vector6 vector6_sensor_value [readonly,nolock]
 end
 
 object WrenchSensor
@@ -128,10 +128,10 @@ object WrenchSensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    wire Wrench wrench_sensor_value [readonly,nolock]	
+    wire Wrench wrench_sensor_value [readonly,nolock]
 end
 
 object FreeformSensor
@@ -139,8 +139,8 @@ object FreeformSensor
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
-    pipe SensorData sensor_data [readonly,nolock]	
+    pipe SensorData sensor_data [readonly,nolock]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    wire varvalue freeform_sensor_value [readonly,nolock]	
+    wire varvalue freeform_sensor_value [readonly,nolock]
 end

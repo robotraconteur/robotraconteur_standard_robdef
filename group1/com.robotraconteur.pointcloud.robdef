@@ -26,14 +26,14 @@ struct PointCloudPart
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
-    field Point[] points   
+    field Point[] points
 end
 
 struct PointCloudf
     field uint32 width
     field uint32 height
     field bool is_dense
-    field Pointf[] points   
+    field Pointf[] points
 end
 
 struct PointCloudPartf
@@ -42,7 +42,7 @@ struct PointCloudPartf
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
-    field Pointf[] points   
+    field Pointf[] points
 end
 
 namedarray PointCloud2Point
@@ -58,7 +58,7 @@ struct PointCloud2
     field uint32 width
     field uint32 height
     field bool is_dense
-    field PointCloud2Point[] points   
+    field PointCloud2Point[] points
 end
 
 struct PointCloud2Part
@@ -67,7 +67,7 @@ struct PointCloud2Part
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
-    field PointCloud2Point[] points   
+    field PointCloud2Point[] points
 end
 
 namedarray PointCloud2Pointf
@@ -83,7 +83,7 @@ struct PointCloud2f
     field uint32 width
     field uint32 height
     field bool is_dense
-    field PointCloud2Pointf[] points   
+    field PointCloud2Pointf[] points
 end
 
 struct PointCloud2Partf
@@ -92,7 +92,7 @@ struct PointCloud2Partf
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
-    field PointCloud2Pointf[] points   
+    field PointCloud2Pointf[] points
 end
 
 struct FreeformPointCloud
@@ -101,7 +101,7 @@ struct FreeformPointCloud
     field string encoding
     field bool is_dense
     field varvalue points
-    field varvalue{string} extended 
+    field varvalue{string} extended
 end
 
 struct FreeformPointCloudPart
@@ -112,5 +112,5 @@ struct FreeformPointCloudPart
     field uint32 points_offset
     field uint32 points_total_len
     field varvalue points
-    field varvalue{string} extended   
+    field varvalue{string} extended
 end
