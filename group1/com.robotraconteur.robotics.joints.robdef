@@ -15,11 +15,11 @@ enum JointPositionUnits
     degree,
     # ticks_lin = m/(2^20)
     ticks_lin,
-    # ticks_rot = rad/(2^20)
+    # ticks_rot = rev/(2^20)
     ticks_rot,
     # nanoticks_lin = nm/(2^20)
     nanoticks_lin,
-    # nanoticks_rot = nrad/(2^20)
+    # nanoticks_rot = nrev/(2^20)
     nanoticks_rot
 end
 
