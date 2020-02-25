@@ -132,7 +132,8 @@ enum RobotStateFlags
     homing_required = 0x100000,
     communication_failure = 0x200000,
     valid_position_command = 0x1000000,
-    valid_velocity_command = 0x2000000
+    valid_velocity_command = 0x2000000,
+    trajectory_running = 0x4000000    
 end
 
 struct RobotKinChainInfo
@@ -195,6 +196,7 @@ struct AdvancedRobotState
     field bool trajectory_running
     field double trajectory_time
     field double trajectory_max_time
+    field uint32 trajectory_current_waypoint
     field uint16 config_seqno
 end
 
