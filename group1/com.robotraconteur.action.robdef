@@ -2,9 +2,10 @@ service com.robotraconteur.action
 
 stdver 0.9
 
-enum ActionStatusCode
-    error = -2,
-    failed = -1,
+enum ActionStatusCode    
+    error = -3,
+    failed = -2,
+    cancelled = -1,
     unknown = 0,
     queued,
     running,
