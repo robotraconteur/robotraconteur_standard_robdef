@@ -26,8 +26,7 @@ struct JointTrajectoryWaypoint
     field double[] joint_position
     field double[] joint_velocity
     field double[] position_tolerance
-    field double[] velocity_tolerance
-    field InterpolationMode interpolation_mode
+    field double[] velocity_tolerance    
     field double time_from_start
 end
 
@@ -35,6 +34,7 @@ struct JointTrajectory
     field string{list} joint_names
     field JointPositionUnits{list} joint_units
     field JointTrajectoryWaypoint{list} waypoints
+    field InterpolationMode interpolation_mode
     field varvalue{string} extended
 end
 
@@ -54,7 +54,6 @@ struct AdvancedJointTrajectoryDeviceWaypoint
     field double[]{list} joint_effort
     field double[]{list} position_tolerance
     field double[]{list} velocity_tolerance
-    field InterpolationMode interpolation_mode
     field varvalue{string} signals
 end
 
@@ -68,6 +67,7 @@ struct AdvancedJointTrajectoryDevice
     field string{list} joint_names
     field JointPositionUnits{list} joint_units
     field JointEffortUnits{list} joint_effort_units
+    field InterpolationMode interpolation_mode
     field varvalue{string} extended
 end
 
