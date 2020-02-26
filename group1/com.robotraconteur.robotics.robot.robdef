@@ -238,8 +238,8 @@ object Robot
     wire RobotJointCommand position_command [writeonly]
     wire RobotJointCommand velocity_command [writeonly]
     function ActionStatusCode{generator} home()
-    function double getf_signal(string signal_name)
-    function void setf_signal(string signal_name, double value)
+    function double[] getf_signal(string signal_name)
+    function void setf_signal(string signal_name, double[] value)
     function void tool_attached(int32 chain, ToolInfo tool)
     function void tool_detached(int32 chain, string tool_name)
     event tool_changed(int32 chain, string tool_name)
