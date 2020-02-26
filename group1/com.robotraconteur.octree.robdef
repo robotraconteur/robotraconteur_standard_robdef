@@ -18,7 +18,7 @@ enum OcTreeEncoding
 end
 
 struct OcTreeInfo
-	struct SensorDataHeader data_header
+	field SensorDataHeader data_header
 	field OcTreeEncoding encoding
 	field string id
 	field double resolution
