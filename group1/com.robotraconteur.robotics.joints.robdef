@@ -91,6 +91,7 @@ end
 struct JointLimits
     field double lower
     field double upper
+    field double home
     field double velocity
     field double acceleration
     field double effort
