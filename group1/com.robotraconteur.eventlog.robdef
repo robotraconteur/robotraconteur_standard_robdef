@@ -27,12 +27,17 @@ struct EventLogType
     field string event_type
 end
 
-struct EventLogMessage
+struct EventLogMessageHeader
     field EventLogType type
     field EventLogLevel level
-    field uint64 number
-    field uint64 sequence_number
+    field Identifier source_device
+    field string source_component
+    field uint64 message_number
     field DateTimeUTC timestamp
+end
+
+struct EventLogMessage
+    field EventLogMessageHeader header
     field string title
     field string message
     field varvalue{string} extended

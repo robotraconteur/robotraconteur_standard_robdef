@@ -13,6 +13,7 @@ import com.robotraconteur.robotics.payload
 import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.identifier
 import com.robotraconteur.action
+import com.robotraconteur.eventlog
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -32,6 +33,7 @@ using com.robotraconteur.robotics.trajectory.TrajectoryStatus
 using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
+using com.robotraconteur.eventlog.EventLogMessageHeader
 
 enum RobotType
     unknown = 0,
@@ -221,7 +223,7 @@ object Robot
     property RobotCommandMode command_mode [nolockread]
     property RobotOperationalMode operational_mode [readonly, nolock]
     property RobotControllerState controller_state [readonly, nolock]
-    property RobotErrorCategory{list} current_errors [readonly, nolock]
+    property EventLogMessageHeader{list} current_errors [readonly, nolock]
     function void halt() [urgent]
     function void enable()
     function void disable() [urgent]
