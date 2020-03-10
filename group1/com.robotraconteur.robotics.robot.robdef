@@ -74,31 +74,6 @@ enum RobotControllerState
     emergency_stop_reset
 end
 
-enum RobotErrorCategory
-    unknown = 0,
-    invalid_operation,
-    invalid_argument,
-    invalid_command,
-    invalid_mode,
-    hardware_fault,
-    software_fault,
-    communication_failure,
-    kinematic_error,
-    dynamic_error,
-    overload_error,
-    command_error,
-    user_software_error,
-    collision_imminent,
-    collision_occured,
-    sensor_failure,
-    sensor_out_of_range,
-    safety_violation,
-    workspace_violation,
-    workspace_intrusion,
-    estop_active,
-    guard_stop
-end
-
 enum RobotCapabilities
     unknown = 0,
     jog_command = 0x1,
