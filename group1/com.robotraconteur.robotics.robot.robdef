@@ -35,7 +35,7 @@ using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
 using com.robotraconteur.eventlog.EventLogMessageHeader
 
-enum RobotType
+enum RobotTypeCode
     unknown = 0,
     serial = 1,
     dual_arm,
@@ -132,7 +132,7 @@ end
 
 struct RobotInfo
     field DeviceInfo device_info
-    field RobotType robot_type
+    field RobotTypeCode robot_type
     field JointInfo{list} joint_info
     field RobotKinChainInfo{list} chains
     field uint32 robot_capabilities
