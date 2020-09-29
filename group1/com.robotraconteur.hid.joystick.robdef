@@ -5,10 +5,12 @@ stdver 0.9
 import com.robotraconteur.device
 import com.robotraconteur.sensordata
 import com.robotraconteur.geometry
+import com.robotraconteur.uuid
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.geometry.Vector2
+using com.robotraconteur.uuid.UUID
 
 enum JoystickCapabilities
     none = 0,
@@ -17,21 +19,69 @@ enum JoystickCapabilities
     standard_gamepad = 0x4
 end
 
+enum GamepadButtons
+    button_A = 0,
+    button_B,
+    button_X,
+    button_Y,
+    button_back,
+    button_guide,
+    button_start,
+    button_left_stick,
+    button_right_stick,
+    button_left_shoulder,
+    button_right_shoulder,
+    button_dpad_up,
+    button_dpad_down,
+    button_dpad_left,
+    button_dpad_right
+end
+
+enum JoystickHatState
+    hat_centered = 0,
+    hat_up = 0x01,
+    hat_right = 0x02,
+    hat_down = 0x04,
+    hat_left = 0x08,
+    hat_rightup = 0x03,
+    hat_rightdown = 0x06,
+    hat_leftup = 0x09,
+    hat_leftdown = 0x0C    
+end
+
 struct JoystickInfo
     field DeviceInfo device_info
+    field uint32 id
     field uint32 axes_count
     field uint32 button_count
+    field uint32 hat_count
     field uint32 joystick_capabilities
+    field uint16 joystick_device_vendor
+    field uint16 joystick_device_product
+    field uint16 joystick_device_version
+    field UUID joystick_uuid
 end
 
 struct JoystickState
-    field single[] axes
-    field int32[] buttons
+    field int16[] axes
+    field uint8[] buttons
+    field uint8[] hats
+end
+
+struct GamepadState
+    field int16 left_x
+    field int16 left_y
+    field int16 right_x
+    field int16 right_y
+    field int16 trigger_left
+    field int16 trigger_right
+    field uint16 buttons
 end
 
 struct JoystickStateSensorData
     field SensorDataHeader data_header
     field JoystickState joystick_state
+    field GamepadState gamepad_state
 end
 
 object Joystick
@@ -39,7 +89,8 @@ object Joystick
     property uint32 update_downsample [perclient]
     property double update_rate [readonly,nolock]
     wire JoystickState joystick_state [readonly,nolock]
+    wire GamepadState gamepad_state [readonly,nolock]
     pipe JoystickStateSensorData joystick_sensor_data [readonly,nolock]
-    function void rumble(double intensity)
-    function void force_feedback(Vector2 force)
+    function void rumble(double intensity, double duration)
+    function void force_feedback(Vector2 force, double duration)
 end
