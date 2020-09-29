@@ -10,4 +10,4 @@ struct PIDParam
     field double imin
     field double cmdMax
     field double cmdMin
-end struct
+end

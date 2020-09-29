@@ -15,7 +15,7 @@ struct ImuState
     field Vector3 angular_velocity
     field Vector3 linear_acceleration
     field Quaternion orientation
-end struct
+end
 
 object ImuSensor
     implements Sensor

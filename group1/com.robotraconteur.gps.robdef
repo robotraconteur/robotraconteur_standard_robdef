@@ -15,7 +15,7 @@ struct GpsState
     field double velocity_east
     field double velocity_north
     field double velocity_up
-end struct
+end
 
 object GpsSensor
     implements Sensor
