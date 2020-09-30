@@ -1,6 +1,6 @@
 service com.robotraconteur.laserscan
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.image
 import com.robotraconteur.sensordata

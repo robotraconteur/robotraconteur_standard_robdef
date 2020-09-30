@@ -1,6 +1,6 @@
 service com.robotraconteur.laserscanner
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.device
 import com.robotraconteur.param

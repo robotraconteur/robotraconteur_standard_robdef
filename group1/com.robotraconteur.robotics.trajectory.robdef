@@ -1,6 +1,6 @@
 service com.robotraconteur.robotics.trajectory
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.robotics.joints
 import com.robotraconteur.identifier

@@ -1,6 +1,6 @@
 service com.robotraconteur.uuid
 
-stdver 0.9
+stdver 0.10
 
 namedarray UUID
     field uint8[16] uuid_bytes

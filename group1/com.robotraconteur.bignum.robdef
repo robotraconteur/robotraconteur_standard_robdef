@@ -1,6 +1,6 @@
 service com.robotraconteur.bignum
 
-stdver 0.9
+stdver 0.10
 
 # Signed arbritary precisison number, little endian
 struct BigNum

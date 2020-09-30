@@ -1,6 +1,6 @@
 service com.robotraconteur.sensordata
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.datetime
 import com.robotraconteur.identifier

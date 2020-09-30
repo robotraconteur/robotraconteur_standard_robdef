@@ -1,6 +1,6 @@
 service com.robotraconteur.eventlog
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.identifier
 import com.robotraconteur.datetime

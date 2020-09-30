@@ -1,6 +1,6 @@
 service com.robotraconteur.geometry.shapes
 
-stdver 0.9
+stdver 0.10
 
 import com.robotraconteur.geometry
 import com.robotraconteur.identifier

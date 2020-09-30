@@ -1,6 +1,6 @@
 service com.robotraconteur.color
 
-stdver 0.9
+stdver 0.10
 
 namedarray ColorRGBA
     field double r

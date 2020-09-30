@@ -1,6 +1,6 @@
 service com.robotraconteur.units
 
-stdver 0.9
+stdver 0.10
 
 pod SIUnit
     field double coeff
