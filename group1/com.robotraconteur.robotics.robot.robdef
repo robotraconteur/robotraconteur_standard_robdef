@@ -33,6 +33,7 @@ using com.robotraconteur.robotics.payload.PayloadInfo
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.robotics.trajectory.TrajectoryStatus
 using com.robotraconteur.robotics.trajectory.JointTrajectory
+using com.robotraconteur.robotics.trajectory.InterpolationMode
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
 using com.robotraconteur.eventlog.EventLogMessage
@@ -146,6 +147,7 @@ struct RobotInfo
     field SignalInfo{list} signal_info
     field ParameterInfo{list} parameter_info
     field uint16 config_seqno
+    field InterpolationMode trajectory_interpolator_modes
     field varvalue{string} extended
 end
 
