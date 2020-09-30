@@ -11,6 +11,7 @@ import com.robotraconteur.datatype
 
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.geometry.Vector2
 using com.robotraconteur.geometry.Vector3
@@ -82,6 +83,8 @@ struct SensorData
 end
 
 object Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
@@ -91,7 +94,9 @@ object Sensor
 end
 
 object Vector2Sensor
+    implements Device
     implements Sensor
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
@@ -103,6 +108,8 @@ end
 
 object Vector3Sensor
     implements Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
@@ -114,6 +121,8 @@ end
 
 object Vector6Sensor
     implements Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
@@ -125,6 +134,8 @@ end
 
 object WrenchSensor
     implements Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
@@ -136,6 +147,8 @@ end
 
 object FreeformSensor
     implements Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]

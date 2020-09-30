@@ -9,14 +9,17 @@ using com.robotraconteur.datetime.DateTimeUTC
 using com.robotraconteur.datetime.DateTimeLocal
 using com.robotraconteur.datetime.ClockTypeCode
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 
-struct ClockDeviceInfo
+struct ClockDeviceInfo    
     field DeviceInfo device_info
     field ClockTypeCode clock_type
 end
 
 object Clock
-    property ClockDeviceInfo device_info [readonly,nolock]
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
+    property ClockDeviceInfo clock_info [readonly,nolock]
     wire DateTimeUTC time_utc [readonly]
     wire DateTimeLocal time_local [readonly]
 end

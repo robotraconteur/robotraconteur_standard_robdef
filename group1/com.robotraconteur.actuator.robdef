@@ -8,6 +8,7 @@ import com.robotraconteur.units
 import com.robotraconteur.datatype
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.units.SIUnit
 using com.robotraconteur.datatype.DataType
@@ -48,6 +49,8 @@ struct ActuatorInfo
 end
 
 object Actuator
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property ActuatorInfo actuator_info [readonly,nolock]
     property ActuatorMode actuator_mode [nolockread]
     wire double[] actuator_command [writeonly]

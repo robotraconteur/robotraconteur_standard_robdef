@@ -24,6 +24,7 @@ using com.robotraconteur.geometry.SpatialVelocity
 using com.robotraconteur.geometry.SpatialAcceleration
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.signal.SignalInfo
 using com.robotraconteur.robotics.joints.JointInfo
 using com.robotraconteur.robotics.tool.ToolInfo
@@ -194,6 +195,7 @@ struct RobotJointCommand
 end
 
 object Robot
+    property DeviceInfo device_info [readonly,nolock]
     property RobotInfo robot_info [readonly,nolock]
     property RobotCommandMode command_mode [nolockread]
     property RobotOperationalMode operational_mode [readonly, nolock]

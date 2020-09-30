@@ -9,6 +9,7 @@ import com.robotraconteur.geometry
 import com.robotraconteur.sensor
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.pointcloud.PointCloudf as PointCloud
 using com.robotraconteur.pointcloud.PointCloudPartf as PointCloudPart
@@ -39,6 +40,8 @@ struct PointCloudPartSensorData
 end
 
 object PointCloudSensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]
@@ -47,6 +50,8 @@ object PointCloudSensor
 end
 
 object PointCloudPartSensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]
@@ -67,6 +72,8 @@ end
 
 object PointCloud2Sensor
     implements PointCloudSensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]
@@ -77,6 +84,8 @@ end
 
 object PointCloud2PartSensor
     implements PointCloudPartSensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]

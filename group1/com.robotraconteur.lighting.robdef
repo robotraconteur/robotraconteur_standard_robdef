@@ -7,6 +7,7 @@ import com.robotraconteur.device
 
 using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 
 struct LightInfo
     field DeviceInfo device_info
@@ -15,12 +16,14 @@ struct LightInfo
 end
 
 object Light
+    property DeviceInfo device_info [readonly,nolock]
     property LightInfo light_info [readonly,nolock]
     property bool on_off
 end
 
 object DimmableLight
     implements Light
+    property DeviceInfo device_info [readonly,nolock]
     property LightInfo light_info [readonly,nolock]
     property bool on_off
     # intensity 0.0 to 1.0
@@ -30,6 +33,7 @@ end
 object ColorTunableLight
     implements Light
     implements DimmableLight
+    property DeviceInfo device_info [readonly,nolock]
     property LightInfo light_info [readonly,nolock]
     property bool on_off
     # intensity 0.0 to 1.0

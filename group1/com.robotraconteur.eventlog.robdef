@@ -9,6 +9,7 @@ import com.robotraconteur.device
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datetime.DateTimeUTC
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 
 enum EventLogLevel
     undefined = 0,
@@ -44,6 +45,7 @@ struct EventLogMessage
 end
 
 object EventLog
+    implements Device
     property DeviceInfo device_info [readonly,nolock]
     property uint64 message_count [readonly]
     function EventLogMessage{list} getf_messages(uint64 offset, uint64 count)

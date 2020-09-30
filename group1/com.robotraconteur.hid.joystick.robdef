@@ -8,6 +8,7 @@ import com.robotraconteur.geometry
 import com.robotraconteur.uuid
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.geometry.Vector2
 using com.robotraconteur.uuid.UUID
@@ -85,6 +86,8 @@ struct JoystickStateSensorData
 end
 
 object Joystick
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property JoystickInfo joystick_info [readonly,nolock]
     property uint32 update_downsample [perclient]
     property double update_rate [readonly,nolock]

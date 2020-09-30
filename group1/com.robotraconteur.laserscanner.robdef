@@ -7,6 +7,7 @@ import com.robotraconteur.param
 import com.robotraconteur.laserscan
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.laserscan.LaserScanInfof as LaserScanInfo
 using com.robotraconteur.laserscan.LaserScanf as LaserScan
@@ -21,6 +22,8 @@ struct LaserScannerInfo
 end
 
 object LaserScanner
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property LaserScannerInfo scanner_info [readonly,nolock]
     property bool active
     pipe LaserScan laser_scan_sensor_data [readonly]

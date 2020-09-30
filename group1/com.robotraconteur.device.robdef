@@ -53,6 +53,11 @@ struct DeviceInfo
     field varvalue{string} extended
 end
 
+object Device
+    property DeviceInfo device_info [readonly,nolock]
+end
+
 object BillboardDevice
+    implements Device
     property DeviceInfo device_info [readonly,nolock]
 end

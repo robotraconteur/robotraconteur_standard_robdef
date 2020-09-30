@@ -4,12 +4,15 @@ stdver 0.10
 
 import com.robotraconteur.sensor
 import com.robotraconteur.geometry
+import com.robotraconteur.device
 
 using com.robotraconteur.sensor.Sensor
 using com.robotraconteur.sensor.SensorInfo
 using com.robotraconteur.sensor.SensorData
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.Quaternion
+using com.robotraconteur.device.Device
+using com.robotraconteur.device.DeviceInfo
 
 struct ImuState
     field Vector3 angular_velocity
@@ -18,7 +21,9 @@ struct ImuState
 end
 
 object ImuSensor
+    implements Device
     implements Sensor
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]

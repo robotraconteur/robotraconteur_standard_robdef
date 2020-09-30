@@ -3,10 +3,13 @@ service com.robotraconteur.gps
 stdver 0.10
 
 import com.robotraconteur.sensor
+import com.robotraconteur.device
 
 using com.robotraconteur.sensor.Sensor
 using com.robotraconteur.sensor.SensorInfo
 using com.robotraconteur.sensor.SensorData
+using com.robotraconteur.device.Device
+using com.robotraconteur.device.DeviceInfo
 
 struct GpsState
     field double altitude
@@ -19,6 +22,8 @@ end
 
 object GpsSensor
     implements Sensor
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
     property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
