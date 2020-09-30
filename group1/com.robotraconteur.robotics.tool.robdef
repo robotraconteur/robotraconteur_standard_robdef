@@ -46,7 +46,7 @@ struct ToolInfo
     field SensorTypeCode sensor_type
     field double[] sensor_min
     field double[] sensor_max
-    field SIUnit sensor_units
+    field SIUnit{list} sensor_units
     field varvalue{string} extended
 end
 
