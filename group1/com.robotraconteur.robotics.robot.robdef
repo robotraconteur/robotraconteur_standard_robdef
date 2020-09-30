@@ -35,7 +35,7 @@ using com.robotraconteur.robotics.trajectory.TrajectoryStatus
 using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
-using com.robotraconteur.eventlog.EventLogMessageHeader
+using com.robotraconteur.eventlog.EventLogMessage
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
 
@@ -133,6 +133,7 @@ struct RobotKinChainInfo
     field SpatialAcceleration tcp_max_acceleration
     field SpatialVelocity tcp_reduced_max_velocity
     field SpatialAcceleration tcp_reduced_max_acceleration
+    field string description
     field varvalue{string} extended
 end
 
@@ -207,7 +208,7 @@ object Robot
     property RobotCommandMode command_mode [nolockread]
     property RobotOperationalMode operational_mode [readonly, nolock]
     property RobotControllerState controller_state [readonly, nolock]
-    property EventLogMessageHeader{list} current_errors [readonly, nolock]
+    property EventLogMessage{list} current_errors [readonly, nolock]
     function void halt() [urgent]
     function void enable()
     function void disable() [urgent]

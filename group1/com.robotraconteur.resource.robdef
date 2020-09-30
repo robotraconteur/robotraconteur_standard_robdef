@@ -18,6 +18,8 @@ end
 struct BucketInfo
     field Identifier identifier
     field string{list} keys
+    field string description
+    field varvalue{string} extended
 end
 
 struct ResourceInfo

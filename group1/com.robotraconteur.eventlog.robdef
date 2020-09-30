@@ -13,10 +13,11 @@ using com.robotraconteur.device.Device
 
 enum EventLogLevel
     undefined = 0,
-    debug = 1,
+    trace = 1,
+    debug,
     info,
     warning,
-    recoverable_error,
+    error,    
     safety_violation_error,
     fatal_error,
     emergency_error,
@@ -33,6 +34,7 @@ struct EventLogMessageHeader
     field EventLogLevel level
     field Identifier source_device
     field string source_component
+    field string source_object
     field uint64 message_number
     field DateTimeUTC timestamp
 end
@@ -44,12 +46,24 @@ struct EventLogMessage
     field varvalue{string} extended
 end
 
+struct EventLogInfo
+    field Identifier logged_device
+    field uint64 min_message_number
+    field uint64 max_message_number
+end
+
 object EventLog
+    property EventLogInfo eventlog_info
+    function EventLogMessage{list} getf_eventlog_messages(uint64 start, uint64 count)
+end
+
+object EventLogDevice
+    implements EventLog
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property uint64 message_count [readonly]
-    function EventLogMessage{list} getf_messages(uint64 offset, uint64 count)
-    pipe EventLogMessage message_stream [readonly]
-    function void clear_messages(uint64 offset, uint64 count)
-    function void clear_all_messages()
+    property EventLogInfo eventlog_info
+    function EventLogMessage{list} getf_eventlog_messages(uint64 start, uint64 count)
+    pipe EventLogMessage eventlog_message_stream [readonly]
+    function void eventlog_clear_messages(uint64 offset, uint64 count)
+    function void eventlog_clear_all_messages()
 end

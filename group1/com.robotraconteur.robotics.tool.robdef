@@ -4,15 +4,65 @@ stdver 0.10
 
 import com.robotraconteur.device
 import com.robotraconteur.geometry
+import com.robotraconteur.sensor
+import com.robotraconteur.robotics.joints
+import com.robotraconteur.units
 
 using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.Device
 using com.robotraconteur.geometry.Transform
 using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.sensor.SensorTypeCode
+using com.robotraconteur.robotics.joints.JointPositionUnits
+using com.robotraconteur.units.SIUnit
+
+enum ToolType
+    unknown = 0,
+    basic_gripper,
+    basic_continuous_gripper,
+    vaccum_gripper,
+    soft_gripper,
+    welder,
+    hand,
+    palletizer,
+    other
+end
+
+enum ToolStatus
+    unknown = 0,
+    open,
+    closed,
+    between
+end
 
 struct ToolInfo
     field DeviceInfo device_info
     field Transform tcp
     field SpatialInertia inertia
     field double actuation_time
+    field double command_min
+    field double command_max
+    field JointPositionUnits command_units
+    field SensorTypeCode sensor_type
+    field double[] sensor_min
+    field double[] sensor_max
+    field SIUnit sensor_units
     field varvalue{string} extended
+end
+
+struct ToolState
+    field ToolStatus tool_status
+    field double position
+    field double command
+    field double[] sensor
+end
+
+object Tool
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
+    property ToolInfo tool_info [readonly,nolock]
+    function void open()
+    function void close()
+    function void setf_command(double command)
+    wire ToolState tool_state
 end

@@ -49,7 +49,13 @@ struct SignalInfo
     field string user_description
     field varvalue min_value
     field varvalue max_value
+    field string description
     field varvalue{string} extended
+end
+
+struct SignalGroupInfo
+    field Identifier signal_group_identifier
+    field string description
 end
 
 object Signal
@@ -63,8 +69,13 @@ object Signal
     property uint32 isoch_downsample [perclient]
 end
 
-object SignalDevice
-    property DeviceInfo device_info [readonly,nolock]
+object SignalGroup
     property SignalInfo{list} signal_info [readonly,nolock]
     objref Signal{int32} signals
+end
+
+object SignalDevice
+    property DeviceInfo device_info [readonly,nolock]
+    property SignalGroupInfo{list} signal_group_info [readonly,nolock]
+    objref SignalGroup{string} signal_groups
 end
