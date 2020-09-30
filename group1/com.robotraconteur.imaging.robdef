@@ -5,6 +5,8 @@ stdver 0.10
 import com.robotraconteur.image
 import com.robotraconteur.imaging.camerainfo
 import com.robotraconteur.param
+import com.robotraconteur.device
+import com.robotraconteur.device.isoch
 
 using com.robotraconteur.image.Image
 using com.robotraconteur.image.ImagePart
@@ -12,6 +14,10 @@ using com.robotraconteur.image.CompressedImage
 using com.robotraconteur.imaging.camerainfo.CameraInfo
 using com.robotraconteur.imaging.camerainfo.MultiCameraInfo
 using com.robotraconteur.param.ParameterInfo
+using com.robotraconteur.device.Device
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.isoch.IsochDevice
+using com.robotraconteur.device.isoch.IsochInfo
 
 enum TriggerMode
    unknown = 0,
@@ -36,6 +42,10 @@ enum Capabilities
 end
 
 object Camera
+    implements Device
+    implements IsochDevice
+    property DeviceInfo device_info [readonly,nolock]    
+    property CameraInfo camera_info [readonly,nolock]
     property uint32 capabilities [readonly]
     function Image capture_frame()
     property TriggerMode trigger_mode [nolockread]
@@ -47,7 +57,8 @@ object Camera
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    property CameraInfo camera_info [readonly,nolock]
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
 
 object MultiCamera
@@ -64,6 +75,10 @@ object MultiCamera
 end
 
 object ImagePartCamera
+    implements Device
+    implements IsochDevice
+    property DeviceInfo device_info [readonly,nolock] 
+    property CameraInfo camera_info [readonly,nolock]
     property uint32 capabilities [readonly]
     function ImagePart{generator} capture_frame()
     property TriggerMode trigger_mode [nolockread]
@@ -74,5 +89,6 @@ object ImagePartCamera
     property ParameterInfo{string} param_info [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
-    property CameraInfo camera_info [readonly,nolock]
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
