@@ -59,7 +59,8 @@ enum SensorTypeCode
     light_color,
     light_intensity,
     object_color,
-    altitude
+    altitude,
+    other
 end
 
 struct SensorInfo
