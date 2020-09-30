@@ -6,14 +6,25 @@ import com.robotraconteur.geometry
 import com.robotraconteur.identifier
 import com.robotraconteur.color
 import com.robotraconteur.resource
+import com.robotraconteur.image
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Pose
+using com.robotraconteur.geometry.Vector2
+using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.NamedPose
 using com.robotraconteur.geometry.SpatialInertia
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.color.ColorRGB
 using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.resource.ResourceIdentifier
+using com.robotraconteur.image.CompressedImage
+
+enum MeshType
+    mesh = 0,
+    convex_mesh,
+    sdf_mesh
+end
 
 struct Box
     field double x
@@ -35,25 +46,50 @@ struct Cone
     field double radius
 end
 
+struct Capsule
+    field double height
+    field double radius
+end
+
+struct Plane
+    field double a
+    field double b
+    field double c
+    field double d
+end
+
 namedarray MeshTriangle
     field uint32 v1
     field uint32 v2
     field uint32 v3
 end
 
+struct MeshTexture
+    field CompressedImage image
+    field Vector2 uvs
+end
+
 struct Mesh
     field MeshTriangle[] triangles
     field Point[] vertices
+    field Vector3[] normals
+    field ColorRGB[] colors
+    field MeshTexture{list} textures
+    field MeshType mesh_type
 end
 
-struct MeshFromResource
-    field ResourceIdentifier mesh_resource
+struct Material
+    field ColorRGB albedo
+    field double alpha
+    field ColorRGB reflectivity
+    field double roughness
+    field double emissivity
 end
 
 struct ShapeObject
     field Identifier name
     field varvalue{list} shapes
     field Pose{list} shape_poses
-    field ColorRGBA{list} shape_colors
+    field Material{list} shape_materials
     field SpatialInertia inertia
 end
