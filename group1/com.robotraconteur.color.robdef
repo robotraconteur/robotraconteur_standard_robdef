@@ -30,3 +30,27 @@ namedarray ColorRGBAh
     field uint16 a
 end
 
+namedarray ColorRGB
+    field double r
+    field double g
+    field double b
+end
+
+namedarray ColorRGBf
+    field single r
+    field single g
+    field single b
+end
+
+namedarray ColorRGBu
+    field uint8 r
+    field uint8 g
+    field uint8 b
+end
+
+namedarray ColorRGBh
+    field uint16 r
+    field uint16 g
+    field uint16 b
+end
+
