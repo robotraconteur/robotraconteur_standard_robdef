@@ -24,7 +24,6 @@ struct PointCloudSensorInfo
     field Point range_min
     field Point range_max
     field Vector3 resolution
-    field double update_rate
     field ParameterInfo{string} param_info
     field varvalue{string} extended
 end

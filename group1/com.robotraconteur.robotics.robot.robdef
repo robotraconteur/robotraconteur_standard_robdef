@@ -14,6 +14,7 @@ import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.identifier
 import com.robotraconteur.action
 import com.robotraconteur.eventlog
+import com.robotraconteur.device.isoch
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -35,6 +36,8 @@ using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.action.ActionStatusCode
 using com.robotraconteur.eventlog.EventLogMessageHeader
+using com.robotraconteur.device.isoch.IsochDevice
+using com.robotraconteur.device.isoch.IsochInfo
 
 enum RobotTypeCode
     unknown = 0,
@@ -128,6 +131,8 @@ struct RobotKinChainInfo
     field PayloadInfo current_payload
     field SpatialVelocity tcp_max_velocity
     field SpatialAcceleration tcp_max_acceleration
+    field SpatialVelocity tcp_reduced_max_velocity
+    field SpatialAcceleration tcp_reduced_max_acceleration
     field varvalue{string} extended
 end
 
@@ -195,6 +200,8 @@ struct RobotJointCommand
 end
 
 object Robot
+    implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property RobotInfo robot_info [readonly,nolock]
     property RobotCommandMode command_mode [nolockread]
@@ -206,14 +213,15 @@ object Robot
     function void disable() [urgent]
     function void reset_errors()
     property double speed_ratio
-    function void jog_joint(double[] joint_position, double[] max_velocity, bool relative, bool wait)
-    function void jog_cartesian(Pose{int32} target_pose, SpatialVelocity{int32} max_velocity, bool relative, bool wait)
+    function void jog_freespace(double[] joint_position, double[] max_velocity, bool wait)
+    function void jog_joint(double[] joint_velocity, double timeout, bool wait)
+    function void jog_cartesian(SpatialVelocity{int32} max_velocity, double timeout, bool wait)
     function TrajectoryStatus{generator} execute_trajectory(JointTrajectory trajectory)
     wire RobotState robot_state [readonly,nolock]
     wire AdvancedRobotState advanced_robot_state [readonly,nolock]
     pipe RobotStateSensorData robot_state_sensor_data [readonly,nolock]
-    property uint32 update_downsample [perclient]
-    property double update_rate [readonly]
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
     wire RobotJointCommand position_command [writeonly]
     wire RobotJointCommand velocity_command [writeonly]
     function ActionStatusCode{generator} home()

@@ -95,6 +95,9 @@ struct JointLimits
     field double velocity
     field double acceleration
     field double effort
+    field double reduced_velocity
+    field double reduced_acceleration
+    field double reduced_effort
 end
 
 struct JointInfo

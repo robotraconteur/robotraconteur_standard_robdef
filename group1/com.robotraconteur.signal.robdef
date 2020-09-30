@@ -6,12 +6,15 @@ import com.robotraconteur.identifier
 import com.robotraconteur.datatype
 import com.robotraconteur.device
 import com.robotraconteur.units
+import com.robotraconteur.device.isoch
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.DeviceClass
 using com.robotraconteur.units.SIUnit
+using com.robotraconteur.device.isoch.IsochDevice
+using com.robotraconteur.device.isoch.IsochInfo
 
 enum SignalType
     unknown = 0,
@@ -44,20 +47,20 @@ struct SignalInfo
     field SignalAccessLevel access_level
     field uint32[] address
     field string user_description
-    field double max_update_rate
     field varvalue min_value
     field varvalue max_value
     field varvalue{string} extended
 end
 
 object Signal
+    implements IsochDevice
     property SignalInfo signal_info [readonly,nolock]
     wire varvalue signal_value [readonly]
     wire varvalue signal_command [writeonly]
     wire double[] signal_value_vec [readonly]
     wire double[] signal_command_vec [writeonly]
-    property uint32 update_downsample [perclient]
-    property double update_rate [readonly]
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
 
 object SignalDevice
