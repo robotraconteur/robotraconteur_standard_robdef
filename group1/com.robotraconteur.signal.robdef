@@ -49,7 +49,6 @@ struct SignalInfo
     field string user_description
     field varvalue min_value
     field varvalue max_value
-    field string description
     field varvalue{string} extended
 end
 
