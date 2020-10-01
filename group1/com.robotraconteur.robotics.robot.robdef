@@ -147,7 +147,7 @@ struct RobotInfo
     field SignalInfo{list} signal_info
     field ParameterInfo{list} parameter_info
     field uint16 config_seqno
-    field InterpolationMode trajectory_interpolator_modes
+    field InterpolationMode{list} trajectory_interpolation_modes
     field varvalue{string} extended
 end
 
