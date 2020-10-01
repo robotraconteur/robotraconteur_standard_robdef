@@ -94,6 +94,7 @@ struct JointLimits
     field double home
     field double velocity
     field double acceleration
+    field double jerk
     field double effort
     field double reduced_velocity
     field double reduced_acceleration
