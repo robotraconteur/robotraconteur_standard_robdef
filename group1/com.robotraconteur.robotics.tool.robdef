@@ -42,7 +42,6 @@ struct ToolInfo
     field double actuation_time
     field double command_min
     field double command_max
-    field JointPositionUnits command_units
     field SensorTypeCode sensor_type
     field double[] sensor_min
     field double[] sensor_max
