@@ -64,5 +64,5 @@ object Tool
     function void open()
     function void close()
     function void setf_command(double command)
-    wire ToolState tool_state
+    wire ToolState tool_state [readonly,nolock]
 end

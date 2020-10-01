@@ -96,8 +96,8 @@ object Servo
     property ServoMode mode [nolockread]
     wire double[] position [readonly,nolock]
     wire double[] velocity [readonly, nolock]
-    wire ServoState servo_state
-    pipe ServoStateSensorData servo_state_sensor_data
+    wire ServoState servo_state [readonly,nolock]
+    pipe ServoStateSensorData servo_state_sensor_data [readonly,nolock]
     wire ServoCommand position_command [writeonly]
     wire ServoCommand velocity_command [writeonly]
     wire ServoCommand effort_command [writeonly]
