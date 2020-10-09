@@ -16,7 +16,7 @@ using com.robotraconteur.sensor.SensorTypeCode
 using com.robotraconteur.robotics.joints.JointPositionUnits
 using com.robotraconteur.units.SIUnit
 
-enum ToolType
+enum ToolTypeCode
     unknown = 0,
     basic_gripper,
     basic_continuous_gripper,
@@ -28,15 +28,30 @@ enum ToolType
     other
 end
 
-enum ToolStatus
+enum ToolCapabilities
     unknown = 0,
-    open,
-    closed,
-    between
+    open_close = 0x1,
+    continuous_command = 0x2,    
+end
+
+enum ToolStateFlags
+    unknown = 0,
+    error = 0x1,
+    fatal_error = 0x2,
+    estop = 0x4,
+    communication_failure = 0x8,
+    enabled = 0x10,
+    ready = 0x20,
+    opened = 0x40,
+    closed = 0x80,
+    between = 0x100,
+    actuating = 0x200    
 end
 
 struct ToolInfo
     field DeviceInfo device_info
+    field ToolTypeCode tool_type
+    field uint32 tool_capabilities
     field Transform tcp
     field SpatialInertia inertia
     field double actuation_time
@@ -50,7 +65,8 @@ struct ToolInfo
 end
 
 struct ToolState
-    field ToolStatus tool_status
+    field uint64 seqno
+    field uint32 tool_state_flags
     field double position
     field double command
     field double[] sensor
