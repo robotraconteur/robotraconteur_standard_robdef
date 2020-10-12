@@ -16,9 +16,14 @@ using com.robotraconteur.datatype.DataType
 enum ActuatorTypeCode
     unknown = 0,
     generic,
-    motor_torque,
-    motor_force,
+    position,
+    velocity,
+    acceleration,
+    effort,
+    motor_position,
     motor_velocity,
+    motor_acceleration,
+    motor_effort,
     solenoid,
     voice_coil,
     piezoelectric,
@@ -26,7 +31,8 @@ enum ActuatorTypeCode
     vacuum_pressure,
     heater_power,
     chiller_power,
-    valve
+    valve,
+    conveyor
 end
 
 enum ActuatorMode
