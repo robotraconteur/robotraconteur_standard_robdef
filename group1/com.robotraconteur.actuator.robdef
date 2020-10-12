@@ -32,7 +32,9 @@ enum ActuatorTypeCode
     heater_power,
     chiller_power,
     valve,
-    conveyor
+    conveyor,
+    voltage,
+    current
 end
 
 enum ActuatorMode
