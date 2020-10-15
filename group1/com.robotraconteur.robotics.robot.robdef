@@ -87,7 +87,11 @@ enum RobotCapabilities
     velocity_command = 0x8,
     homing_command = 0x10,
     software_reset_errors = 0x20,
-    software_enable = 0x40
+    software_enable = 0x40,
+    interpolated_trajectory = 0x80,
+    raster_trajectory = 0x100,
+    trajectory_queueing = 0x200,
+    speed_ratio = 0x400
 end
 
 enum RobotStateFlags
