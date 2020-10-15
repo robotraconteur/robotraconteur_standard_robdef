@@ -7,6 +7,8 @@ import com.robotraconteur.geometry
 import com.robotraconteur.sensor
 import com.robotraconteur.robotics.joints
 import com.robotraconteur.units
+import com.robotraconteur.sensordata
+import com.robotraconteur.device.isoch
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -15,6 +17,9 @@ using com.robotraconteur.geometry.SpatialInertia
 using com.robotraconteur.sensor.SensorTypeCode
 using com.robotraconteur.robotics.joints.JointPositionUnits
 using com.robotraconteur.units.SIUnit
+using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.device.isoch.IsochDevice
+using com.robotraconteur.device.isoch.IsochInfo
 
 enum ToolTypeCode
     unknown = 0,
@@ -31,7 +36,10 @@ end
 enum ToolCapabilities
     unknown = 0,
     open_close = 0x1,
-    continuous_command = 0x2,    
+    continuous_command = 0x2, 
+    homing_command = 0x4,
+    software_reset_errors = 0x8,
+    software_enable = 0x10
 end
 
 enum ToolStateFlags
@@ -45,7 +53,8 @@ enum ToolStateFlags
     opened = 0x40,
     closed = 0x80,
     between = 0x100,
-    actuating = 0x200    
+    actuating = 0x200,
+    homing = 0x400 
 end
 
 struct ToolInfo
@@ -55,6 +64,8 @@ struct ToolInfo
     field Transform tcp
     field SpatialInertia inertia
     field double actuation_time
+    field double close_position
+    field double open_position
     field double command_min
     field double command_max
     field SensorTypeCode sensor_type
@@ -72,12 +83,27 @@ struct ToolState
     field double[] sensor
 end
 
+struct ToolStateSensorData
+    field SensorDataHeader data_header
+    field ToolState robot_state
+end
+
 object Tool
     implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property ToolInfo tool_info [readonly,nolock]
     function void open()
     function void close()
     function void setf_command(double command)
     wire ToolState tool_state [readonly,nolock]
+    pipe ToolStateSensorData tool_state_sensor_data [readonly,nolock]
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    function void enable()
+    function void disable() [urgent]
+    function void reset_errors()
+    function void home()
 end
