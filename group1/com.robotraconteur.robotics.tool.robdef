@@ -25,7 +25,9 @@ enum ToolTypeCode
     unknown = 0,
     basic_gripper,
     basic_continuous_gripper,
-    vaccum_gripper,
+    pneumatic_gripper,
+    electric_gripper,
+    vacuum_gripper,
     soft_gripper,
     welder,
     hand,
@@ -35,11 +37,12 @@ end
 
 enum ToolCapabilities
     unknown = 0,
-    open_close = 0x1,
+    open_close_command = 0x1,
     continuous_command = 0x2, 
     homing_command = 0x4,
     software_reset_errors = 0x8,
-    software_enable = 0x10
+    software_enable = 0x10,
+    sensor_feedback = 0x20
 end
 
 enum ToolStateFlags
@@ -54,7 +57,11 @@ enum ToolStateFlags
     closed = 0x80,
     between = 0x100,
     actuating = 0x200,
-    homing = 0x400 
+    homing = 0x400,
+    requires_homing = 0x800,
+    homed = 0x1000,
+    gripping = 0x2000,
+    missed = 0x4000
 end
 
 struct ToolInfo
@@ -68,7 +75,9 @@ struct ToolInfo
     field double open_position
     field double command_min
     field double command_max
-    field SensorTypeCode sensor_type
+    field double command_close
+    field double command_open
+    field SensorTypeCode{list} sensor_type
     field double[] sensor_min
     field double[] sensor_max
     field SIUnit{list} sensor_units
@@ -95,6 +104,7 @@ object Tool
     property ToolInfo tool_info [readonly,nolock]
     function void open()
     function void close()
+    function void halt() [urgent]
     function void setf_command(double command)
     wire ToolState tool_state [readonly,nolock]
     pipe ToolStateSensorData tool_state_sensor_data [readonly,nolock]
