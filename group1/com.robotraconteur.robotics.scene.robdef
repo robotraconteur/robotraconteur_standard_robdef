@@ -1,0 +1,78 @@
+service com.robotraconteur.robotics.scene
+
+stdver 0.10
+
+import com.robotraconteur.robotics.joints
+import com.robotraconteur.geometry
+import com.robotraconteur.geometry.shapes
+import com.robotraconteur.identifier
+
+using com.robotraconteur.robotics.joints.JointInfo
+using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.Pose
+using com.robotraconteur.geometry.SpatialVelocity
+using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.geometry.shapes.ShapeObject
+using com.robotraconteur.identifier.Identifier
+
+struct Joint
+    field JointInfo joint_info
+    field Vector3 axis
+    field string child_link_name
+    field string parent_link_name
+    field Pose parent_to_joint_origin_transform
+    field varvalue{string} extended
+end
+
+# Use with Joint.extended[joint_dynamics]
+struct JointDynamics
+    field double damping
+    field double friction
+end
+
+# Use with Joint.extended[joint_safety]
+struct JointSafety
+    field double soft_upper_limit
+    field double soft_lower_limit
+    field double k_position
+    field double k_velocity
+end
+
+# Use with Joint.extended[joint_calibration]
+struct JointCalibration
+    field double reference_position
+    field double rising
+    field double falling
+end
+
+# Use with Joint.extended[joint_mimic]
+struct JointMimic
+    field double offset
+    field double multiplier
+    field Identifier joint_name
+end
+
+struct Link
+    field Identifier link_identifier
+    field SpatialInertia inertia
+    field ShapeObject{list} visual
+    field ShapeObject{list} collision
+    field varvalue{string} extended
+end
+
+struct Model
+    field Identifier model_identifier
+    field Identifier parent_identifier
+    field Joint{list} joints
+    field Link{list} links
+    field varvalue{string} extended
+end
+
+struct Scene
+    field Identifier scene_identifier
+    field Joint{list} joints
+    field Link{list} links
+    field Model{list} models
+    field uint64 revision
+    field varvalue{string} extended
+end

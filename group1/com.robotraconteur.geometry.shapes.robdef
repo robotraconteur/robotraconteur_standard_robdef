@@ -84,6 +84,7 @@ struct Material
     field ColorRGB reflectivity
     field double roughness
     field double emissivity
+    field varvalue pbr
 end
 
 struct ShapeObject
@@ -92,4 +93,5 @@ struct ShapeObject
     field Pose{list} shape_poses
     field Material{list} shape_materials
     field SpatialInertia inertia
+    field varvalue{string} extended
 end

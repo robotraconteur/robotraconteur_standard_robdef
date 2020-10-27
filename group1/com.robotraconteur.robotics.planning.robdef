@@ -7,6 +7,8 @@ import com.robotraconteur.robotics.robot
 import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.geometry.shapes
 import com.robotraconteur.identifier
+import com.robotraconteur.device
+import com.robotraconteur.robotics.scene
 
 using com.robotraconteur.geometry.NamedTransform
 using com.robotraconteur.geometry.NamedPose
@@ -14,11 +16,20 @@ using com.robotraconteur.geometry.Pose
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.geometry.Vector6
 using com.robotraconteur.geometry.Box
+using com.robotraconteur.geometry.SpatialVelocity
 using com.robotraconteur.robotics.trajectory.JointTrajectory
 using com.robotraconteur.robotics.robot.RobotInfo
 using com.robotraconteur.robotics.robot.RobotState
 using com.robotraconteur.geometry.shapes.ShapeObject
 using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.device.Device
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.device.DeviceClass
+using com.robotraconteur.device.DeviceCapability
+using com.robotraconteur.robotics.scene.Scene
+using com.robotraconteur.robotics.scene.Link
+using com.robotraconteur.robotics.scene.Joint
+using com.robotraconteur.robotics.scene.Model
 
 enum PlannerStatusCode
     is_not_configured = -2,
@@ -29,30 +40,87 @@ enum PlannerStatusCode
     success = 3
 end
 
-struct EnvState
-    field double[]{string} joints
-    field NamedTransform{string} transforms
-    field varvalue{string} extended
+enum PlannerWaypointType
+    unspecified = 0,
+    start = 1,
+    path,
+    goal,
+    intermediate_stop,
+    raster,
+    other
+end
+
+enum PlannerMotionTypeCode
+    default = 0,
+    freespace = 1,
+    linear,
+    cylindrical,
+    spherical,
+    other
+end
+
+enum PlannerAlgorithmCapabilityFlags
+    none = 0,
+    joint_waypoint = 0x1,
+    cartesian_waypoint = 0x2,
+    freespace_plan = 0x4,
+    raster_plan = 0x8,
+    freespace_waypoint = 0x10,
+    linear_waypoint = 0x20,
+    cylindrical_waypoint = 0x40,
+    spherical_waypoint = 0x80,
+    other_waypoint = 0x100
+end
+
+enum FilterAlgorithmCapabilityFlags
+    none = 0,
+    time_parameterization = 0x1,
+    retime = 0x2,
+    add_waypoints = 0x4,
+    velocity_limit = 0x8,
+    acceleration_limit = 0x10,
+    jerk_limit = 0x20    
+end
+
+enum PlanningSceneCapabilityFlags
+    none = 0,
+    geometry = 0x1,
+    robot_info = 0x2,
+    link_mutable = 0x4,
+    joint_mutable = 0x8,
+    move_joint_origin = 0x10,
+    supports_models = 0x20,
+    models_mutable = 0x40,
+    robot_info_mutable = 0x80
 end
 
 struct JointWaypoint
     field double[] joint_positions
-    field double[] coeffs
-    field bool is_critical
+    field double[] joint_velocity
+    field PlannerWaypointType waypoint_type
+    field PlannerMotionTypeCode motion_type
+    field double time_from_start
+    field varvalue{string} constraints
+    field varvalue{string} extended
 end
 
 struct CartesianWaypoint
-    field Pose cartesion_position
-    field double[] coeffs
-    field bool is_critical
+    field Pose position
+    field SpatialVelocity velocity
+    field PlannerWaypointType waypoint_type
+    field PlannerMotionTypeCode motion_type
+    field double time_from_start
+    field varvalue{string} constraints
+    field varvalue{string} extended
 end
 
-struct JointTolerancedWaypoint
-    field double[] joint_positions
-    field double[] lower_tolerance
-    field double[] upper_tolerance
-    field double[] coeffs
-    field bool is_critical
+struct OtherWaypoint
+    field string waypoint_type
+    field varvalue{string} waypoint_parameters
+    field PlannerMotionTypeCode motion_type
+    field double time_from_start
+    field varvalue{string} constraints
+    field varvalue{string} extended
 end
 
 struct PlanningRequest
@@ -60,9 +128,7 @@ struct PlanningRequest
     field Identifier planner_algorithm
     field Identifier filter_algorithm
     field Box workspace_bounds
-    field varvalue start_waypoint
-    field varvalue goal_waypoint
-    field varvalue{list} intermediate_waypoints
+    field varvalue{list} waypoints
     field bool collision_check
     field double collision_safety_margin
     field varvalue{string} planner_specific
@@ -98,28 +164,112 @@ struct InvKinResult
     field double[]{list} joints
 end
 
+struct PlannerAlgorithm
+    field Identifier algorithm_identifier
+    field DeviceClass{list} algorithm_classes
+    field uint64 algorithm_capability_flags
+    field DeviceCapability{list} algorithm_capabilities
+    field string description
+    field varvalue{string} extended
+end
+
+struct PlannerInfo
+    field DeviceInfo device_info
+    field PlannerAlgorithm{list} planner_algorithms
+    field PlannerAlgorithm{list} planner_filters
+    field varvalue{string} extended
+end
+
+struct PlanningSceneInfo
+    field Identifier scene_identifier
+    field string description
+    field uint64 scene_capabilities
+    field varvalue{string} extended
+end
+
+struct PlannerModelJointPositions
+    field double[]{string} joint_position
+end
+
+struct PlannerJointPositions
+    field PlannerModelJointPositions{string} model_joints
+    field double[]{string} joint_position
+end
+
+struct EnvState
+    field PlannerJointPositions joint_position
+    field NamedTransform{string} transforms
+    field varvalue{string} extended
+end
+
+struct AllowedCollisionEntry
+    field Identifier model_identifier1
+    field Identifier link_identifier1
+    field Identifier model_identifier2
+    field Identifier link_identifier2
+    field string reason
+end
+
+struct AllowedCollisionMatrix
+    field AllowedCollisionEntry{list} entries
+end
+
 object Planner
+    implements Device
+    property DeviceInfo device_info [readonly,nolock]
+    property PlannerInfo planner_info [readonly, nolock]
     function PlanningResponse{generator} plan(PlanningRequest request)
-
     function ContactResult{list} compute_contacts(EnvState state)
-
     function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
+    objref PlanningScene scene
 end
 
 object PlanningScene
+    property PlanningSceneInfo planning_scene_info [readonly,nolock]
+
     property EnvState env_state
-
     property RobotInfo{string} robots [readonly]
-    property RobotState{string} robot_states [readonly]
-    property ShapeObject{string} shapes [readonly]
-    property NamedTransform{string} transforms [readonly]
+    property Scene scene [readonly]
+    
+    function NamedTransform getf_transform(Identifier child, Identifier parent)
+    property Identifier{list} link_names [readonly]
+    property Identifier{list} joint_names [readonly]
+    property Identifier{list} active_joint_names [readonly]
+    property Identifier root_link_name [readonly]
+    function Link getf_link(Identifier link_identifier)
+    function Joint getf_joint(Identifier joint_identifier)
 
-    function void add_robot(string name, RobotInfo robot, NamedPose pose)
-    function void update_robot_info(string robot_name, RobotInfo robot)
-    function void update_robot_state(string robot_name, RobotState robot_state)
+    event scene_changed()
+    
+    wire PlannerJointPositions joint_position [readonly,nolock]
+    wire PlannerJointPositions update_joint_position [writeonly]
 
-    function void add_shape(string shape_name, ShapeObject shape, NamedPose pose)
+    # Leave model_identifier null if models not being used
+    function void add_link(Identifier model_identifier, Link link)
+    function void add_link2(Identifier model_identifier, Link link, Joint joint)
+    function void remove_link(Identifier model_identifier, Identifier link_identifier)
+    function void move_link(Identifier model_identifier, Joint joint)
 
-    function void remove_item(string name)
-    function void move_item(string name, NamedPose pose)
+    function void remove_joint(Identifier model_identifier, Identifier joint_identifier)
+    function void move_joint(Identifier model_identifier, Identifier joint_identifier, Identifier parent_link)
+    function void change_joint_origin(Identifier model_identifier, Identifier joint_identifier, Pose new_origin)
+
+    function void add_model(Model model)
+    function void remove_model(Identifier model_identifier)
+
+    function bool getf_link_collision_enabled(Identifier model_identifier, Identifier link_identifier)
+    function void setf_link_collision_enabled(Identifier model_identifier, Identifier link_identifier, bool enabled)
+    
+    function bool getf_link_visibility(Identifier model_identifier, Identifier link_identifier)
+    function void setf_link_visibility(Identifier model_identifier, Identifier link_identifier, bool visibility)
+
+    function void add_allowed_collision(Identifier model_identifier1, Identifier link_identifier1, \
+        Identifier model_identifier2, Identifier link_identifier2)
+    function void remove_allowed_collision(Identifier model_identifier1, Identifier link_identifier1, \
+        Identifier model_identifier2, Identifier link_identifier2)
+    property AllowedCollisionMatrix allowed_collision_matrix [readonly] 
+
+    function void add_robot(Identifier robot_identifier, RobotInfo robot, NamedPose pose)
+    function void update_robot_info(Identifier robot_identifier, RobotInfo robot)
+    function void update_robot_state(Identifier robot_identifier, RobotState robot_state)
 end

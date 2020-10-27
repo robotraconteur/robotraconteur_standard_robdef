@@ -85,7 +85,9 @@ enum JointType
     ball,
     planar,
     floating,
-    other_compound
+    other_compound,
+    # Fixed used in scenes
+    fixed
 end
 
 struct JointLimits
