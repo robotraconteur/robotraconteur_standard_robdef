@@ -9,6 +9,7 @@ import com.robotraconteur.geometry.shapes
 import com.robotraconteur.identifier
 import com.robotraconteur.device
 import com.robotraconteur.robotics.scene
+import com.robotraconteur.param
 
 using com.robotraconteur.geometry.NamedTransform
 using com.robotraconteur.geometry.NamedPose
@@ -30,6 +31,7 @@ using com.robotraconteur.robotics.scene.Scene
 using com.robotraconteur.robotics.scene.Link
 using com.robotraconteur.robotics.scene.Joint
 using com.robotraconteur.robotics.scene.Model
+using com.robotraconteur.param.ParameterInfo
 
 enum PlannerStatusCode
     is_not_configured = -2,
@@ -40,19 +42,10 @@ enum PlannerStatusCode
     success = 3
 end
 
-enum PlannerWaypointType
-    unspecified = 0,
-    start = 1,
-    path,
-    goal,
-    intermediate_stop,
-    raster,
-    other
-end
-
 enum PlannerMotionTypeCode
     default = 0,
-    freespace = 1,
+    start,
+    freespace,
     linear,
     cylindrical,
     spherical,
@@ -69,7 +62,7 @@ enum PlannerAlgorithmCapabilityFlags
     linear_waypoint = 0x20,
     cylindrical_waypoint = 0x40,
     spherical_waypoint = 0x80,
-    other_waypoint = 0x100
+    other_waypoint = 0x200
 end
 
 enum FilterAlgorithmCapabilityFlags
@@ -97,7 +90,6 @@ end
 struct JointWaypoint
     field double[] joint_positions
     field double[] joint_velocity
-    field PlannerWaypointType waypoint_type
     field PlannerMotionTypeCode motion_type
     field double time_from_start
     field varvalue{string} constraints
@@ -107,7 +99,6 @@ end
 struct CartesianWaypoint
     field Pose position
     field SpatialVelocity velocity
-    field PlannerWaypointType waypoint_type
     field PlannerMotionTypeCode motion_type
     field double time_from_start
     field varvalue{string} constraints
@@ -129,6 +120,7 @@ struct PlanningRequest
     field Identifier filter_algorithm
     field Box workspace_bounds
     field varvalue{list} waypoints
+    field Pose tcp
     field bool collision_check
     field double collision_safety_margin
     field varvalue{string} planner_specific
@@ -170,6 +162,9 @@ struct PlannerAlgorithm
     field uint64 algorithm_capability_flags
     field DeviceCapability{list} algorithm_capabilities
     field string description
+    field ParameterInfo{list} waypoint_constraints
+    field ParameterInfo{list} waypoint_extended
+    field ParameterInfo{list} algorithm_specific
     field varvalue{string} extended
 end
 
