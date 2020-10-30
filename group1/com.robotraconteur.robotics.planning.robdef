@@ -90,6 +90,13 @@ enum PlanningSceneCapabilityFlags
     robot_info_mutable = 0x80
 end
 
+enum ContactTestTypeCode
+    first = 0,
+    closest = 1,
+    all = 2,
+    limited = 3
+end
+
 struct JointWaypoint
     field double[] joint_positions
     field double[] joint_velocity
@@ -139,24 +146,21 @@ end
 
 struct ContactResult
     field double distance
-    field uint8 shape1_type_id
-    field uint8 shape2_type_id
-    field string shape1_name
-    field string shape2_name
-    field uint32 shape1_subid
-    field uint32 shape2_subid
-    field Vector3 shape1_nearest_point
-    field Vector3 shape2_nearest_point
+    field string link1_name
+    field string link2_name   
+    field Vector3 link1_nearest_point
+    field Vector3 link2_nearest_point
+    field Vector3 link1_nearest_point_local
+    field Vector3 link2_nearest_point_local
+    field Pose link1_transform
+    field Pose link2_transform
     field Vector3 normal
-    field Vector3 shape1_cc_nearest_points
-    field Vector3 shape2_cc_nearest_points
-    field double cc_time
-    field uint8 cc_type
     field varvalue{string} extended
 end
 
 struct InvKinResult
     field double[]{list} joints
+    field varvalue{string} extended
 end
 
 struct PlannerAlgorithmInfo
@@ -175,6 +179,7 @@ struct PlannerInfo
     field DeviceInfo device_info
     field PlannerAlgorithmInfo{list} planner_algorithms
     field PlannerAlgorithmInfo{list} planner_filters
+    field ParameterInfo{list} global_parameter_info
     field varvalue{string} extended
 end
 
@@ -182,6 +187,7 @@ struct PlanningSceneInfo
     field Identifier scene_identifier
     field string description
     field uint64 scene_capabilities
+    field ParameterInfo{list} scene_parameter_info
     field varvalue{string} extended
 end
 
@@ -192,11 +198,13 @@ end
 struct PlannerJointPositions
     field PlannerModelJointPositions{string} model_joints
     field double[]{string} joint_position
+    field varvalue{string} extended
 end
 
 struct EnvState
     field PlannerJointPositions joint_position
-    field NamedTransform{string} transforms
+    field NamedTransform{string} link_transforms
+    field NamedTransform{string} joint_transforms
     field varvalue{string} extended
 end
 
@@ -217,10 +225,16 @@ object Planner
     property DeviceInfo device_info [readonly,nolock]
     property PlannerInfo planner_info [readonly, nolock]
     function PlanningResponse{generator} plan(PlanningRequest request)
-    function ContactResult{list} compute_contacts(EnvState state)
+    function ContactResult{list} compute_contacts(PlannerJointPositions joint_position, ContactTestTypeCode contact_test_type, double contact_distance)
     function NamedPose fwdkin(Identifier robot_identifier, double[] joint_position, Identifier tcp)
     function InvKinResult{list} invkin(Identifier robot_identifier, NamedPose tcp_pose, double[] joint_position_seed)
     objref PlanningScene scene
+
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    event param_changed(string param_name)
+
+    function varvalue extended_function(string name, varvalue{string} parameters)
 end
 
 object PlanningScene
@@ -238,10 +252,10 @@ object PlanningScene
     function Link getf_link(Identifier link_identifier)
     function Joint getf_joint(Identifier joint_identifier)
 
-    event scene_changed()
+    event scene_changed(uint64 seqno)
     
-    wire PlannerJointPositions joint_position [readonly,nolock]
-    wire PlannerJointPositions update_joint_position [writeonly]
+    property PlannerJointPositions joint_position [readonly]
+    function void setf_joint_position(PlannerJointPositions joint_positions)
 
     # Leave model_identifier null if models not being used
     function void add_link(Identifier model_identifier, Link link)
@@ -271,4 +285,10 @@ object PlanningScene
     function void add_robot(Identifier robot_identifier, RobotInfo robot, NamedPose pose)
     function void update_robot_info(Identifier robot_identifier, RobotInfo robot)
     function void update_robot_state(Identifier robot_identifier, RobotState robot_state)
+
+    function varvalue getf_param(string param_name)
+    function void setf_param(string param_name, varvalue value)
+    event param_changed(string param_name)
+
+    function varvalue extended_function(string name, varvalue{string} parameters)
 end
