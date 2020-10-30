@@ -56,13 +56,15 @@ enum PlannerAlgorithmCapabilityFlags
     none = 0,
     joint_waypoint = 0x1,
     cartesian_waypoint = 0x2,
-    freespace_plan = 0x4,
-    raster_plan = 0x8,
-    freespace_waypoint = 0x10,
-    linear_waypoint = 0x20,
-    cylindrical_waypoint = 0x40,
-    spherical_waypoint = 0x80,
-    other_waypoint = 0x200
+    other_waypoint = 0x4,
+    freespace_plan = 0x8,
+    cartesian_plan = 0x10,
+    raster_plan = 0x20,
+    freespace_waypoint = 0x40,
+    linear_waypoint = 0x80,
+    cylindrical_waypoint = 0x100,
+    spherical_waypoint = 0x200,
+    collision_avoidance = 0x400
 end
 
 enum FilterAlgorithmCapabilityFlags
@@ -72,7 +74,8 @@ enum FilterAlgorithmCapabilityFlags
     add_waypoints = 0x4,
     velocity_limit = 0x8,
     acceleration_limit = 0x10,
-    jerk_limit = 0x20    
+    jerk_limit = 0x20,
+    collision_avoidance = 0x40
 end
 
 enum PlanningSceneCapabilityFlags
@@ -156,7 +159,7 @@ struct InvKinResult
     field double[]{list} joints
 end
 
-struct PlannerAlgorithm
+struct PlannerAlgorithmInfo
     field Identifier algorithm_identifier
     field DeviceClass{list} algorithm_classes
     field uint64 algorithm_capability_flags
@@ -170,8 +173,8 @@ end
 
 struct PlannerInfo
     field DeviceInfo device_info
-    field PlannerAlgorithm{list} planner_algorithms
-    field PlannerAlgorithm{list} planner_filters
+    field PlannerAlgorithmInfo{list} planner_algorithms
+    field PlannerAlgorithmInfo{list} planner_filters
     field varvalue{string} extended
 end
 
@@ -215,7 +218,8 @@ object Planner
     property PlannerInfo planner_info [readonly, nolock]
     function PlanningResponse{generator} plan(PlanningRequest request)
     function ContactResult{list} compute_contacts(EnvState state)
-    function InvKinResult{list} invkin(string robot_name, NamedPose tcp_pose)
+    function NamedPose fwdkin(Identifier robot_identifier, double[] joint_position, Identifier tcp)
+    function InvKinResult{list} invkin(Identifier robot_identifier, NamedPose tcp_pose, double[] joint_position_seed)
     objref PlanningScene scene
 end
 
