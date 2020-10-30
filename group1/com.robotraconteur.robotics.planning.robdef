@@ -240,7 +240,7 @@ end
 object PlanningScene
     property PlanningSceneInfo planning_scene_info [readonly,nolock]
 
-    property EnvState env_state
+    property EnvState env_state [readonly]
     property RobotInfo{string} robots [readonly]
     property Scene scene [readonly]
     
