@@ -5,16 +5,19 @@ stdver 0.10
 import com.robotraconteur.identifier
 import com.robotraconteur.datatype
 import com.robotraconteur.device
+import com.robotraconteur.units
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
 using com.robotraconteur.device.DeviceClass
+using com.robotraconteur.units.SIUnit
 
 struct ParameterInfo
     field Identifier parameter_identifier
     field DeviceClass parameter_class
     field DataType data_type
-    field string user_description
+    field SIUnit{list} data_units
+    field string description
     field varvalue default_value
     field varvalue min_value
     field varvalue max_value

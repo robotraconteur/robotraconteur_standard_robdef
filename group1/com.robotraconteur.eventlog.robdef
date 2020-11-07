@@ -47,13 +47,15 @@ struct EventLogMessage
 end
 
 struct EventLogInfo
+    field DeviceInfo device_info
     field Identifier logged_device
     field uint64 min_message_number
     field uint64 max_message_number
+    field varvalue{string} extended
 end
 
 object EventLog
-    property EventLogInfo eventlog_info
+    property EventLogInfo eventlog_info [readonly,nolock]
     function EventLogMessage{list} getf_eventlog_messages(uint64 start, uint64 count)
 end
 
@@ -61,7 +63,7 @@ object EventLogDevice
     implements EventLog
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property EventLogInfo eventlog_info
+    property EventLogInfo eventlog_info [readonly,nolock]
     function EventLogMessage{list} getf_eventlog_messages(uint64 start, uint64 count)
     pipe EventLogMessage eventlog_message_stream [readonly]
     function void eventlog_clear_messages(uint64 offset, uint64 count)

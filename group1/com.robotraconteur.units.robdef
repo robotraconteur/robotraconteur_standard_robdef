@@ -2,16 +2,7 @@ service com.robotraconteur.units
 
 stdver 0.10
 
-pod SIUnit
-    field double coeff
-    field int8 m
-    field int8 s
-    field int8 kg
-    field int8 A
-    field int8 K
-    field int8 mol
-    field int8 cd
-    field int8 rad
-    field int8 sr
-    field int8 prefix
+struct SIUnit
+    field string display_units
+    field string encoded_units
 end

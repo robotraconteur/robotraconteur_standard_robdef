@@ -119,6 +119,7 @@ namedarray SpatialVelocity
 end
 
 struct NamedSpatialVelocity
+    field Identifier parent_frame
     field Identifier frame
     field SpatialVelocity velocity
 end
@@ -129,6 +130,7 @@ namedarray SpatialAcceleration
 end
 
 struct NamedSpatialAcceleration
+    field Identifier parent_frame
     field Identifier frame
     field SpatialAcceleration Acceleration
 end
@@ -139,6 +141,7 @@ namedarray Wrench
 end
 
 struct NamedWrench
+    field Identifier parent_frame
     field Identifier frame
     field Wrench wrench
 end
@@ -157,4 +160,14 @@ end
 struct NamedSpatialInertia
     field Identifier frame
     field SpatialInertia inertia
+end
+
+struct BoundingBox2D
+    field NamedPose2D center
+    field Size2D size
+end
+
+struct BoundingBox
+    field NamedPose center
+    field Size size
 end

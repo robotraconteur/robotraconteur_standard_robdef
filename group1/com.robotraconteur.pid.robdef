@@ -8,6 +8,6 @@ struct PIDParam
     field double d
     field double imax
     field double imin
-    field double cmdMax
-    field double cmdMin
+    field double cmd_max
+    field double cmd_min
 end

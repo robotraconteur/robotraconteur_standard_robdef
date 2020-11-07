@@ -71,7 +71,7 @@ struct SensorInfo
     field double[] sensor_resolution
     field bool analog_sensor
     field double update_frequency
-    field ParameterInfo{string} parameter_info
+    field ParameterInfo{list} parameter_info
     field varvalue{string} extended
 end
 
@@ -79,6 +79,7 @@ struct SensorData
     field SensorDataHeader data_header
     field double[] data
     field DataType data_type
+    field SIUnit{list} data_units
     field varvalue{string} parameters
     field varvalue{string} extended
 end

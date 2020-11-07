@@ -17,7 +17,7 @@ struct LaserScannerInfo
     field DeviceInfo device_info
     field LaserScanInfo scanner_info
     field double scan_rate
-    field ParameterInfo{string} param_info
+    field ParameterInfo{list} param_info
     field varvalue{string} extended
 end
 

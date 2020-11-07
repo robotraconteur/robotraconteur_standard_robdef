@@ -37,6 +37,6 @@ end
 
 struct MultiCameraInfo
     field DeviceInfo device_info
-    field CameraInfo{list} camera_info_all
+    field CameraInfo{int32} camera_info_all
     field varvalue{string} extended
 end

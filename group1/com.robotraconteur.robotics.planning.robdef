@@ -64,7 +64,8 @@ enum PlannerAlgorithmCapabilityFlags
     linear_waypoint = 0x80,
     cylindrical_waypoint = 0x100,
     spherical_waypoint = 0x200,
-    collision_avoidance = 0x400
+    collision_avoidance = 0x400,
+    request_time_from_start = 0x800
 end
 
 enum FilterAlgorithmCapabilityFlags
@@ -107,7 +108,7 @@ struct JointWaypoint
 end
 
 struct CartesianWaypoint
-    field Pose position
+    field NamedPose pose
     field SpatialVelocity velocity
     field PlannerMotionTypeCode motion_type
     field double time_from_start

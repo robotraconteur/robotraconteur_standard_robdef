@@ -14,6 +14,9 @@ using com.robotraconteur.device.Device
 struct ClockDeviceInfo    
     field DeviceInfo device_info
     field ClockTypeCode clock_type
+    field int32 timezone_utc_offset_seconds
+    field string timezone_name
+    field varvalue{string} extended
 end
 
 object Clock

@@ -52,7 +52,7 @@ struct ActuatorInfo
     field DataType command_data_type
     field double[] command_resolution
     field bool analog_output
-    field ParameterInfo{string} parameter_info
+    field ParameterInfo{list} parameter_info
     field varvalue{string} extended
 end
 

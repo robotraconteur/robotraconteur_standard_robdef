@@ -100,6 +100,7 @@ struct JointLimits
     field double effort
     field double reduced_velocity
     field double reduced_acceleration
+    field double reduced_jerk
     field double reduced_effort
 end
 
