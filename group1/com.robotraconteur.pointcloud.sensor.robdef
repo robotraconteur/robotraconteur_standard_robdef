@@ -7,6 +7,7 @@ import com.robotraconteur.param
 import com.robotraconteur.pointcloud
 import com.robotraconteur.geometry
 import com.robotraconteur.sensor
+import com.robotraconteur.device.isoch
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -18,6 +19,8 @@ using com.robotraconteur.pointcloud.PointCloud2Partf as PointCloud2Part
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensor.SensorData
+using com.robotraconteur.device.isoch.IsochDevice
+using com.robotraconteur.device.isoch.IsochInfo
 
 struct PointCloudSensorInfo
     field DeviceInfo device_info
@@ -40,22 +43,30 @@ end
 
 object PointCloudSensor
     implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
+    function PointCloud capture_point_cloud()
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
 
 object PointCloudPartSensor
     implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
+    function PointCloudPart{generator} capture_point_cloud()
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
 
 
@@ -72,23 +83,33 @@ end
 object PointCloud2Sensor
     implements PointCloudSensor
     implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
+    function PointCloud capture_point_cloud()
+    function PointCloud2 capture_point_cloud2()
     pipe PointCloudSensorData point_cloud_sensor_data [readonly]
     pipe PointCloud2SensorData point_cloud2_sensor_data [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
 
 object PointCloud2PartSensor
     implements PointCloudPartSensor
     implements Device
+    implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
     property bool active
+    function PointCloudPart{generator} capture_point_cloud()
+    function PointCloud2Part{generator} capture_point_cloud2()
     pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]
     pipe PointCloud2PartSensorData point_cloud2_sensor_data [readonly]
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
+    property IsochInfo isoch_info [readonly,nolock]
+    property uint32 isoch_downsample [perclient]
 end
