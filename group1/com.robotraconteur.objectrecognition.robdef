@@ -8,7 +8,7 @@ import com.robotraconteur.geometry.shapes
 import com.robotraconteur.param
 import com.robotraconteur.device
 import com.robotraconteur.device.isoch
-import com.robotraconteur.sensor
+import com.robotraconteur.sensordata
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.device.Device
@@ -21,7 +21,7 @@ using com.robotraconteur.geometry.shapes.ShapeObject
 using com.robotraconteur.geometry.NamedPoseWithCovariance
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
-using com.robotraconteur.sensor.SensorData
+using com.robotraconteur.sensordata.SensorDataHeader
 
 struct ObjectRecognitionTemplate
     field Identifier object_identifier
@@ -56,7 +56,7 @@ struct ObjectRecognitionSensorInfo
 end
 
 struct ObjectRecognitionSensorData
-    field SensorData sensor_data
+    field SensorDataHeader sensor_data
     field RecognizedObjects recognized_objects
 end
 
