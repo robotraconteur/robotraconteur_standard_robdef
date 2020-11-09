@@ -54,6 +54,7 @@ object Camera
     function void start_streaming()
     function void stop_streaming()
     pipe Image frame_stream [readonly]
+    pipe CompressedImage frame_stream_compressed [readonly]
     pipe CompressedImage preview_stream [readonly,nolock]
     property ParameterInfo{list} param_info [readonly]
     function varvalue getf_param(string param_name)
@@ -71,6 +72,7 @@ object MultiCamera
     function Image{int32} capture_frame_all()
     function void trigger_all()
     pipe Image{int32} frame_stream_all [readonly]
+    pipe CompressedImage{int32} frame_stream_compressed_all [readonly]
     pipe CompressedImage{int32} preview_stream_all [readonly,nolock]
     property ParameterInfo{list} param_info [readonly]
     function varvalue getf_param(string param_name)
