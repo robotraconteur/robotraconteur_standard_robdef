@@ -13,9 +13,19 @@ enum ClockTypeCode
     system_rtc_clock,
     system_ntp_clock,
     system_ptp_clock,
+    system_arb_clock,
+    system_gps_clock,
+    system_tai_clock,
     system_other_clock,
     sim_clock_realtime,
     sim_clock_scaled,
+    node_rtc_clock,
+    node_ntp_clock,
+    node_ptp_clock,
+    node_arb_clock,
+    node_gps_clock,
+    node_tai_clock,
+    node_other_clock,
     aux_0 = 0x1000,
     aux_1,
     aux_2,
@@ -29,6 +39,8 @@ end
 pod ClockInfo
     field int32 clock_type
     field UUID clock_uuid
+    # Offset from TAI time
+    field int64 offset_microseconds
 end
 
 pod DateTimeUTC
@@ -51,3 +63,14 @@ pod Duration
     field int32 nanoseconds
 end
 
+# TimeSpec2 in Node Clock
+pod TimeSpec2
+    field ClockInfo clock_info
+    field int64 seconds
+    field int32 nanoseconds
+end
+
+# Compact TimeSpec3 in Node Clock
+namedarray TimeSpec3
+    field int64 microseconds
+end

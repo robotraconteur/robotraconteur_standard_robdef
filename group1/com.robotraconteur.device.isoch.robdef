@@ -4,11 +4,11 @@ stdver 0.10
 
 import com.robotraconteur.datetime
 
-using com.robotraconteur.datetime.DateTimeUTC
+using com.robotraconteur.datetime.TimeSpec2
 
 struct IsochInfo
     field double update_rate
-    field DateTimeUTC isoch_epoch
+    field TimeSpec2 isoch_epoch
     field uint32 max_downsample
 end
 
