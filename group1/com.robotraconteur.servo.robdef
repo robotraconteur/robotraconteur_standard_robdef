@@ -9,6 +9,7 @@ import com.robotraconteur.param
 import com.robotraconteur.robotics.joints
 import com.robotraconteur.device.isoch
 import com.robotraconteur.device.clock
+import com.robotraconteur.datetime
 
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
@@ -21,6 +22,7 @@ using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
+using com.robotraconteur.datetime.TimeSpec3
 
 enum ServoTypeCode
     unknown = 0,
@@ -74,6 +76,7 @@ struct ServoInfo
 end
 
 struct ServoState
+    field TimeSpec3 ts
     field uint64 seqno
     field ServoMode mode
     field double[] position

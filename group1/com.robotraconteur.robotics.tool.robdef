@@ -10,6 +10,7 @@ import com.robotraconteur.units
 import com.robotraconteur.sensordata
 import com.robotraconteur.device.isoch
 import com.robotraconteur.device.clock
+import com.robotraconteur.datetime
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -23,6 +24,7 @@ using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
+using com.robotraconteur.datetime.TimeSpec3
 
 enum ToolTypeCode
     unknown = 0,
@@ -88,6 +90,7 @@ struct ToolInfo
 end
 
 struct ToolState
+    field TimeSpec3 ts
     field uint64 seqno
     field uint32 tool_state_flags
     field double position

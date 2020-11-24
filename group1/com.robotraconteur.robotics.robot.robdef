@@ -16,6 +16,7 @@ import com.robotraconteur.action
 import com.robotraconteur.eventlog
 import com.robotraconteur.device.isoch
 import com.robotraconteur.device.clock
+import com.robotraconteur.datetime
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -42,6 +43,7 @@ using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
+using com.robotraconteur.datetime.TimeSpec3
 
 
 enum RobotTypeCode
@@ -160,6 +162,7 @@ struct RobotInfo
 end
 
 struct RobotState
+    field TimeSpec3 ts
     field uint64 seqno
     field RobotCommandMode command_mode
     field RobotOperationalMode operational_mode
@@ -176,6 +179,7 @@ struct RobotState
 end
 
 struct AdvancedRobotState
+    field TimeSpec3 ts
     field uint64 seqno
     field RobotCommandMode command_mode
     field RobotOperationalMode operational_mode
