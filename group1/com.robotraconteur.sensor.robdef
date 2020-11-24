@@ -63,6 +63,17 @@ enum SensorTypeCode
     other
 end
 
+enum SensorDataFlags
+    unknown = 0,
+    enabled,
+    streaming,
+    calibrated,
+    calibration_error,
+    warning,
+    error,
+    fatal_error
+end
+
 struct SensorInfo
     field DeviceInfo device_info
     field SensorTypeCode sensor_type
@@ -77,6 +88,7 @@ end
 
 struct SensorData
     field SensorDataHeader data_header
+    field int32 data_flags
     field double[] data
     field DataType data_type
     field SIUnit{list} data_units

@@ -8,6 +8,7 @@ import com.robotraconteur.signal
 import com.robotraconteur.param
 import com.robotraconteur.robotics.joints
 import com.robotraconteur.device.isoch
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.DeviceInfo
@@ -18,6 +19,8 @@ using com.robotraconteur.robotics.joints.JointPositionUnits
 using com.robotraconteur.robotics.joints.JointEffortUnits
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 enum ServoTypeCode
     unknown = 0,
@@ -96,6 +99,7 @@ end
 
 object Servo
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     function void halt() [urgent,nolock]
@@ -111,6 +115,7 @@ object Servo
     function void trapezoidal_move(double[] target_pos, double[] target_vel, double[] vel, double[] accel)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
     function varvalue getf_signal(string signal_name)
     function void setf_signal(string signal_name, varvalue value)
     function varvalue getf_param(string param_name)

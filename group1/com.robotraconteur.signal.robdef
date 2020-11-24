@@ -6,6 +6,7 @@ import com.robotraconteur.identifier
 import com.robotraconteur.datatype
 import com.robotraconteur.device
 import com.robotraconteur.units
+import com.robotraconteur.device
 import com.robotraconteur.device.isoch
 
 using com.robotraconteur.identifier.Identifier
@@ -13,6 +14,7 @@ using com.robotraconteur.datatype.DataType
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.DeviceClass
 using com.robotraconteur.units.SIUnit
+using com.robotraconteur.device.Device
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
 
@@ -74,6 +76,7 @@ object SignalGroup
 end
 
 object SignalDevice
+    implements Device
     property DeviceInfo device_info [readonly,nolock]
     property SignalGroupInfo{list} signal_group_info [readonly,nolock]
     objref SignalGroup{string} signal_groups

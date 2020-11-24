@@ -7,6 +7,7 @@ import com.robotraconteur.imaging.camerainfo
 import com.robotraconteur.param
 import com.robotraconteur.device
 import com.robotraconteur.device.isoch
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.image.Image
 using com.robotraconteur.image.ImagePart
@@ -18,6 +19,8 @@ using com.robotraconteur.device.Device
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 enum TriggerMode
    unknown = 0,
@@ -43,6 +46,7 @@ end
 
 object Camera
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]  
     property CameraInfo camera_info [readonly,nolock]
@@ -61,6 +65,7 @@ object Camera
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
 
 object MultiCamera
@@ -81,6 +86,7 @@ end
 
 object ImagePartCamera
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock] 
     property CameraInfo camera_info [readonly,nolock]
@@ -96,4 +102,5 @@ object ImagePartCamera
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end

@@ -7,6 +7,7 @@ import com.robotraconteur.sensordata
 import com.robotraconteur.geometry
 import com.robotraconteur.uuid
 import com.robotraconteur.device.isoch
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -15,6 +16,8 @@ using com.robotraconteur.geometry.Vector2
 using com.robotraconteur.uuid.UUID
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 enum JoystickCapabilities
     none = 0,
@@ -90,11 +93,13 @@ end
 
 object Joystick
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property JoystickInfo joystick_info [readonly,nolock]
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
     wire JoystickState joystick_state [readonly,nolock]
     wire GamepadState gamepad_state [readonly,nolock]
     pipe JoystickStateSensorData joystick_sensor_data [readonly,nolock]

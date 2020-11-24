@@ -6,12 +6,12 @@ import com.robotraconteur.datetime
 import com.robotraconteur.identifier
 import com.robotraconteur.geometry
 
-using com.robotraconteur.datetime.TimeSpec3
+using com.robotraconteur.datetime.TimeSpec2
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.geometry.Pose
 
 struct SensorDataHeader
-    field TimeSpec3 ts
+    field TimeSpec2 ts
     field uint64 seqno
     field SensorDataSourceInfo source_info
 end

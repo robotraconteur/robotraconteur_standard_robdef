@@ -4,12 +4,15 @@ stdver 0.10
 
 import com.robotraconteur.datetime
 import com.robotraconteur.device
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.datetime.DateTimeUTC
 using com.robotraconteur.datetime.DateTimeLocal
 using com.robotraconteur.datetime.ClockTypeCode
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 struct ClockDeviceInfo    
     field DeviceInfo device_info
@@ -21,8 +24,12 @@ end
 
 object Clock
     implements Device
+    implements DeviceClock
     property DeviceInfo device_info [readonly,nolock]
     property ClockDeviceInfo clock_info [readonly,nolock]
     wire DateTimeUTC time_utc [readonly]
     wire DateTimeLocal time_local [readonly]
+    # Optional device clock
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
+

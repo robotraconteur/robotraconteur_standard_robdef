@@ -1,5 +1,7 @@
 service com.robotraconteur.device.clock
 
+stdver 0.10
+
 import com.robotraconteur.datetime
 
 using com.robotraconteur.datetime.TimeSpec2

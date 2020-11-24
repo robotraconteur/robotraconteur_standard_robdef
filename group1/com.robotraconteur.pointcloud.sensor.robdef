@@ -8,6 +8,7 @@ import com.robotraconteur.pointcloud
 import com.robotraconteur.geometry
 import com.robotraconteur.sensor
 import com.robotraconteur.device.isoch
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -21,6 +22,8 @@ using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensor.SensorData
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 struct PointCloudSensorInfo
     field DeviceInfo device_info
@@ -43,6 +46,7 @@ end
 
 object PointCloudSensor
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
@@ -53,10 +57,12 @@ object PointCloudSensor
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
 
 object PointCloudPartSensor
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
@@ -67,6 +73,7 @@ object PointCloudPartSensor
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
 
 
@@ -83,6 +90,7 @@ end
 object PointCloud2Sensor
     implements PointCloudSensor
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
@@ -95,11 +103,13 @@ object PointCloud2Sensor
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
 
 object PointCloud2PartSensor
     implements PointCloudPartSensor
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property PointCloudSensorInfo point_sensor_info [readonly,nolock]
@@ -112,4 +122,5 @@ object PointCloud2PartSensor
     function void setf_param(string param_name, varvalue value)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end

@@ -15,6 +15,7 @@ import com.robotraconteur.identifier
 import com.robotraconteur.action
 import com.robotraconteur.eventlog
 import com.robotraconteur.device.isoch
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -39,6 +40,9 @@ using com.robotraconteur.action.ActionStatusCode
 using com.robotraconteur.eventlog.EventLogMessage
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
+
 
 enum RobotTypeCode
     unknown = 0,
@@ -208,6 +212,7 @@ end
 
 object Robot
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property RobotInfo robot_info [readonly,nolock]
@@ -229,6 +234,7 @@ object Robot
     pipe RobotStateSensorData robot_state_sensor_data [readonly,nolock]
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
     wire RobotJointCommand position_command [writeonly]
     wire RobotJointCommand velocity_command [writeonly]
     function ActionStatusCode{generator} home()

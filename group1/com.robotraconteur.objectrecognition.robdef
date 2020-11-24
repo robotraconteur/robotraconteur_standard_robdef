@@ -9,6 +9,7 @@ import com.robotraconteur.param
 import com.robotraconteur.device
 import com.robotraconteur.device.isoch
 import com.robotraconteur.sensordata
+import com.robotraconteur.device.clock
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.device.Device
@@ -22,6 +23,8 @@ using com.robotraconteur.geometry.NamedPoseWithCovariance
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensordata.SensorDataHeader
+using com.robotraconteur.device.clock.DeviceClock
+using com.robotraconteur.device.clock.DeviceTime
 
 struct ObjectRecognitionTemplate
     field Identifier object_identifier
@@ -62,6 +65,7 @@ end
 
 object ObjectRecognitionSensor
     implements Device
+    implements DeviceClock
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property ObjectRecognitionSensorInfo object_recognition_sensor_info [readonly,nolock]
@@ -74,6 +78,7 @@ object ObjectRecognitionSensor
     function ObjectRecognitionTemplate getf_object_class_template(Identifier object_class)
     property IsochInfo isoch_info [readonly,nolock]
     property uint32 isoch_downsample [perclient]
+    wire DeviceTime device_clock_now [readonly,nolock]
 end
 
 
