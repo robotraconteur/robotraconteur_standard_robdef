@@ -65,13 +65,16 @@ end
 
 enum SensorDataFlags
     unknown = 0,
-    enabled,
-    streaming,
-    calibrated,
-    calibration_error,
-    warning,
-    error,
-    fatal_error
+    enabled = 0x1,
+    streaming = 0x2,
+    calibrated = 0x4,
+    calibration_error = 0x8,
+    out_of_range = 0x10,
+    out_of_range_high = 0x20,
+    out_of_range_low = 0x40,
+    warning = 0x80,
+    error = 0x100,
+    fatal_error = 0x200
 end
 
 struct SensorInfo
