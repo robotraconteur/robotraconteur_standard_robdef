@@ -1,0 +1,16 @@
+service com.robotraconteur.device.clock
+
+import com.robotraconteur.datetime
+
+using com.robotraconteur.datetime.TimeSpec2
+using com.robotraconteur.datetime.DateTimeUTC
+
+pod DeviceTime
+    field TimeSpec2 device_ts
+    field DateTimeUTC device_utc
+    field uint64 device_seqno
+end
+
+object DeviceClock
+    wire DeviceTime device_clock_now [readonly,nolock]
+end
