@@ -19,6 +19,7 @@ enum ClockTypeCode
     system_other_clock,
     sim_clock_realtime,
     sim_clock_scaled,
+    node_default,
     node_rtc_clock,
     node_ntp_clock,
     node_ptp_clock,
