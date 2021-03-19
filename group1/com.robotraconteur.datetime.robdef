@@ -38,7 +38,7 @@ enum ClockTypeCode
 end
 
 pod ClockInfo
-    field int32 clock_type
+    field uint32 clock_type
     field UUID clock_uuid
     # Offset from TAI time
     field int64 offset_microseconds
