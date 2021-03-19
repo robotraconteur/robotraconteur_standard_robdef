@@ -29,7 +29,7 @@ enum ServoTypeCode
     generic_revolute,
     generic_prismatic,
     revolute_electric,
-    revolute_linear,
+    revolute_electric,
     rc_servo
 end
 
