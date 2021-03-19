@@ -132,7 +132,7 @@ end
 struct NamedSpatialAcceleration
     field Identifier parent_frame
     field Identifier frame
-    field SpatialAcceleration Acceleration
+    field SpatialAcceleration acceleration
 end
 
 namedarray Wrench
