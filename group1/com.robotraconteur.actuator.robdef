@@ -34,7 +34,9 @@ enum ActuatorTypeCode
     valve,
     conveyor,
     voltage,
-    current
+    current,
+    pneumatic_cylinder,
+    hydraulic_cylinder
 end
 
 enum ActuatorMode
