@@ -63,6 +63,7 @@ struct ImageInfo
     field uint32 width
     field uint32 step
     field ImageEncoding encoding
+    field varvalue{string} extended
 end
 
 struct FreeformImageInfo
@@ -110,19 +111,6 @@ struct FreeformImagePart
     field uint32 data_offset
     field uint32 data_total_len
     field varvalue data_part
-    field varvalue{string} extended
-end
-
-struct DepthImage
-    field Image depth_image
-    field Image intensity_image
-    field double depth_ticks_per_meter
-end
-
-struct FreeformDepthImage
-    field FreeformImage depth_image
-    field FreeformImage intensity_image
-    field double depth_ticks_per_meter
     field varvalue{string} extended
 end
 
