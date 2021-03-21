@@ -7,6 +7,7 @@ import com.robotraconteur.identifier
 import com.robotraconteur.color
 import com.robotraconteur.resource
 import com.robotraconteur.image
+import com.robotraconteur.fiducial
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Pose
@@ -19,6 +20,7 @@ using com.robotraconteur.color.ColorRGB
 using com.robotraconteur.color.ColorRGBA
 using com.robotraconteur.resource.ResourceIdentifier
 using com.robotraconteur.image.CompressedImage
+using com.robotraconteur.fiducial.Fiducial
 
 enum MeshType
     mesh = 0,
@@ -92,5 +94,6 @@ struct ShapeObject
     field Pose{list} shape_poses
     field Material{list} shape_materials
     field SpatialInertia inertia
+    field Fiducial{list} fiducials
     field varvalue{string} extended
 end

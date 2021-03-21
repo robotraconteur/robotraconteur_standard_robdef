@@ -4,13 +4,16 @@ stdver 0.10
 
 import com.robotraconteur.device
 import com.robotraconteur.geometry
+import com.robotraconteur.fiducial
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.geometry.Transform
 using com.robotraconteur.geometry.SpatialInertia
+using com.robotraconteur.fiducial.Fiducial
 
 struct PayloadInfo
     field DeviceInfo device_info
     field SpatialInertia inertia
+    field Fiducial{list} fiducials
     field varvalue{string} extended
 end

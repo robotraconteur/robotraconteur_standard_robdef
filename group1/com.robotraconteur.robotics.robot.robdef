@@ -17,6 +17,7 @@ import com.robotraconteur.eventlog
 import com.robotraconteur.device.isoch
 import com.robotraconteur.device.clock
 import com.robotraconteur.datetime
+import com.robotraconteur.fiducial
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
@@ -44,6 +45,7 @@ using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
 using com.robotraconteur.datetime.TimeSpec3
+using com.robotraconteur.fiducial.Fiducial
 
 
 enum RobotTypeCode
@@ -126,7 +128,7 @@ enum RobotStateFlags
     communication_failure = 0x200000,
     valid_position_command = 0x1000000,
     valid_velocity_command = 0x2000000,
-    trajectory_running = 0x4000000    
+    trajectory_running = 0x4000000
 end
 
 struct RobotKinChainInfo
@@ -135,6 +137,7 @@ struct RobotKinChainInfo
     field Vector3[] P
     field SpatialInertia[] link_inertias
     field Identifier{list} link_identifiers
+    field Fiducial{list} link_fiducials
     field uint32[] joint_numbers
     field Pose flange_pose
     field Identifier flange_identifier
@@ -254,5 +257,3 @@ object Robot
     function void setf_param(string param_name, varvalue value)
     event param_changed(string param_name)
 end
-
-

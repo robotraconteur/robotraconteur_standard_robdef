@@ -11,6 +11,7 @@ import com.robotraconteur.sensordata
 import com.robotraconteur.device.isoch
 import com.robotraconteur.device.clock
 import com.robotraconteur.datetime
+import com.robotraconteur.fiducial
 
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.Device
@@ -25,6 +26,7 @@ using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
 using com.robotraconteur.datetime.TimeSpec3
+using com.robotraconteur.fiducial.Fiducial
 
 enum ToolTypeCode
     unknown = 0,
@@ -43,7 +45,7 @@ end
 enum ToolCapabilities
     unknown = 0,
     open_close_command = 0x1,
-    continuous_command = 0x2, 
+    continuous_command = 0x2,
     homing_command = 0x4,
     software_reset_errors = 0x8,
     software_enable = 0x10,
@@ -75,6 +77,7 @@ struct ToolInfo
     field uint32 tool_capabilities
     field Transform tcp
     field SpatialInertia inertia
+    field Fiducial{list} fiducials
     field double actuation_time
     field double close_position
     field double open_position

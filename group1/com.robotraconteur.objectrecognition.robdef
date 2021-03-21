@@ -10,6 +10,7 @@ import com.robotraconteur.device
 import com.robotraconteur.device.isoch
 import com.robotraconteur.sensordata
 import com.robotraconteur.device.clock
+import com.robotraconteur.fiducial
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.device.Device
@@ -20,16 +21,18 @@ using com.robotraconteur.device.isoch.IsochInfo
 using com.robotraconteur.param.ParameterInfo
 using com.robotraconteur.geometry.shapes.ShapeObject
 using com.robotraconteur.geometry.NamedPoseWithCovariance
-using com.robotraconteur.geometry.Point
+using com.robotraconteur.geometry.BoundingBox
 using com.robotraconteur.geometry.Vector3
 using com.robotraconteur.sensordata.SensorDataHeader
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
+using com.robotraconteur.fiducial.Fiducial
 
 struct ObjectRecognitionTemplate
     field Identifier object_identifier
     field DeviceClass object_class
     field ShapeObject object_shape
+    field Fiducial{list} object_fiducials
     field varvalue{string} extended
 end
 
@@ -38,7 +41,7 @@ struct RecognizedObject
     field DeviceClass recognized_object_class
     field NamedPoseWithCovariance pose
     field double confidence
-    field varvalue{string} extended    
+    field varvalue{string} extended
 end
 
 struct RecognizedObjects
@@ -49,8 +52,7 @@ end
 
 struct ObjectRecognitionSensorInfo
     field DeviceInfo device_info
-    field Point range_min
-    field Point range_max
+    field BoundingBox range
     field Vector3 resolution
     field ParameterInfo{list} param_info
     field Identifier{list} object_template_identifiers
@@ -80,7 +82,3 @@ object ObjectRecognitionSensor
     property uint32 isoch_downsample [perclient]
     wire DeviceTime device_clock_now [readonly,nolock]
 end
-
-
-
-
