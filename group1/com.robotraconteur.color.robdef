@@ -53,4 +53,3 @@ namedarray ColorRGBh
     field uint16 g
     field uint16 b
 end
-
