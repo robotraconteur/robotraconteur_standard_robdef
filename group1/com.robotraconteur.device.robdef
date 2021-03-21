@@ -50,6 +50,7 @@ struct DeviceInfo
     field ResourceIdentifier description_resource
     field string{list} implemented_types
     field NamedPose device_origin_pose
+    field Identifier{string} associated_devices
     field varvalue{string} extended
 end
 
