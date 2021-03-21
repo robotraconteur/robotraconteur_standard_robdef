@@ -66,7 +66,7 @@ object Camera
     implements Device
     implements DeviceClock
     implements IsochDevice
-    property DeviceInfo device_info [readonly,nolock]  
+    property DeviceInfo device_info [readonly,nolock]
     property CameraInfo camera_info [readonly,nolock]
     property uint32 capabilities [readonly]
     function Image capture_frame()
@@ -100,14 +100,14 @@ object MultiCamera
     pipe CompressedImage{int32} preview_stream_all [readonly,nolock]
     property ParameterInfo{list} param_info [readonly]
     function varvalue getf_param(string param_name)
-    function void setf_param(string param_name, varvalue value)    
+    function void setf_param(string param_name, varvalue value)
 end
 
 object ImagePartCamera
     implements Device
     implements DeviceClock
     implements IsochDevice
-    property DeviceInfo device_info [readonly,nolock] 
+    property DeviceInfo device_info [readonly,nolock]
     property CameraInfo camera_info [readonly,nolock]
     property uint32 capabilities [readonly]
     function ImagePart{generator} capture_frame()
