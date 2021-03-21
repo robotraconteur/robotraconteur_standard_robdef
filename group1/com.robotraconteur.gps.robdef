@@ -13,14 +13,76 @@ using com.robotraconteur.device.Device
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.datetime.DateTimeUTC
 
+enum GpsMeasurementStatusCode
+    no_fix = -1,
+    fix = 0,
+    sbas_fix = 1,
+    gbas_fix = 2,
+    dgps_fix = 18,
+    waas_fix = 33
+end
+
+enum GpsMeasureSourceFlags
+    none = 0,
+    gps = 0x1,
+    points = 0x2,
+    doppler = 0x4,
+    altimeter = 0x8,
+    magnetic = 0x10,
+    gyro = 0x20,
+    accel = 0x40
+end
+
+enum GpsCovarianceTypeCode
+    unknown = 0,
+    approximated = 1,
+    diagonal_known = 2,
+    known = 3
+end
+
+struct GpsStatus
+    field uint16 satellites_used
+    field int32[] satellite_used_prn
+    field uint16 satellites_visible
+    field int32[] satellite_visible_prn
+    field int32[] satellite_visible_z
+    field int32[] satellite_visible_azimuth
+    field int32[] satellite_visible_snr
+    field GpsMeasurementStatusCode status_code
+    field uint16 motion_source_flags
+    field uint16 orientation_source_flags
+    field uint16 position_source_flags
+end
+
+
 struct GpsState
+    field GpsStatus status
     field DateTimeUTC time
-    field double altitude
     field double latitude_deg
     field double longitude_deg
-    field double velocity_east
-    field double velocity_north
-    field double velocity_up
+    field double altitude
+    field double track_deg
+    field double speed
+    field double climb
+    field double pitch
+    field double roll
+    field double dip
+    field double gdop
+    field double pdop
+    field double hdop
+    field double vdop
+    field double tdop
+    field double err
+    field double err_horz
+    field double err_track
+    field double err_speed
+    field double err_climb
+    field double err_time
+    field double err_pitch
+    field double err_roll
+    field double err_dip
+    field double[3,3] position_covariance
+    field GpsCovarianceTypeCode position_covariance_type
 end
 
 object GpsSensor
