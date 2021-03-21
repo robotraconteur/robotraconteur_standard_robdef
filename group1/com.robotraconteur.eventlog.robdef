@@ -17,7 +17,7 @@ enum EventLogLevel
     debug,
     info,
     warning,
-    error,    
+    error,
     safety_violation_error,
     fatal_error,
     emergency_error,
