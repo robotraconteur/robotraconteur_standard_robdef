@@ -16,8 +16,11 @@ using com.robotraconteur.device.DeviceInfo
 
 struct ImuState
     field Vector3 angular_velocity
+    field double[3,3] angular_velocity_covariance
     field Vector3 linear_acceleration
+    field double[3,3] linear_acceleration_covariance
     field Quaternion orientation
+    field double[3,3] orientation_covariance
 end
 
 object ImuSensor
