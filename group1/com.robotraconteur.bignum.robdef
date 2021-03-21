@@ -2,12 +2,12 @@ service com.robotraconteur.bignum
 
 stdver 0.10
 
-# Signed arbritary precisison number, little endian
+# Signed arbitrary precision number, little endian
 struct BigNum
     field uint8[] data
 end
 
-# Unsigned arbritary precisison number, little endian
+# Unsigned arbitrary precision number, little endian
 struct UnsignedBigNum
     field uint8[] data
 end
