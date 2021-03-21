@@ -14,7 +14,7 @@ using com.robotraconteur.device.Device
 using com.robotraconteur.device.clock.DeviceClock
 using com.robotraconteur.device.clock.DeviceTime
 
-struct ClockDeviceInfo    
+struct ClockDeviceInfo
     field DeviceInfo device_info
     field ClockTypeCode clock_type
     field int32 timezone_utc_offset_seconds
@@ -32,4 +32,3 @@ object Clock
     # Optional device clock
     wire DeviceTime device_clock_now [readonly,nolock]
 end
-
