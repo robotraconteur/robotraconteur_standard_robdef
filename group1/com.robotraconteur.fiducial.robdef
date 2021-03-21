@@ -76,7 +76,7 @@ end
 
 struct FiducialSensorData
     field SensorDataHeader sensor_data
-    field RecognizedFiducial fiducials
+    field RecognizedFiducials fiducials
 end
 
 object FiducialSensor
