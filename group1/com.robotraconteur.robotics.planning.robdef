@@ -148,7 +148,7 @@ end
 struct ContactResult
     field double distance
     field string link1_name
-    field string link2_name   
+    field string link2_name
     field Vector3 link1_nearest_point
     field Vector3 link2_nearest_point
     field Vector3 link1_nearest_point_local
@@ -244,7 +244,7 @@ object PlanningScene
     property EnvState env_state [readonly]
     property RobotInfo{string} robots [readonly]
     property Scene scene [readonly]
-    
+
     function NamedTransform getf_transform(Identifier child, Identifier parent)
     property Identifier{list} link_names [readonly]
     property Identifier{list} joint_names [readonly]
@@ -254,7 +254,7 @@ object PlanningScene
     function Joint getf_joint(Identifier joint_identifier)
 
     event scene_changed(uint64 seqno)
-    
+
     property PlannerJointPositions joint_position [readonly]
     function void setf_joint_position(PlannerJointPositions joint_positions)
 
@@ -273,7 +273,7 @@ object PlanningScene
 
     function bool getf_link_collision_enabled(Identifier model_identifier, Identifier link_identifier)
     function void setf_link_collision_enabled(Identifier model_identifier, Identifier link_identifier, bool enabled)
-    
+
     function bool getf_link_visibility(Identifier model_identifier, Identifier link_identifier)
     function void setf_link_visibility(Identifier model_identifier, Identifier link_identifier, bool visibility)
 
@@ -281,7 +281,7 @@ object PlanningScene
         Identifier model_identifier2, Identifier link_identifier2)
     function void remove_allowed_collision(Identifier model_identifier1, Identifier link_identifier1, \
         Identifier model_identifier2, Identifier link_identifier2)
-    property AllowedCollisionMatrix allowed_collision_matrix [readonly] 
+    property AllowedCollisionMatrix allowed_collision_matrix [readonly]
 
     function void add_robot(Identifier robot_identifier, RobotInfo robot, NamedPose pose)
     function void update_robot_info(Identifier robot_identifier, RobotInfo robot)
