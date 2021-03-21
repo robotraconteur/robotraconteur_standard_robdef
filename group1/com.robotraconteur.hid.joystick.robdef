@@ -27,21 +27,21 @@ enum JoystickCapabilities
 end
 
 enum GamepadButtons
-    button_A = 0,
-    button_B,
-    button_X,
-    button_Y,
-    button_back,
-    button_guide,
-    button_start,
-    button_left_stick,
-    button_right_stick,
-    button_left_shoulder,
-    button_right_shoulder,
-    button_dpad_up,
-    button_dpad_down,
-    button_dpad_left,
-    button_dpad_right
+    button_A = 0x1,
+    button_B = 0x2,
+    button_X = 0x4,
+    button_Y = 0x8,
+    button_back = 0x10,
+    button_guide = 0x20,
+    button_start = 0x40,
+    button_left_stick = 0x80,
+    button_right_stick = 0x100,
+    button_left_shoulder = 0x200,
+    button_right_shoulder = 0x400,
+    button_dpad_up = 0x800,
+    button_dpad_down = 0x1000,
+    button_dpad_left = 0x2000,
+    button_dpad_right = 0x4000
 end
 
 enum JoystickHatState
@@ -53,7 +53,7 @@ enum JoystickHatState
     hat_rightup = 0x03,
     hat_rightdown = 0x06,
     hat_leftup = 0x09,
-    hat_leftdown = 0x0C    
+    hat_leftdown = 0x0C
 end
 
 struct JoystickInfo
