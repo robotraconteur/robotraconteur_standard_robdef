@@ -29,7 +29,7 @@ enum ServoTypeCode
     generic_revolute,
     generic_prismatic,
     revolute_electric,
-    revolute_electric,
+    prismatic_electric,
     rc_servo
 end
 
@@ -50,6 +50,21 @@ enum ServoMode
     velocity_command,
     effort_command,
     trapezoidal_command
+end
+
+enum ServoStateFlags
+    unknown = 0,
+    ready = 0x1,
+    streaming = 0x2,
+    warning = 0x4,
+    error = 0x8,
+    fatal_error = 0x10,
+    e_stop = 0x20,
+    homed = 0x40,
+    homing_required = 0x80,
+    communication_failure = 0x100,
+    valid_command = 0x200,
+    enabled = 0x400
 end
 
 struct ServoInfo
@@ -78,6 +93,7 @@ end
 struct ServoState
     field TimeSpec3 ts
     field uint64 seqno
+    field uint32 servo_state_flags
     field ServoMode mode
     field double[] position
     field double[] velocity
@@ -124,4 +140,3 @@ object Servo
     function varvalue getf_param(string param_name)
     function void setf_param(string param_name, varvalue value)
 end
-
