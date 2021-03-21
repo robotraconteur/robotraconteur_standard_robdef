@@ -1,0 +1,33 @@
+service com.robotraconteur.resource.device
+
+stdver 0.10
+
+import com.robotraconteur.device
+import com.robotraconteur.resource
+import com.robotraconteur.identifier
+
+using com.robotraconteur.identifier.Identifier
+using com.robotraconteur.device.Device
+using com.robotraconteur.device.DeviceInfo
+using com.robotraconteur.resource.BucketInfo
+using com.robotraconteur.resource.ResourceIdentifier
+using com.robotraconteur.resource.ResourcePart
+using com.robotraconteur.resource.ResourceInfo
+using com.robotraconteur.resource.ResourceReadOnlyStorage
+using com.robotraconteur.resource.ResourceStorage
+
+object ResourceStorageDevice
+    implements Device
+    implements ResourceReadOnlyStorage
+    implements ResourceStorage
+    property DeviceInfo device_info [readonly,nolock]
+    property BucketInfo{list} resource_bucket_info [readonly,nolock]
+    function ResourceInfo resource_get_info(ResourceIdentifier identifier)
+    function ResourcePart{generator} resource_get(ResourceIdentifier identifier)
+    function ResourcePart{generator} resource_get_all(Identifier bucket_identifier)
+    function void resource_bucket_add(Identifier bucket_identifier)
+    function void resource_bucket_delete(Identifier bucket_identifier)
+    function void resource_set(ResourceIdentifier identifier, bool overwrite, ResourcePart{generator} resource)
+    function void resource_delete(ResourceIdentifier identifier)
+    function void resource_copy(ResourceIdentifier identifier, ResourceIdentifier new_identifier, bool copy)
+end

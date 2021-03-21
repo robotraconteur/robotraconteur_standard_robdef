@@ -58,6 +58,7 @@ object ResourceStorage
     function ResourcePart{generator} resource_get_all(Identifier bucket_identifier)
     function void resource_bucket_add(Identifier bucket_identifier)
     function void resource_bucket_delete(Identifier bucket_identifier)
-    function void resource_set(ResourceIdentifier identifier, bool overrite, ResourcePart{generator} resource)
+    function void resource_set(ResourceIdentifier identifier, bool overwrite, ResourcePart{generator} resource)
     function void resource_delete(ResourceIdentifier identifier)
+    function void resource_copy(ResourceIdentifier identifier, ResourceIdentifier new_identifier, bool copy)
 end
