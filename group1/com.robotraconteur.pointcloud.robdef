@@ -8,21 +8,21 @@ import com.robotraconteur.image
 
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.BoundingBox
 using com.robotraconteur.geometryf.Point as Pointf
 using com.robotraconteur.geometryf.Vector3 as Vector3f
+using com.robotraconteur.geometryf.BoundingBox as BoundingBoxf
 using com.robotraconteur.image.PixelRGBFloatPacked
 using com.robotraconteur.image.PixelRGBFloatPackedf
 
 struct PointCloud
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field bool is_dense
     field Point[] points
 end
 
 struct PointCloudPart
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
@@ -30,15 +30,13 @@ struct PointCloudPart
 end
 
 struct PointCloudf
-    field uint32 width
-    field uint32 height
+    field BoundingBoxf bounds
     field bool is_dense
     field Pointf[] points
 end
 
 struct PointCloudPartf
-    field uint32 width
-    field uint32 height
+    field BoundingBoxf bounds
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
@@ -55,15 +53,13 @@ namedarray PointCloud2Point
 end
 
 struct PointCloud2
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field bool is_dense
     field PointCloud2Point[] points
 end
 
 struct PointCloud2Part
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
@@ -80,15 +76,13 @@ namedarray PointCloud2Pointf
 end
 
 struct PointCloud2f
-    field uint32 width
-    field uint32 height
+    field BoundingBoxf bounds
     field bool is_dense
     field PointCloud2Pointf[] points
 end
 
 struct PointCloud2Partf
-    field uint32 width
-    field uint32 height
+    field BoundingBoxf bounds
     field bool is_dense
     field uint32 points_offset
     field uint32 points_total_len
@@ -96,8 +90,7 @@ struct PointCloud2Partf
 end
 
 struct FreeformPointCloud
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field string encoding
     field bool is_dense
     field varvalue points
@@ -105,8 +98,7 @@ struct FreeformPointCloud
 end
 
 struct FreeformPointCloudPart
-    field uint32 width
-    field uint32 height
+    field BoundingBox bounds
     field string encoding
     field bool is_dense
     field uint32 points_offset

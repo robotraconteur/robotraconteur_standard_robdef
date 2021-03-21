@@ -19,6 +19,7 @@ using com.robotraconteur.pointcloud.PointCloud2f as PointCloud2
 using com.robotraconteur.pointcloud.PointCloud2Partf as PointCloud2Part
 using com.robotraconteur.geometry.Point
 using com.robotraconteur.geometry.Vector3
+using com.robotraconteur.geometry.BoundingBox
 using com.robotraconteur.sensor.SensorData
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
@@ -27,8 +28,7 @@ using com.robotraconteur.device.clock.DeviceTime
 
 struct PointCloudSensorInfo
     field DeviceInfo device_info
-    field Point range_min
-    field Point range_max
+    field BoundingBox bounds
     field Vector3 resolution
     field ParameterInfo{list} param_info
     field varvalue{string} extended
