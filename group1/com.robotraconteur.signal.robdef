@@ -8,6 +8,7 @@ import com.robotraconteur.device
 import com.robotraconteur.units
 import com.robotraconteur.device
 import com.robotraconteur.device.isoch
+import com.robotraconteur.datetime
 
 using com.robotraconteur.identifier.Identifier
 using com.robotraconteur.datatype.DataType
@@ -17,6 +18,7 @@ using com.robotraconteur.units.SIUnit
 using com.robotraconteur.device.Device
 using com.robotraconteur.device.isoch.IsochDevice
 using com.robotraconteur.device.isoch.IsochInfo
+using com.robotraconteur.datetime.TimeSpec3
 
 enum SignalType
     unknown = 0,
@@ -40,6 +42,18 @@ enum SignalAccessLevel
     all
 end
 
+enum SignalDeviceStateFlags
+    unknown = 0,
+    ready = 0x1,
+    streaming = 0x2,
+    warning = 0x4,
+    error = 0x8,
+    fatal_error = 0x10,
+    calibrated = 0x20,
+    calibration_required = 0x40,
+    communication_failure = 0x80
+end
+
 struct SignalInfo
     field Identifier signal_identifier
     field DeviceClass signal_class
@@ -52,6 +66,12 @@ struct SignalInfo
     field varvalue min_value
     field varvalue max_value
     field varvalue{string} extended
+end
+
+struct SignalDeviceState
+    field TimeSpec3 ts
+    field uint64 seqno
+    field uint32 signal_device_state_flags
 end
 
 struct SignalGroupInfo
