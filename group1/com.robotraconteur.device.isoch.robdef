@@ -14,5 +14,5 @@ end
 
 object IsochDevice
     property IsochInfo isoch_info [readonly,nolock]
-    property uint32 isoch_downsample [perclient]    
+    property uint32 isoch_downsample [perclient]
 end
