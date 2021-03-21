@@ -60,6 +60,34 @@ enum SensorTypeCode
     light_intensity,
     object_color,
     altitude,
+    generic_word,
+    generic_vector,
+    position,
+    angle,
+    acceleration,
+    angular_acceleration,
+    inclinometer,
+    tilt,
+    motion,
+    radiation,
+    photoelectric,
+    leak,
+    chemical,
+    particle,
+    metal,
+    smoke,
+    flame,
+    vibration,
+    mark,
+    contamination,
+    inertial,
+    magnetometer,
+    navigation,
+    tactile,
+    meteorological,
+    horizon,
+    sun,
+    star,
     other
 end
 
@@ -74,7 +102,8 @@ enum SensorDataFlags
     out_of_range_low = 0x40,
     warning = 0x80,
     error = 0x100,
-    fatal_error = 0x200
+    fatal_error = 0x200,
+    ready = 0x400
 end
 
 struct SensorInfo
@@ -91,7 +120,7 @@ end
 
 struct SensorData
     field SensorDataHeader data_header
-    field int32 data_flags
+    field uint32 data_flags
     field double[] data
     field DataType data_type
     field SIUnit{list} data_units
