@@ -131,7 +131,6 @@ end
 object Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
@@ -143,7 +142,6 @@ object Vector2Sensor
     implements Device
     implements Sensor
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
@@ -156,7 +154,6 @@ object Vector3Sensor
     implements Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
@@ -169,7 +166,6 @@ object Vector6Sensor
     implements Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
@@ -182,7 +178,6 @@ object WrenchSensor
     implements Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
@@ -195,7 +190,6 @@ object FreeformSensor
     implements Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]

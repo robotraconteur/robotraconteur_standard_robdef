@@ -71,7 +71,6 @@ object ObjectRecognitionSensor
     implements IsochDevice
     property DeviceInfo device_info [readonly,nolock]
     property ObjectRecognitionSensorInfo object_recognition_sensor_info [readonly,nolock]
-    property bool active
     function RecognizedObjects capture_recognized_objects()
     pipe ObjectRecognitionSensorData object_recognition_sensor_data [readonly]
     function varvalue getf_param(string param_name)

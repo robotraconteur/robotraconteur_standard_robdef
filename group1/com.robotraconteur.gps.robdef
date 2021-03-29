@@ -89,7 +89,6 @@ object GpsSensor
     implements Sensor
     implements Device
     property DeviceInfo device_info [readonly,nolock]
-    property bool active
     property SensorInfo sensor_info [readonly,nolock]
     wire double[] sensor_value [readonly,nolock]
     pipe SensorData sensor_data [readonly,nolock]
