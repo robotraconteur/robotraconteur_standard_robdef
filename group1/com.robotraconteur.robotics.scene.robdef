@@ -54,6 +54,7 @@ end
 
 struct Link
     field Identifier link_identifier
+    field string link_type
     field SpatialInertia inertia
     field ShapeObject{list} visual
     field ShapeObject{list} collision
