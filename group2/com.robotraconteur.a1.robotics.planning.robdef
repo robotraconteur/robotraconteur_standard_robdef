@@ -1,4 +1,4 @@
-service com.robotraconteur.robotics.planning
+service com.robotraconteur.a1.robotics.planning
 
 stdver 0.10
 
@@ -8,7 +8,7 @@ import com.robotraconteur.robotics.trajectory
 import com.robotraconteur.geometry.shapes
 import com.robotraconteur.identifier
 import com.robotraconteur.device
-import com.robotraconteur.robotics.scene
+import com.robotraconteur.a1.robotics.scene
 import com.robotraconteur.param
 
 using com.robotraconteur.geometry.NamedTransform
@@ -27,10 +27,10 @@ using com.robotraconteur.device.Device
 using com.robotraconteur.device.DeviceInfo
 using com.robotraconteur.device.DeviceClass
 using com.robotraconteur.device.DeviceCapability
-using com.robotraconteur.robotics.scene.Scene
-using com.robotraconteur.robotics.scene.Link
-using com.robotraconteur.robotics.scene.Joint
-using com.robotraconteur.robotics.scene.Model
+using com.robotraconteur.a1.robotics.scene.Scene
+using com.robotraconteur.a1.robotics.scene.Link
+using com.robotraconteur.a1.robotics.scene.Joint
+using com.robotraconteur.a1.robotics.scene.Model
 using com.robotraconteur.param.ParameterInfo
 
 enum PlannerStatusCode
