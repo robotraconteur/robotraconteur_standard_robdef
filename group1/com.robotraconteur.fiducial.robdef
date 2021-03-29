@@ -32,7 +32,7 @@ using com.robotraconteur.device.clock.DeviceTime
 
 struct Fiducial
     field Identifier fiducial_marker_class
-    field Identifier fiducial_marker_identifier
+    field string fiducial_marker
     field NamedPose fiducial_pose
     field double fiducial_scale
     field ColorRGBA foreground_color
@@ -41,8 +41,8 @@ end
 
 struct FiducialInfo
     field Identifier fiducial_marker_class
-    field Identifier fiducial_marker_identifier
-    field string fiducial_marker_name_range
+    field string fiducial_marker
+    field string fiducial_marker_range
     field Size2D default_size
     field ColorRGBA default_foreground_color
     field ColorRGBA default_background_color
@@ -53,7 +53,7 @@ end
 
 struct RecognizedFiducial
     field Identifier fiducial_marker_class
-    field Identifier fiducial_marker_identifier
+    field string fiducial_marker
     field NamedPoseWithCovariance pose
     field double confidence
     field varvalue{string} extended
