@@ -27,6 +27,7 @@ end
 struct OcTree
     field OcTreeInfo octree_info
     field uint8[] data
+    field varvalue{string} extended
 end
 
 struct OcTreePart
@@ -34,6 +35,7 @@ struct OcTreePart
     field uint32 data_offset
     field uint32 data_total_len
     field uint8[] data
+    field varvalue{string} extended
 end
 
 struct OcTreeResource
