@@ -67,6 +67,7 @@ struct JoystickInfo
     field uint16 joystick_device_product
     field uint16 joystick_device_version
     field UUID joystick_uuid
+    field varvalue{string} extended
 end
 
 struct JoystickState
