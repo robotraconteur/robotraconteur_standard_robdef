@@ -278,6 +278,10 @@ This object represents a sensor, providing access to the sensor's device informa
 
     The value of the sensor.
 
+- `wire Vector2 vector2_sensor_value [readonly,nolock]`
+
+    The value of the sensor as a 2D vector.
+
 ### Pipes
 
 - `pipe SensorData sensor_data [readonly,nolock]`
@@ -286,9 +290,7 @@ This object represents a sensor, providing access to the sensor's device informa
 
 ### Functions
 
-- `function
-
- varvalue getf_param(string param_name)`
+- `function varvalue getf_param(string param_name)`
 
     Get the value of a parameter.
     - `param_name`: The name of the parameter to get.
@@ -300,11 +302,7 @@ This object represents a sensor, providing access to the sensor's device informa
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
 
-### Wires
 
-- `wire Vector2 vector2_sensor_value [readonly,nolock]`
-
-    The value of the sensor as a 2D vector.
 
 This object represents a sensor that provides a 2D vector value.
 
@@ -331,6 +329,10 @@ This object represents a sensor that provides a 2D vector value.
 
     The value of the sensor.
 
+- `wire Vector3 vector3_sensor_value [readonly,nolock]`
+
+    The value of the sensor as a 3D vector.
+
 ### Pipes
 
 - `pipe SensorData sensor_data [readonly,nolock]`
@@ -350,12 +352,6 @@ This object represents a sensor that provides a 2D vector value.
     Set the value of a parameter.
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
-
-### Wires
-
-- `wire Vector3 vector3_sensor_value [readonly,nolock]`
-
-    The value of the sensor as a 3D vector.
 
 This object represents a sensor that provides a 3D vector value.
 
@@ -382,6 +378,10 @@ This object represents a sensor that provides a 3D vector value.
 
     The value of the sensor.
 
+- `wire Vector6 vector6_sensor_value [readonly,nolock]`
+
+    The value of the sensor as a 6D vector.
+
 ### Pipes
 
 - `pipe SensorData sensor_data [readonly,nolock]`
@@ -402,11 +402,6 @@ This object represents a sensor that provides a 3D vector value.
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
 
-### Wires
-
-- `wire Vector6 vector6_sensor_value [readonly,nolock]`
-
-    The value of the sensor as a 6D vector.
 
 This object represents a sensor that provides a 6D vector value.
 
@@ -431,9 +426,11 @@ This object represents a sensor that provides a 6D vector value.
 
 - `wire double[] sensor_value [readonly,nolock]`
 
-    The value of the
+    The value of the sensor.
 
- sensor.
+- `wire Wrench wrench_sensor_value [readonly,nolock]`
+
+    The value of the sensor as a wrench.
 
 ### Pipes
 
@@ -454,12 +451,6 @@ This object represents a sensor that provides a 6D vector value.
     Set the value of a parameter.
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
-
-### Wires
-
-- `wire Wrench wrench_sensor_value [readonly,nolock]`
-
-    The value of the sensor as a wrench.
 
 This object represents a sensor that provides a wrench value.
 
@@ -486,6 +477,10 @@ This object represents a sensor that provides a wrench value.
 
     The value of the sensor.
 
+- `wire varvalue freeform_sensor_value [readonly,nolock]`
+
+    The value of the sensor in freeform format.
+
 ### Pipes
 
 - `pipe SensorData sensor_data [readonly,nolock]`
@@ -505,11 +500,5 @@ This object represents a sensor that provides a wrench value.
     Set the value of a parameter.
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
-
-### Wires
-
-- `wire varvalue freeform_sensor_value [readonly,nolock]`
-
-    The value of the sensor in freeform format.
 
 This object represents a sensor that provides a freeform value.
