@@ -212,7 +212,7 @@ The `SignalGroupInfo` structure is used to provide information about a signal gr
 
 ### Implements
 
-    - Device
+- Device
 
 ### Properties
 

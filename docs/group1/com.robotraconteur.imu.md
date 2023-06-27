@@ -58,8 +58,8 @@ The `ImuState` structure represents the state of an IMU at a given time.
 
 ### Implements
 
-    - Device
-    - Sensor
+- Device
+- Sensor
 
 ### Properties
 

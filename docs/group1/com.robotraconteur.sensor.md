@@ -215,7 +215,7 @@ This structure represents sensor data, including the data header, flags, values,
 
 ### Implements
 
-    - Device
+- Device
 
 ### Properties
 
@@ -259,8 +259,8 @@ This object represents a sensor, providing access to the sensor's device informa
 
 ### Implements
 
-    - Device
-    - Sensor
+- Device
+- Sensor
 
 ### Properties
 
@@ -312,8 +312,8 @@ This object represents a sensor that provides a 2D vector value.
 
 ### Implements
 
-    - Sensor
-    - Device
+- Sensor
+- Device
 
 ### Properties
 
@@ -363,8 +363,8 @@ This object represents a sensor that provides a 3D vector value.
 
 ### Implements
 
-    - Sensor
-    - Device
+- Sensor
+- Device
 
 ### Properties
 
@@ -414,8 +414,8 @@ This object represents a sensor that provides a 6D vector value.
 
 ### Implements
 
-    - Sensor
-    - Device
+- Sensor
+- Device
 
 ### Properties
 
@@ -467,8 +467,8 @@ This object represents a sensor that provides a wrench value.
 
 ### Implements
 
-    - Sensor
-    - Device
+- Sensor
+- Device
 
 ### Properties
 

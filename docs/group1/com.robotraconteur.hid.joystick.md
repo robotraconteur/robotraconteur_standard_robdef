@@ -254,4 +254,3 @@ The `Joystick` object implements the `Device`, `DeviceClock`, and `IsochDevice` 
     - `force`: The force to apply, represented as a 2D vector.
     - `duration`: The duration of the force feedback.
 
-The documentation provides detailed information about the `com.robotraconteur.hid.joystick` service, including its standard version, imported packages, used statements, enums (`JoystickCapabilities`, `GamepadButtons`, and `JoystickHatState`), structures (`JoystickInfo`, `JoystickState`, `GamepadState`, and `JoystickStateSensorData`), and the `Joystick` object with its properties, wires, pipes, and functions.

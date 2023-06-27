@@ -198,7 +198,7 @@ The `ObjectRecognitionSensorData` structure represents the data collected by the
 
 ### Pipes
 
-- `pipe ObjectRecognitionSensorData object_recognition_sensor_data [readonly]
+- `pipe ObjectRecognitionSensorData object_recognition_sensor_data [readonly]`
 
     A continuous stream of object recognition sensor data produced by the object recognition sensor.
 

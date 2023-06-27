@@ -109,9 +109,9 @@ The `Camera` object represents a camera in the `com.robotraconteur.imaging` serv
 
 ### Implements
 
-    - Device
-    - DeviceClock
-    - IsochDevice
+- Device
+- DeviceClock
+- IsochDevice
 
 ### Properties
 
@@ -207,7 +207,7 @@ The `MultiCamera` object represents a collection of cameras in the `com.robotrac
 
 ### Implements
 
-    - Device
+- Device
 
 ### Properties
 
@@ -274,9 +274,9 @@ The `ImagePartCamera` object represents a camera that captures image parts in th
 
 ### Implements
 
-    - Device
-    - DeviceClock
-    - IsochDevice
+- Device
+- DeviceClock
+- IsochDevice
 
 ### Properties
 
