@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.pointcloud`
+# Service: `com.robotraconteur.pointcloud`
 
 The `com.robotraconteur.pointcloud` service provides structures for representing point cloud data and defines various point cloud-related types.
 

@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.image`
+# Service: `com.robotraconteur.image`
 
 The `com.robotraconteur.image` service provides functionality for representing images and image-related data.
 

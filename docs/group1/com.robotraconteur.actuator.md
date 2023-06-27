@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.actuator`
+# Service: `com.robotraconteur.actuator`
 
 The `com.robotraconteur.actuator` service is used to represent generic actuators such as motors or cylinders.
 

@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.pid`
+# Service: `com.robotraconteur.pid`
 
 The `com.robotraconteur.pid` service is used to represent PID (Proportional-Integral-Derivative) controller parameters and provides functionality for working with PID parameters.
 

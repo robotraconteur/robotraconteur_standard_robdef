@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.fiducial`
+# Service: `com.robotraconteur.fiducial`
 
 The `com.robotraconteur.fiducial` service provides functionality for working with fiducial markers and fiducial sensors.
 

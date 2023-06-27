@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.sensor`
+# Service: `com.robotraconteur.sensor`
 
 The `com.robotraconteur.sensor` service provides functionality for representing various types of sensors.
 

@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.hid.joystick`
+# Service: `com.robotraconteur.hid.joystick`
 
 The `com.robotraconteur.hid.joystick` service provides functionality for joystick and gamepad devices.
 

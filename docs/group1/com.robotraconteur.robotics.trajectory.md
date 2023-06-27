@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.robotics.trajectory`
+# Service: `com.robotraconteur.robotics.trajectory`
 
 The `com.robotraconteur.robotics.trajectory` service provides functionality for defining and executing trajectories in robotics applications.
 

@@ -1,6 +1,6 @@
 The `com.robotraconteur.imaging` service provides functionality for imaging and camera-related operations. Here is the documentation for this service:
 
-## Service: `com.robotraconteur.imaging`
+# Service: `com.robotraconteur.imaging`
 
 The `com.robotraconteur.imaging` service provides functionality for imaging and camera-related operations.
 

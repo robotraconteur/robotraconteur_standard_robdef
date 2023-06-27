@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.resource`
+# Service: `com.robotraconteur.resource`
 
 The `com.robotraconteur.resource` service provides functionality for managing and accessing resources stored in buckets.
 

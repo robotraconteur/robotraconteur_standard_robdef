@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.robotics.robot`
+# Service: `com.robotraconteur.robotics.robot`
 
 The `com.robotraconteur.robotics.robot` service represents a robot and provides functionalities related to robot control and monitoring.
 

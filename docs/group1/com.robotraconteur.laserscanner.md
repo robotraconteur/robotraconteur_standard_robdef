@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.laserscanner`
+# Service: `com.robotraconteur.laserscanner`
 
 The `com.robotraconteur.laserscanner` service is used to represent laser scanners and provides functionality for acquiring laser scan data.
 

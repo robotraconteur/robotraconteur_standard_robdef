@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.param`
+# Service: `com.robotraconteur.param`
 
 The `com.robotraconteur.param` service is used to represent parameter information. It is typically
 used to represent the parameters available for use with `getf_param` and `setf_param` functions.

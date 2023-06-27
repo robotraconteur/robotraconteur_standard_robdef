@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.pointcloud.sensor`
+# Service: `com.robotraconteur.pointcloud.sensor`
 
 The `com.robotraconteur.pointcloud.sensor` service provides functionality for capturing and streaming point cloud data from sensors. It defines objects and structures related to point cloud sensors and their data.
 

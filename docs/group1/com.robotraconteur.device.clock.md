@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.device.clock`
+# Service: `com.robotraconteur.device.clock`
 
 The `com.robotraconteur.device.clock` service provides functionality for device clock-related operations.
 

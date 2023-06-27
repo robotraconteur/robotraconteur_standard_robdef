@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.color`
+# Service: `com.robotraconteur.color`
 
 The `com.robotraconteur.color` service provides definitions for representing colors in various formats.
 

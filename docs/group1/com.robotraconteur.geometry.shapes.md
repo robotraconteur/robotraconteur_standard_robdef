@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.geometry.shapes`
+# Service: `com.robotraconteur.geometry.shapes`
 
 The `com.robotraconteur.geometry.shapes` service provides definitions for various geometric shapes and related objects.
 

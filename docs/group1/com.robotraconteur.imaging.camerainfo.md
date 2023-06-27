@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.imaging.camerainfo`
+# Service: `com.robotraconteur.imaging.camerainfo`
 
 The `com.robotraconteur.imaging.camerainfo` service provides information about camera calibration and camera devices.
 

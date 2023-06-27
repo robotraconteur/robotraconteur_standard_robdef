@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.units`
+# Service: `com.robotraconteur.units`
 
 The `com.robotraconteur.units` service provides functionality for handling units of measurement. The
 exact format of the units is not specified, but the service provides a standard structure for representing

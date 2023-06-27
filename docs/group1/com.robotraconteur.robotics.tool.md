@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.robotics.tool`
+# Service: `com.robotraconteur.robotics.tool`
 
 The `com.robotraconteur.robotics.tool` service represents a robotic tool or end effector.
 

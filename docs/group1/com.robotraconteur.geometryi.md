@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.geometryf`
+# Service: `com.robotraconteur.geometryf`
 
 This service is identical to `com.robotraconteur.geometry`, except that all fields are int32 integers 
 instead of double precision floating point. This service is intended for use with embedded systems

@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.imu`
+# Service: `com.robotraconteur.imu`
 
 The `com.robotraconteur.imu` service provides functionality for Inertial Measurement Units (IMUs), which are used to measure various aspects of motion and orientation.
 

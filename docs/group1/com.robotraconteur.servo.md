@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.servo`
+# Service: `com.robotraconteur.servo`
 
 The `com.robotraconteur.servo` service provides definitions for servo-related functionality, including servo information, states, commands, and control modes.
 

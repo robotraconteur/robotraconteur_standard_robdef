@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.datatype`
+# Service: `com.robotraconteur.datatype`
 
 The `com.robotraconteur.datatype` service provides definitions and information about data types used in Robot Raconteur.
 

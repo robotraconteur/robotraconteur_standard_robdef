@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.device`
+# Service: `com.robotraconteur.device`
 
 The `com.robotraconteur.device` service provides definitions for representing devices and their information.
 The `DeviceInfo` structure contains metadata about a device such as its name, model, and serial number.

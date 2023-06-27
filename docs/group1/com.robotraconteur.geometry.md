@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.geometry`
+# Service: `com.robotraconteur.geometry`
 
 The `com.robotraconteur.geometry` service definition provides data structures for representing various geometric 
 entities such as vectors, points, poses, transformations, spatial velocities, spatial accelerations, wrenches, 

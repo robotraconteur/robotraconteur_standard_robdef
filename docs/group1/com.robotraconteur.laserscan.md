@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.laserscan`
+# Service: `com.robotraconteur.laserscan`
 
 The `com.robotraconteur.laserscan` service provides functionality for working with laser scan data.
 

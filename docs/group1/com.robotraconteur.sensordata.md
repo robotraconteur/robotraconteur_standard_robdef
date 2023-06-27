@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.sensordata`
+# Service: `com.robotraconteur.sensordata`
 
 The `com.robotraconteur.sensordata` service provides definitions for sensor data structures and information.
 

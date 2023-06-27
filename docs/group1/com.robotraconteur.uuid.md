@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.uuid`
+# Service: `com.robotraconteur.uuid`
 
 The `com.robotraconteur.uuid` service provides functionality for working with Universally Unique Identifiers (UUIDs).
 UUIDs are represented by a byte array containing 128-bits in big-endian order. RFC 4122 defines the standard format

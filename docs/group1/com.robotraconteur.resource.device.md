@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.resource.device`
+# Service: `com.robotraconteur.resource.device`
 
 The `com.robotraconteur.resource.device` service combines the functionality of the `com.robotraconteur.device` and `com.robotraconteur.resource` services to provide device-related operations with resource storage capabilities.
 

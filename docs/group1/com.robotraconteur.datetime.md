@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.datetime`
+# Service: `com.robotraconteur.datetime`
 
 The `com.robotraconteur.datetime` service provides definitions for representing date and time-related information.
 The `DateTimeUTC` and `DateTimeLocal` structures are used to represent date and time information in UTC and local time, 

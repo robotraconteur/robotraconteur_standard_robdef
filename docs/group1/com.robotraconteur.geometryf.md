@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.geometryf`
+# Service: `com.robotraconteur.geometryf`
 
 This service is identical to `com.robotraconteur.geometry`, except that all fields are single precision floating point 
 instead of double precision floating point. This service is intended for use in applications where the reduced 

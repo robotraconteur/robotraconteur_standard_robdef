@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.robotics.joints`
+# Service: `com.robotraconteur.robotics.joints`
 
 The `com.robotraconteur.robotics.joints` service provides definitions and information related to robotic joints.
 

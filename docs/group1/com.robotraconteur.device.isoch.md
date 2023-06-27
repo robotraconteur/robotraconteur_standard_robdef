@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.device.isoch`
+# Service: `com.robotraconteur.device.isoch`
 
 The `com.robotraconteur.device.isoch.IsochDevice` provides functionality to control the update rate of an isochronous device.
 Devices will implement this type to allow clients to control the update rate of data streaming from wires

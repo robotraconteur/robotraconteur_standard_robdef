@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.datetime.clock`
+# Service: `com.robotraconteur.datetime.clock`
 
 The `com.robotraconteur.datetime.clock` service represents a clock device that provides date and time information.
 

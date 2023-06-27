@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.signal`
+# Service: `com.robotraconteur.signal`
 
 The `com.robotraconteur.signal` service is used to represent signals of various types, such as digital, analog, vectors, poses, and more.
 

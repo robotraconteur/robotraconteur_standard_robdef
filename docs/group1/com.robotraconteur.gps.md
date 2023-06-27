@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.gps`
+# Service: `com.robotraconteur.gps`
 
 The `com.robotraconteur.gps` service provides functionality for GPS (Global Positioning System) sensors.
 

@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.eventlog`
+# Service: `com.robotraconteur.eventlog`
 
 The `com.robotraconteur.eventlog` service is used to manage event logs and log messages.
 

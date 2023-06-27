@@ -1,4 +1,4 @@
-## Service: `com.robotraconteur.lighting`
+# Service: `com.robotraconteur.lighting`
 
 The `com.robotraconteur.lighting` service is used to represent lighting devices and provides functionality for controlling lights.
 
