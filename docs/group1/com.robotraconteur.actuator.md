@@ -147,7 +147,7 @@ property of the `Actuator` object.
 
 ### Implements
 
-    - Device
+- Device
 
 ### Properties
 
