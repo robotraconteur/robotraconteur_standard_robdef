@@ -70,9 +70,7 @@ The `SensorTypeCode` enum represents the types of sensors that can be used withi
 - `laser`: Represents a laser sensor.
 - `flow`: Represents a flow sensor.
 - `pyrometer`: Represents a pyrometer sensor.
-- `forcetorque`:
-
- Represents a force-torque sensor.
+- `forcetorque`: Represents a force-torque sensor.
 - `light_color`: Represents a light color sensor.
 - `light_intensity`: Represents a light intensity sensor.
 - `object_color`: Represents an object color sensor.
