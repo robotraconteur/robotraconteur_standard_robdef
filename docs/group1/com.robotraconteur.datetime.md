@@ -1,7 +1,7 @@
 # Service: `com.robotraconteur.datetime`
 
 The `com.robotraconteur.datetime` service provides definitions for representing date and time-related information.
-The `DateTimeUTC` and `DateTimeLocal` structures are used to represent date and time information in UTC and local time, 
+The `DateTimeUTC` and `DateTimeLocal` structures are used to represent date and time information in UTC and local time,
 respectively, using the system real-time clock. The `TimeSpec2` and `TimeSpec3` are used to represent the
 performance clock of the node. The performance clock may not be synchronized with the system real-time clock, and
 may not be the same across nodes. It is guaranteed to be a steady clock and will not be adjusted by the system.
@@ -155,4 +155,3 @@ The `TimeSpec3` named array represents a compact timestamp with microsecond prec
 - `field int64 microseconds`
 
     The number of microseconds since the epoch time.
-

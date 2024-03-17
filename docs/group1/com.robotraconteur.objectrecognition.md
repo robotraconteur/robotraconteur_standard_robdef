@@ -217,4 +217,3 @@ The `ObjectRecognitionSensorData` structure represents the data collected by the
 - `wire DeviceTime device_clock_now [readonly,nolock]`
 
     Provides the current time of the object recognition sensor.
-

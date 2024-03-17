@@ -311,4 +311,3 @@ This structure combines the sensor data header and the tool state information, p
 - `pipe ToolStateSensorData tool_state_sensor_data [readonly,nolock]`
 
     The sensor data of the tool state stored in a `ToolStateSensorData` structure.
-

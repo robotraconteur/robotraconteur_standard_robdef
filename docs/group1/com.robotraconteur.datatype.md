@@ -99,6 +99,3 @@ field string name`
 - `field ContainerTypeCode container_type_code`
 
     The code representing the container type of the data type.
-
-
-

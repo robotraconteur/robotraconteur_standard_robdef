@@ -229,4 +229,3 @@ The `SignalGroupInfo` structure is used to provide information about a signal gr
 - `objref SignalGroup{string} signal_groups`
 
     Represents signal groups associated with the device.
-

@@ -42,6 +42,3 @@ The `PayloadInfo` structure provides information about a robotic payload.
 - `field varvalue{string} extended`
 
     Extended information about the payload.
-
-
-

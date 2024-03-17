@@ -1,7 +1,7 @@
 # Service: `com.robotraconteur.geometryf`
 
-This service is identical to `com.robotraconteur.geometry`, except that all fields are single precision floating point 
-instead of double precision floating point. This service is intended for use in applications where the reduced 
+This service is identical to `com.robotraconteur.geometry`, except that all fields are single precision floating point
+instead of double precision floating point. This service is intended for use in applications where the reduced
 precision is acceptable, and can reduce network bandwidth and processing time.
 
 ### Standard Version
@@ -212,7 +212,7 @@ The `NamedWrench` structure represents a named wrench.
 
 ### NamedArray: `SpatialInertia`
 
-The `SpatialInertia` named array represents a spatial inertia. The spatial inertia is defined in the 
+The `SpatialInertia` named array represents a spatial inertia. The spatial inertia is defined in the
 frame of the center of mass.
 
 - `field single m`: The mass.

@@ -7,7 +7,7 @@ is the type of device, such as a robot, motor, or sensor. A device may belong to
 be used to narrow down the exact type of device.
 
 The metadata structures make heavy use of Identifiers. Identifiers are used to uniquely identify various
-entities in Robot Raconteur. A list of standard identifiers can be found in the 
+entities in Robot Raconteur. A list of standard identifiers can be found in the
 [Robot Raconteur Standard Identifiers](https://github.com/robotraconteur/robotraconteur_standard_identifiers) repository.
 
 ### Standard Version
@@ -183,4 +183,3 @@ be used in a system that doesn't have a specific root device.
 - `property DeviceInfo device_info [readonly,nolock]`
 
     Provides information about the billboard device.
-

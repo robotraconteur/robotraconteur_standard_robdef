@@ -1,7 +1,7 @@
 # Service: `com.robotraconteur.geometry`
 
-The `com.robotraconteur.geometry` service definition provides data structures for representing various geometric 
-entities such as vectors, points, poses, transformations, spatial velocities, spatial accelerations, wrenches, 
+The `com.robotraconteur.geometry` service definition provides data structures for representing various geometric
+entities such as vectors, points, poses, transformations, spatial velocities, spatial accelerations, wrenches,
 spatial inertia, and bounding boxes. This service uses double precision floating point numbers for all values.
 `com.robotraconteur.geometryf` provides the same data structures using single precision floating point numbers, and
 `com.robotraconteur.geometryi` provides the same data structures using 32-bit integers.

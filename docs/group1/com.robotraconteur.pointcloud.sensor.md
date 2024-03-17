@@ -129,7 +129,7 @@ The `PointCloudSensor` object represents a point cloud sensor. It implements the
     Sets the value of a parameter specified by its name.
     - `param_name`: The name of the parameter.
     - `value`: The value to set.
-    
+
 ### Pipes
 
 - `pipe PointCloudSensorData point_cloud_sensor_data [readonly]`
@@ -233,7 +233,7 @@ The `PointCloud2Sensor` object represents a point cloud sensor that captures poi
     Sets the value of a parameter specified by its name.
     - `param_name`: The name of the parameter.
     - `value`: The value to set.
-    
+
 ### Pipes
 
 - `pipe PointCloudSensorData point_cloud_sensor_data [readonly]`
@@ -293,7 +293,7 @@ The `PointCloud2PartSensor` object represents a point cloud sensor that captures
     Sets the value of a parameter specified by its name.
     - `param_name`: The name of the parameter.
     - `value`: The value to set.
-    
+
 ### Pipes
 
 - `pipe PointCloudPartSensorData point_cloud_sensor_data [readonly]`

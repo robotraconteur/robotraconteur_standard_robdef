@@ -1,6 +1,6 @@
 # Service: `com.robotraconteur.geometryf`
 
-This service is identical to `com.robotraconteur.geometry`, except that all fields are int32 integers 
+This service is identical to `com.robotraconteur.geometry`, except that all fields are int32 integers
 instead of double precision floating point. This service is intended for use with embedded systems
 that do not have floating point support, or where floating point support is not desired.
 
@@ -212,7 +212,7 @@ The `NamedWrench` structure represents a named wrench.
 
 ### NamedArray: `SpatialInertia`
 
-The `SpatialInertia` named array represents a spatial inertia. The spatial inertia is defined in the 
+The `SpatialInertia` named array represents a spatial inertia. The spatial inertia is defined in the
 frame of the center of mass.
 
 - `field int32 m`: The mass.

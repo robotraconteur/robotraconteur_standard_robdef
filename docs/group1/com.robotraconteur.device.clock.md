@@ -44,4 +44,3 @@ The `DeviceClock` object represents a clock device.
 - `wire DeviceTime device_clock_now [readonly,nolock]`
 
     Provides the current time of the device clock.
-

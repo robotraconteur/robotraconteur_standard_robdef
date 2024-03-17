@@ -107,4 +107,3 @@ The `MultiCameraInfo` structure provides information about multiple cameras.
 - `field varvalue{string} extended`
 
     Extended information about the multi-camera device.
-

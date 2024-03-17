@@ -245,4 +245,3 @@ The `FiducialSensor` object represents a fiducial sensor.
 - `pipe FiducialSensorData fiducials_sensor_data [readonly]`
 
     Provides fiducial sensor data in the form of the `FiducialSensorData` structure.
-
