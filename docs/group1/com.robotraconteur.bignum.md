@@ -12,12 +12,12 @@ The `BigNum` structure represents a signed arbitrary precision number in little 
 
 - `field uint8[] data`
 
-    The data of the number in little endian format. The number is stored in base 256 with the least significant byte 
+    The data of the number in little endian format. The number is stored in base 256 with the least significant byte
     first. The number is stored in two's complement format. The number of bytes used is the minimum number of bytes.
 
 ## Structure: UnsignedBigNum
 
-The `UnsignedBigNum` structure represents an unsigned arbitrary precision number in little endian format. 
+The `UnsignedBigNum` structure represents an unsigned arbitrary precision number in little endian format.
 The number is stored in base 256 with the least significant byte first. The number of bytes used is the minimum number of bytes.
 
 - `field uint8[] data`
@@ -37,4 +37,3 @@ represent the floating point number using `num`, `den`, and `radix`. The number 
 - `field BigNum radix`
 
     Unused
-

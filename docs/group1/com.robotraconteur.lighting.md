@@ -107,4 +107,3 @@ The `LightInfo` structure is used to provide information about a light. It is re
 - `property ColorRGBA color`
 
     The color of the light represented in RGBA format.
-

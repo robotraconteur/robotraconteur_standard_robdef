@@ -253,4 +253,3 @@ The `Joystick` object implements the `Device`, `DeviceClock`, and `IsochDevice` 
     Applies force feedback to the joystick.
     - `force`: The force to apply, represented as a 2D vector.
     - `duration`: The duration of the force feedback.
-

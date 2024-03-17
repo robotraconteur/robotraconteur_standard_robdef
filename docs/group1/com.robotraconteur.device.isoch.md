@@ -10,7 +10,7 @@ a TimeSpec2 clock.
 The `isoch_downsample` property controls the downsample value for the client. Each client can control
 the downsample value independently. The downsample value begins at 0, meaning no downsampling,
 and can increase to the `max_downsample` value. The `max_downsample` value is set by the device and
-is the maximum downsample value supported by the device. If a downsample is configured, it will skip 
+is the maximum downsample value supported by the device. If a downsample is configured, it will skip
 that many updates of the wire or pipe. For example, if the `isoch_downsample` value is 2, then the
 wire or pipe will update every 3rd update of the device clock.
 
@@ -59,4 +59,3 @@ The `IsochDevice` object represents an isochronous device.
 - `property uint32 isoch_downsample [perclient]`
 
     Controls the downsample value for the isochronous device.
-

@@ -201,4 +201,3 @@ The `JointInfo` structure provides information about a robotic joint.
 - `field varvalue{string} extended`
 
     Extended information about the joint.
-

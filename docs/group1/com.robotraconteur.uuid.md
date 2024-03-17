@@ -17,4 +17,3 @@ The `UUID` named array represents a Universally Unique Identifier (UUID) using a
     The byte array representing the UUID.
 
 This named array allows storing and manipulating UUIDs as a byte array.
-

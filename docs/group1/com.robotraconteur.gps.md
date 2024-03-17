@@ -270,4 +270,3 @@ The `GpsSensor` object implements both the `Sensor` and `Device` interfaces with
     Set the value of a parameter.
     - `param_name`: The name of the parameter to set.
     - `value`: The value to set the parameter to.
-

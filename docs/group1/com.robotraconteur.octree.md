@@ -99,6 +99,5 @@ The `OcTreeResource` structure represents an octree resource. It contains the id
 
 - `field ResourceIdentifier octree_resource`
 
-    The identifier of the octree resource. The resource can be retrieved from a 
+    The identifier of the octree resource. The resource can be retrieved from a
     `com.robotraconteur.resource.ResourceStorage` service.
-

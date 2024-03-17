@@ -115,4 +115,3 @@ property of the `LaserScanner` object.
     - `value`: The value to set the parameter to.
 
 This object represents a laser scanner that provides partial laser scan data.
-

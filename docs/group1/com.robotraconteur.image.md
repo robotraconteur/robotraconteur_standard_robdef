@@ -283,13 +283,9 @@ The `FreeformImagePart` structure represents a partial section of a freeform ima
 
 ## Structure: `ImageResource`
 
-The `ImageResource` structure represents an image that is stored as a resource within a 
+The `ImageResource` structure represents an image that is stored as a resource within a
 `com.robotraconteur.resource.ResourceDevice` service.
 
 - `field ResourceIdentifier image_resource`
 
     The resource identifier to retrieve the image.
-
-
-
-

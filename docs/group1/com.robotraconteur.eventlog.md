@@ -184,4 +184,3 @@ The `EventLogInfo` structure provides information about an event log.
 - `function void eventlog_clear_all_messages()`
 
     Clears all event log messages.
-

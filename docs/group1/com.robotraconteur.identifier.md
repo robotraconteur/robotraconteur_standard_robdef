@@ -1,6 +1,6 @@
 # Service: `com.robotraconteur.identifier`
 
-The `com.robotraconteur.identifier` service provides functionality for representing identifiers with names and 
+The `com.robotraconteur.identifier` service provides functionality for representing identifiers with names and
 universally unique identifiers (UUIDs).
 
 The UUID is typically used to uniquely identify the identifier, while the name is used to provide a human-readable
@@ -42,4 +42,3 @@ The `Identifier` structure represents an identifier with a name and a UUID withi
 - `field UUID uuid`
 
     The universally unique identifier (UUID) associated with the identifier.
-

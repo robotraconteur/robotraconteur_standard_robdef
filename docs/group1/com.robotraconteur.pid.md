@@ -37,4 +37,3 @@ The `PIDParam` structure represents the parameters for a PID controller. It incl
 - `field double cmd_min`
 
     The minimum command value of the PID controller.
-

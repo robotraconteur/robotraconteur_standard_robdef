@@ -173,7 +173,7 @@ The `PointCloud2Part` structure represents a part of a point cloud with addition
 
 ## Structure: `PointCloud2Pointf`
 
-The `PointCloud2Pointf` named array represents a point in a point cloud with single-precision floating-point values. It 
+The `PointCloud2Pointf` named array represents a point in a point cloud with single-precision floating-point values. It
 includes attributes such as position, intensity, normal, RGB color, moment invariants, and channel.
 
 - `field Pointf point`
@@ -275,4 +275,3 @@ The `FreeformPointCloudPart` structure represents a part of a freeform point clo
 - `field varvalue{string} extended`
 
     Extended information about the part of the freeform point cloud.
-

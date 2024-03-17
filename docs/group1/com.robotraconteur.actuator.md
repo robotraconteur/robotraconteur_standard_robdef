@@ -70,7 +70,7 @@ The `ActuatorMode` enum represents the operating modes of an actuator within the
 
 ## Enum: `ActuatorStateFlags`
 
-The `ActuatorStateFlags` enum represents the state flags of an actuator. The are returned by the `state_flags` 
+The `ActuatorStateFlags` enum represents the state flags of an actuator. The are returned by the `state_flags`
 property of the `ActuatorState` structure.
 
 - `unknown` (`0`): Indicates that the state of the actuator is unknown.
@@ -88,7 +88,7 @@ property of the `ActuatorState` structure.
 
 ## Structure: ActuatorState
 
-The ActuatorState structure is used to represent the state of an actuator. It is returned by 
+The ActuatorState structure is used to represent the state of an actuator. It is returned by
 the `actuator_state` wire of the `Actuator` object.
 
 - `field TimeSpec3 ts`
@@ -114,7 +114,7 @@ property of the `Actuator` object.
 - `field DeviceInfo device_info`
 
     Provides standard device information such as the name, model, and serial number.
-    
+
 - `field ActuatorTypeCode actuator_type`
 
     The type of the actuator.
