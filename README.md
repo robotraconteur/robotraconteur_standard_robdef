@@ -58,3 +58,8 @@ Documentation for Group 1 service definitions:
 
 
 Group 2 is under development, and should be considered unstable.
+
+## Info Yaml Files
+
+Drivers use Yaml files to provide information about devices and services to clients. See the 
+[Info Yaml Files](docs/info_files/README.md) documentation for more information.
