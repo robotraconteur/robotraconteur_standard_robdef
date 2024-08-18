@@ -233,3 +233,20 @@ The rotation component of the transformation.
 Type: [Vector3](#vector3)
 
 The translation component of the transformation.
+
+
+## BoundingBox
+
+The `BoundingBox` structure represents a bounding box in a coordinate system.
+
+### center
+
+Type: [NamedPose](#namedpose)
+
+The center of the bounding box.
+
+### size
+
+Type: [Size](#size)
+
+The size of the bounding box.

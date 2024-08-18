@@ -60,4 +60,45 @@ Type: Map&lt;string,[Extended](extended.md)&gt;
 
 Extended information.
 
+## FiducialSensorInfo
 
+Information about a fiducial sensor. Fiducial sensors are used to detect fiducial markers. Fiducial markers
+are a visual pattern that can be detected by a camera, such as a QR code or ArUco marker. Simpler
+examples would be a plus sign or a circle.
+
+### device_info
+
+Type: [DeviceInfo](device.md#deviceinfo)
+
+The device information of the fiducial sensor.
+
+### range
+
+Type: [BoundingBox](geometry.md#boundingbox)
+
+The range of the fiducial sensor.
+
+### resolution
+
+Type: [Vector3](geometry.md#vector3)
+
+The resolution of the fiducial sensor.
+
+### param_info
+
+Type: List&lt;[ParameterInfo](parameter.md)&gt;
+
+A list of parameters for the fiducial sensor. The parameters can be get/set using the `getf_param` and `setf_param` functions.
+This field is usually populated by the driver, and is not typically configured using the YAML file.
+
+### fiducial_info
+
+Type: List&lt;[FiducialInfo](#fiducialinfo)&gt;
+
+A list of fiducial markers that can be detected by the sensor. This may be empty if the sensor can detect any fiducial marker.
+
+### extended
+
+Type: Map&lt;string,[Extended](extended.md)&gt;
+
+Extended information.

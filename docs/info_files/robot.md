@@ -336,6 +336,6 @@ A user configured description of the kinematic chain.
 
 ### extended
 
-Type: Map&lt;string,[Extended](extended.md)&gt;
+Type: [Extended](extended.md)
 
 Extended information.
