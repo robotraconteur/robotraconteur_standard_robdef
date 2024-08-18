@@ -235,6 +235,11 @@ previous joint's coordinate system. It is assumed that all link frames are ident
 The `flange_pose` field contains the pose of the end effector in the last joint's coordinate system. "H" has
  the same number of entries as the number of joints in the chain, and "P" has one more entry than the number of joints.
 
+A simple tool `urdf_to_robotinfo.py` is provided in the `tools/` directory of this repository to convert a URDF file
+to a `RobotInfo` structure. The URDF must be processed through xacro before running the tool if it uses xacro macros.
+*Warning: This script is not guaranteed to produce accurate results, and is not guaranteed to work with all URDF files.
+it is a simple tool to help begin the process of converting a URDF file to a robotinfo.yaml file.*
+
  <!--TODO: add diagram -->
 
 ### kin_chain_identifier
