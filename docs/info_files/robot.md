@@ -228,12 +228,19 @@ can use the same joint numbers. Each kinematic chain is rooted at the base of th
 should be the end effector. If the robot has multiple arms and share joints and links toward the base of the robot,
 include them in both chains until the arms diverge.
 
-The `RobotKinChainInfo` structure uses "power-of-exponential" representation of the kinematic chain. 
+The `RobotKinChainInfo` structure uses "product-of-exponential" representation of the kinematic chain. 
 This representation uses an "H" matrix and a "P" vector to represent the kinematic chain. The "H" matrix
 contains the unit vector of the joint axes and the "P" vector contains the position of the joint in the
 previous joint's coordinate system. It is assumed that all link frames are identical when all joints are zero.
 The `flange_pose` field contains the pose of the end effector in the last joint's coordinate system. "H" has
  the same number of entries as the number of joints in the chain, and "P" has one more entry than the number of joints.
+
+The diagram below shows the geometry of the IRB1200 robot arm. The "H" components in the diagram
+are `H=[h1,h2,h3,h4,h5,h6]` and the "P" components are `P=[(O1-O0),(O2-O1),(O3-O2),(O4-O3),(O5-O4),(O6-O5),and (OT-O6)]`.
+The values for a robot are tyically obtained from the robot 
+[manufacturer's documentation](https://search.abb.com/library/Download.aspx?DocumentID=9AKK106103A6066&LanguageCode=en&DocumentPartId=&Action=Launch).
+
+![](figures/IRB1200_diagram.svg)
 
 A simple tool `urdf_to_robotinfo.py` is provided in the `tools/` directory of this repository to convert a URDF file
 to a `RobotInfo` structure. The URDF must be processed through xacro before running the tool if it uses xacro macros.
