@@ -229,9 +229,9 @@ should be the end effector. If the robot has multiple arms and share joints and 
 include them in both chains until the arms diverge.
 
 The `RobotKinChainInfo` structure uses "product-of-exponential" representation of the kinematic chain. 
-This representation uses an "H" matrix and a "P" vector to represent the kinematic chain. The "H" matrix
-contains the unit vector of the joint axes and the "P" vector contains the position of the joint in the
-previous joint's coordinate system. It is assumed that all link frames are identical when all joints are zero.
+This representation uses an "H" list of vectors and a "P" list of vector to represent the kinematic chain. The "H" 
+list of vectors contains the unit vectors of the joint axes and the "P" vector contains the positions of the joint in the
+previous joints' coordinate system. It is assumed that all link frames are identical when all joints are zero.
 The `flange_pose` field contains the pose of the end effector in the last joint's coordinate system. "H" has
  the same number of entries as the number of joints in the chain, and "P" has one more entry than the number of joints.
 
@@ -259,13 +259,13 @@ An identifier for the kinematic chain. Can be empty if not needed.
 
 Type: List&lt;[Vector3](geometry.md#vector3)&gt;
 
-The "H" matrix of the kinematic chain. The "H" matrix contains the unit vector of the joint axes.
+The "H" list of vectors of the kinematic chain. The "H" list contains the unit vector of the joint axes.
 
 ### P
 
 Type: List&lt;[Vector3](geometry.md#vector3)&gt;
 
-The "P" vector of the kinematic chain. The "P" vector contains the position of the 
+The "P" list of vectors of the kinematic chain. The "P" vectors contains the position of the 
 joints in the previous joints' coordinate system.
 
 ### link_inertias
