@@ -51,7 +51,7 @@ This service uses the following statements to import specific types:
 - `com.robotraconteur.robotics.trajectory.InterpolationMode`: Represents the interpolation mode for trajectory execution.
 - `com.robotraconteur.identifier.Identifier`: Represents an identifier.
 - `com.robotraconteur.action.ActionStatusCode`: Represents the status code of an action.
-- `com.robotraconteur.eventlog.EventLogMessage` : Represents an event log message.
+- `com.robotraconteur.eventlog.EventLogMessage`: Represents an event log message.
 - `com.robotraconteur.device.isoch.IsochDevice`: Provides functionality for isochronous devices.
 - `com.robotraconteur.device.isoch.IsochInfo`: Represents information about an isochronous device.
 - `com.robotraconteur.device.clock.DeviceClock`: Represents a device clock.
@@ -72,7 +72,7 @@ The `RobotTypeCode` enum represents the types of robots that can be used within 
 - `freeform`: Represents a freeform robot.
 - `other`: Represents a robot with a type not listed in this enum.
 
-This enum provides a set of predefined robot types. If the robot type is not listed in this enum, use `unknown` and provide additional information in the `DeviceInfo` structure.
+This enum provides a set of predefined robot types. If the robot type is not listed in this enum, use `other` and provide additional information in the `DeviceInfo` structure.
 
 ## Enum: `RobotCommandMode`
 
@@ -566,9 +566,9 @@ The `Robot` object implements several interfaces and provides properties, functi
 
     Gets the value of a signal associated with the robot.
     - `signal_name`: The name of the signal to get.
-    - Returns
+    - Returns: The value of the signal.
 
-- `setf_signal(string signal_name, double[] value)`
+- `function void setf_signal(string signal_name, double[] value)`
 
     Sets the value of a signal associated with the robot.
     - `signal_name`: The name of the signal to set.
@@ -653,4 +653,4 @@ The `Robot` object implements several interfaces and provides properties, functi
 
     Triggered when a parameter associated with the robot changes.
 
-The `Robot` object represents a robot with various capabilities. It provides properties to access information about the robot, such as its device info, robot info, command mode, operational mode, and controller state. The object also allows enabling, disabling, and halting the robot
+The `Robot` object represents a robot with various capabilities. It provides properties to access information about the robot, such as its device info, robot info, command mode, operational mode, and controller state. The object also allows enabling, disabling, and halting the robot.
