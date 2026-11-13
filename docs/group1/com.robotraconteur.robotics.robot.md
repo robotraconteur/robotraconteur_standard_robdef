@@ -51,7 +51,7 @@ This service uses the following statements to import specific types:
 - `com.robotraconteur.robotics.trajectory.InterpolationMode`: Represents the interpolation mode for trajectory execution.
 - `com.robotraconteur.identifier.Identifier`: Represents an identifier.
 - `com.robotraconteur.action.ActionStatusCode`: Represents the status code of an action.
-- `com.robotraconteur.eventlog.EventLogMessage` : Represents an event log message.
+- `com.robotraconteur.eventlog.EventLogMessage`: Represents an event log message.
 - `com.robotraconteur.device.isoch.IsochDevice`: Provides functionality for isochronous devices.
 - `com.robotraconteur.device.isoch.IsochInfo`: Represents information about an isochronous device.
 - `com.robotraconteur.device.clock.DeviceClock`: Represents a device clock.
