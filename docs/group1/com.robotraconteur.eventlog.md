@@ -162,6 +162,12 @@ The `EventLogInfo` structure provides information about an event log.
 
     Provides information about the event log.
 
+### Pipes
+
+- `pipe EventLogMessage eventlog_message_stream [readonly]`
+
+    A read-only pipe for streaming event log messages.
+
 ### Functions
 
 - `function EventLogMessage{list} getf_eventlog_messages(uint64 start, uint64 count)`
@@ -170,10 +176,6 @@ The `EventLogInfo` structure provides information about an event log.
     - `start`: The starting message number.
     - `count`: The number of messages to retrieve.
     - Returns: A list of event log messages.
-
-- `pipe EventLogMessage eventlog_message_stream [readonly]`
-
-    A read-only pipe for streaming event log messages.
 
 - `function void eventlog_clear_messages(uint64 offset, uint64 count)`
 
