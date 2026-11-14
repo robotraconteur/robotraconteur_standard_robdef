@@ -28,7 +28,7 @@ This service imports the following package:
 
 This service uses the following statements to import specific types:
 
-- `com.robotraconteur.datetime.TimeSpec2`: Represents a timestamp with microsecond precision in the node clock.
+- `com.robotraconteur.datetime.TimeSpec2`: Represents a timestamp with nanosecond precision in the node clock.
 
 ## Struct: `IsochInfo`
 

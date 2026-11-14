@@ -16,7 +16,7 @@ This service imports the following package:
 
 This service uses the following statements to import specific types:
 
-- `com.robotraconteur.datetime.TimeSpec2`: Represents a timestamp with microsecond precision in the node clock.
+- `com.robotraconteur.datetime.TimeSpec2`: Represents a timestamp with nanosecond precision in the node clock.
 - `com.robotraconteur.datetime.DateTimeUTC`: Represents a date and time in Coordinated Universal Time (UTC).
 
 ## POD: `DeviceTime`

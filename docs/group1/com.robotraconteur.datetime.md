@@ -134,7 +134,7 @@ The `Duration` plain old data (POD) structure represents a duration of time.
 
 ## POD: `TimeSpec2`
 
-The `TimeSpec2` plain old data (POD) structure represents a timestamp with microsecond precision in the node clock.
+The `TimeSpec2` plain old data (POD) structure represents a timestamp with nanosecond precision in the node clock.
 
 - `field ClockInfo clock_info`
 

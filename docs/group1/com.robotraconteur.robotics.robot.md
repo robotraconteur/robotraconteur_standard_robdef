@@ -56,7 +56,7 @@ This service uses the following statements to import specific types:
 - `com.robotraconteur.device.isoch.IsochInfo`: Represents information about an isochronous device.
 - `com.robotraconteur.device.clock.DeviceClock`: Represents a device clock.
 - `com.robotraconteur.device.clock.DeviceTime`: Represents device time.
-- `com.robotraconteur.datetime.TimeSpec3`: Represents a timestamp with nanosecond precision.
+- `com.robotraconteur.datetime.TimeSpec3`: Represents a timestamp with microsecond precision in the node clock.
 - `com.robotraconteur.fiducial.Fiducial`: Represents information about a fiducial.
 
 ## Enum: `RobotTypeCode`

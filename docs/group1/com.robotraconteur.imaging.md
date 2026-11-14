@@ -36,7 +36,7 @@ This service uses the following statements to import specific types:
 - `com.robotraconteur.device.isoch.IsochInfo`: Contains information about isochronous device communication.
 - `com.robotraconteur.device.clock.DeviceClock`: Implements the device clock interface.
 - `com.robotraconteur.device.clock.DeviceTime`: Represents device clock time.
-- `com.robotraconteur.datetime.TimeSpec3`: Represents a timestamp with nanosecond precision.
+- `com.robotraconteur.datetime.TimeSpec3`: Represents a timestamp with microsecond precision in the node clock.
 
 ## Enum: `TriggerMode`
 
